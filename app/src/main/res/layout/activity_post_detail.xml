@@ -27,7 +27,7 @@
             android:background="@drawable/icon_back_24" />
 
         <TextView
-            android:id="@+id/post_writer_nickname_1"
+            android:id="@+id/view_all_mypost"
             style="@style/PageName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

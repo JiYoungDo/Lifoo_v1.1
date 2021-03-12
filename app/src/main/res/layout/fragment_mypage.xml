@@ -1,6 +1,426 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="218dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18.9dp">
+
+            <ImageView
+                android:id="@+id/slotImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/_18_x_42" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/firstLetter"
+                    style="@style/PageName"
+                    android:layout_width="15dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:text=""
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/secondLetter"
+                    style="@style/PageName"
+                    android:layout_width="15dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:text=""
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/thirdLetter"
+                    style="@style/PageName"
+                    android:layout_width="15dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:text=""
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/fourthLetter"
+                    style="@style/PageName"
+                    android:layout_width="15dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:text=""
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/fifthLetter"
+                    style="@style/PageName"
+                    android:layout_width="15dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:text=""
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/sixthLetter"
+                    style="@style/PageName"
+                    android:layout_width="15dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:text=" "
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnModifyNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/btn" />
+
+        <TextView
+            android:id="@+id/reaction_received"
+            style="@style/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:includeFontPadding="false"
+            android:text="@string/reaction_received"
+            android:textColor="@color/colorBlack" />
+
+        <!--이모지-->
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:columnCount="3"
+            android:rowCount="6"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/heart_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_heart_emoji" />
+
+            <ImageView
+                android:id="@+id/wow_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_wow_emoji" />
+
+            <ImageView
+                android:id="@+id/cheer_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_cheer_emoji" />
+
+            <TextView
+                android:id="@+id/heart_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginLeft="26dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="062"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/wow_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="000"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/cheer_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="123"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/money_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_money_emoji" />
+
+            <ImageView
+                android:id="@+id/ques_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_ques_emoji" />
+
+            <ImageView
+                android:id="@+id/celebrate_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_celebrate_emoji" />
+
+            <TextView
+                android:id="@+id/money_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginLeft="26dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="092"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/ques_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="011"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/celebrate_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="989"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/disgusting_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_disgusting_emoji" />
+
+            <ImageView
+                android:id="@+id/fire_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_fire_emoji" />
+
+            <ImageView
+                android:id="@+id/happysad_emoji"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
+                android:background="@drawable/rectangle_67"
+                android:scaleType="center"
+                android:src="@drawable/mypage_happysad_emoji" />
+
+            <TextView
+                android:id="@+id/disgusting_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginLeft="26dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="000"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/fire_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="037"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/happysad_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
+                android:fontFamily="@font/noto_sans_cjkkr_demi_light"
+                android:gravity="center_horizontal"
+                android:letterSpacing="-0.03"
+                android:lineSpacingExtra="10sp"
+                android:text="002"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                android:textStyle="normal" />
+
+
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10.1dp">
+
+            <TextView
+                android:id="@+id/view_all_mypost"
+                style="@style/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:includeFontPadding="false"
+                android:text="@string/my_post"
+                android:textColor="@color/colorBlack" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnViewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/view_all" />
+
+        </LinearLayout>
+
+        <!--내 게시물 보기-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypagefragment_recyclerview"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+</ScrollView>

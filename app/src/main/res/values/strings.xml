@@ -28,6 +28,8 @@
     <string name="post_declartion_dialog_1">한번 신고하시면 취소가 불가능합니다.\n정말 신고하시겠습니까?</string>
     <string name="search_hint">찾으시는 음식을 검색하세요</string>
     <string name="search_recent">최근 검색</string>
+    <string name="reaction_received">내가 받은 리액션</string>
+    <string name="my_post">내 게시물 보기</string>
 
 
 </resources>

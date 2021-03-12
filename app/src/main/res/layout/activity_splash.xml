@@ -6,18 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context="com.example.lifoo.src.SplashActivity.SplashActivity">
-
+    tools:context="com.example.lifoo_v11.src.SplashActivity.SplashActivity">
 
 
     <ImageView
+        android:id="@+id/splashImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/__6_4_x_1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/a_temp_splash_img"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
