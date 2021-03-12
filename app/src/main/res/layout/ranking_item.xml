@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.example.lifoo.src.xmlClass.RoundImageView
+            <com.example.lifoo_v11.src.xmlClass.RoundImageView
                 android:id="@+id/ranking_post_image"
                 android:layout_width="wrap_content"
                 android:layout_height="340dp"

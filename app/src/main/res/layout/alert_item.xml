@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
 
-    <com.example.lifoo.src.xmlClass.RoundImageView
+    <com.example.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/alert_item_iv"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

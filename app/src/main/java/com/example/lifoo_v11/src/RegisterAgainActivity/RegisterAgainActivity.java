@@ -63,7 +63,6 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
                 //슬롯머신 작동
                 TryGetNickname();
             }
-
         });
 
 

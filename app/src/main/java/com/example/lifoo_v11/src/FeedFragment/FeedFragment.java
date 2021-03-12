@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -19,13 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lifoo_v11.R;
-import com.example.lifoo_v11.src.AlertFragment.AlertAdapter;
-import com.example.lifoo_v11.src.AlertFragment.AlertItem;
 import com.example.lifoo_v11.src.FeedFragment.interfaces.FeedFragmentActivityView;
 import com.example.lifoo_v11.src.FeedFragment.models.FeedFragmentResponse;
 import com.example.lifoo_v11.src.MainActivity.MainActivity;
 import com.example.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
-import com.example.lifoo_v11.src.SocialLoginActivity.SocialLoginService;
 
 import java.util.ArrayList;
 
@@ -36,16 +32,15 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
 
     ImageView title_iv;
     ImageView circle_search_iv;
-    // EditText rectangle_search_et;
     ScrollView bg_scrollView;
 
-//    FeedAdapter feedAdapter;
-//    ArrayList feed_list;
-//    RecyclerView feed_recyclerView;
-//
-//    int page_idx = 0;
-//
-//    FeedService feedService = new FeedService(this);
+    FeedAdapter feedAdapter;
+    ArrayList feed_list;
+    RecyclerView feed_recyclerView;
+
+    int page_idx = 0;
+
+    FeedService feedService = new FeedService(this);
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -71,120 +66,138 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
 
         bg_scrollView = viewGroup.findViewById(R.id.feed_fragment_sv_animation);
 
-//
-//        // Feed list
-//        feed_recyclerView = viewGroup.findViewById(R.id.feed_fragment_rv);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity,LinearLayoutManager.VERTICAL,false);
-//        feed_recyclerView.setLayoutManager(linearLayoutManager);
-//
-//        feed_list = new ArrayList<FeedItem>();
-//
-////        FeedItem feedItem = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
-////                "100 개","100 개","100 개","100 개","100 개","100 개",
-////                "0","1","2","3","4","5");
-////
-////        feed_list.add(feedItem);
-//
-//
-//        // 어댑터
-//        feedAdapter = new FeedAdapter(feed_list);
-//        feed_recyclerView.setAdapter(feedAdapter);
-//
-//
-//        feedAdapter.setOnItemClickListener(new FeedAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int pos) {
-//                // post 세부화면으로 넘겨 주기.
-//                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
-//                startActivity(intent);
-//                getActivity().finish();
-//            }
-//        });
+        // Feed list
+        feed_recyclerView = viewGroup.findViewById(R.id.feed_fragment_rv);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity,LinearLayoutManager.VERTICAL,false);
+        feed_recyclerView.setLayoutManager(linearLayoutManager);
+
+        feed_list = new ArrayList<FeedItem>();
+
+        FeedItem feedItem = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
+                "100 개","100 개","100 개","100 개","100 개","100 개",
+                "0","1","2","3","4","5");
+
+        feed_list.add(feedItem);
+
+
+        // 통신을 통해 피드 받아 오는.
+       // TryGetPosts(0);
+
+        // 어댑터
+        feedAdapter = new FeedAdapter(feed_list);
+        feed_recyclerView.setAdapter(feedAdapter);
+
+        feedAdapter.notifyDataSetChanged();
+
+        feedAdapter.setOnItemClickListener(new FeedAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                // post 세부화면으로 넘겨 주기.
+                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
 
         circle_search_iv = viewGroup.findViewById(R.id.feed_fragment_iv_circle_search);
         circle_search_iv.bringToFront();
-        // rectangle_search_et = viewGroup.findViewById(R.id.feed_fragment_et_rectangle_search);
-        // rectangle_search_et.setVisibility(View.GONE);
+
         circle_search_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  rectangle_search_et.setVisibility(View.VISIBLE);
-              //  rectangle_search_et.bringToFront();
-                // 검색창으로 이
             }
         });
 
 
-        // TryGetPosts();
 
         return viewGroup;
     }
 
 
 
-//    private void TryGetPosts()
-//    {
-//        feedService.GetBasicPosts(0);
-//        page_idx += 1;
-//    }
+    private void TryGetPosts(int page_num)
+    {
+        feedService.GetBasicPosts(page_num);
+        page_idx += 1;
+    }
 
 
     @Override
     public void GetPostsBasicFailure(String message, int code) {
-        Log.d("피드 실패 ", message+"  " + String.valueOf(code));
+        Log.d("피드 실패 ", message+ "&& " + String.valueOf(code));
     }
 
     @Override
     public void GetPostsBasicSuccess(FeedFragmentResponse feedFragmentResponse, int code) {
 
-//        if(code == 2000) {
-//            String Img_url_1, Img_url_2, Img_url_3, Img_url_4, Img_url_5, Img_url_6;
-//            String hour_1, hour_2, hour_3, hour_4, hour_5, hour_6;
-//            String Imoji_1, Imoji_2, Imoji_3, Imoji_4, Imoji_5, Imoji_6;
-//            String Imoji_idx_1, Imoji_idx_2, Imoji_idx_3, Imoji_idx_4, Imoji_idx_5, Imoji_idx_6;
-//
-//
-//            Img_url_1 = feedFragmentResponse.getResult().getPostList().get(0).getPostUrl();
-//            Img_url_2 = feedFragmentResponse.getResult().getPostList().get(1).getPostUrl();
-//            Img_url_3 = feedFragmentResponse.getResult().getPostList().get(2).getPostUrl();
-//            Img_url_4 = feedFragmentResponse.getResult().getPostList().get(3).getPostUrl();
-//            Img_url_5 = feedFragmentResponse.getResult().getPostList().get(4).getPostUrl();
-//            Img_url_6 = feedFragmentResponse.getResult().getPostList().get(5).getPostUrl();
-//
-//
+        Log.d("피드 성공 ",  "&& " + String.valueOf(code));
+
+        if(code == 2000)
+        {
+            Log.d("피드 성공 ",  "&& " + String.valueOf(code));
+            String Img_url_1, Img_url_2, Img_url_3, Img_url_4, Img_url_5, Img_url_6;
+            String hour_1, hour_2, hour_3, hour_4, hour_5, hour_6;
+            String Imoji_1, Imoji_2, Imoji_3, Imoji_4, Imoji_5, Imoji_6;
+            String Imoji_idx_1, Imoji_idx_2, Imoji_idx_3, Imoji_idx_4, Imoji_idx_5, Imoji_idx_6;
+
+
+            Img_url_1 = feedFragmentResponse.getResult().getPostList().get(0).getPostUrl();
+            Img_url_2 = feedFragmentResponse.getResult().getPostList().get(1).getPostUrl();
+            Img_url_3 = feedFragmentResponse.getResult().getPostList().get(2).getPostUrl();
+            Img_url_4 = feedFragmentResponse.getResult().getPostList().get(3).getPostUrl();
+            Img_url_5 = feedFragmentResponse.getResult().getPostList().get(4).getPostUrl();
+            Img_url_6 = feedFragmentResponse.getResult().getPostList().get(5).getPostUrl();
+
+
 //            hour_1 = Calc_time(feedFragmentResponse.getResult().getPostList().get(0).getCreatedAt());
 //            hour_2 = Calc_time(feedFragmentResponse.getResult().getPostList().get(1).getCreatedAt());
 //            hour_3 = Calc_time(feedFragmentResponse.getResult().getPostList().get(2).getCreatedAt());
 //            hour_4 = Calc_time(feedFragmentResponse.getResult().getPostList().get(3).getCreatedAt());
 //            hour_5 = Calc_time(feedFragmentResponse.getResult().getPostList().get(4).getCreatedAt());
 //            hour_6 = Calc_time(feedFragmentResponse.getResult().getPostList().get(5).getCreatedAt());
-//
-//            Imoji_1 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(0).getTotalImoge())+" 개";
-//            Imoji_2 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(1).getTotalImoge())+" 개";
-//            Imoji_3 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getTotalImoge())+" 개";
-//            Imoji_4 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getTotalImoge())+" 개";
+
+            hour_1 = "10분 전";
+            hour_2 = "10분 전";
+            hour_3 = "10분 전";
+            hour_4 = "10분 전";
+            hour_5 = "10분 전";
+            hour_6 = "10분 전";
+
+
+
+            Imoji_1 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(0).getTotalImoge())+" 개";
+            Imoji_2 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(1).getTotalImoge())+" 개";
+            Imoji_3 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getTotalImoge())+" 개";
+            Imoji_4 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getTotalImoge())+" 개";
+            Imoji_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getTotalImoge())+" 개";
+            Imoji_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getTotalImoge())+" 개";
+
 //            Imoji_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(4).getTotalImoge())+" 개";
 //            Imoji_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(5).getTotalImoge())+" 개";
-//
-//            Imoji_idx_1 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(0).getPostIdx());
-//            Imoji_idx_2 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(1).getPostIdx());
-//            Imoji_idx_3 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getPostIdx());
-//            Imoji_idx_4 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getPostIdx());
+
+            Imoji_idx_1 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(0).getPostIdx());
+            Imoji_idx_2 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(1).getPostIdx());
+            Imoji_idx_3 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getPostIdx());
+            Imoji_idx_4 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getPostIdx());
+            Imoji_idx_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getPostIdx());
+            Imoji_idx_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getPostIdx());
+
 //            Imoji_idx_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(4).getPostIdx());
 //            Imoji_idx_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(5).getPostIdx());
-//
-//
-//            FeedItem feedItem = new FeedItem(Img_url_1,Img_url_2,Img_url_3,Img_url_4,Img_url_5,Img_url_6,
-//                    hour_1,hour_2,hour_3,hour_4,hour_5,hour_6,
-//                    Imoji_1,Imoji_2,Imoji_3,Imoji_4,Imoji_5,Imoji_6,
-//                    Imoji_idx_1,Imoji_idx_2,Imoji_idx_3,Imoji_idx_4,Imoji_idx_5,Imoji_idx_6);
-//
-//            feed_list.add(feedItem);
-//        }
-//        else{
-//            Log.d("피드 리스폰스 오류 : ", String.valueOf(code));
-//            Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
-//        }
+
+
+            FeedItem feedItem = new FeedItem(Img_url_1,Img_url_2,Img_url_3,Img_url_4,Img_url_5,Img_url_6,
+                    hour_1,hour_2,hour_3,hour_4,hour_5,hour_6,
+                    Imoji_1,Imoji_2,Imoji_3,Imoji_4,Imoji_5,Imoji_6,
+                    Imoji_idx_1,Imoji_idx_2,Imoji_idx_3,Imoji_idx_4,Imoji_idx_5,Imoji_idx_6);
+
+            feed_list.add(feedItem);
+
+        }
+        else{
+            Log.d("피드 리스폰스 오류 : ", String.valueOf(code));
+            Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
+        }
 
 
     }
@@ -197,8 +210,6 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
 
         int i_year, i_month, i_date, i_hour, i_min, i_sec;
         int n_year, n_month, n_date, n_hour, n_min, n_sec;
-        int year_i, month_i, date_i, hour_i, min_i, sec_i;
-        int year_n, month_n, date_n, hour_n, min_n, sec_n;
 
 
         // 2021-03-10T10:06:10.000+00:00
