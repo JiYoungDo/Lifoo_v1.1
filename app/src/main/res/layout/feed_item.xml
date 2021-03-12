@@ -18,6 +18,7 @@
         android:layout_width="156dp"
         android:layout_height="156dp"
         android:src="@drawable/food_image"
+        android:scaleType="fitXY"
         android:viewportWidth="156"
         android:viewportHeight="156"
         app:layout_constraintTop_toTopOf="parent"
@@ -74,6 +75,7 @@
         android:id="@+id/feed_item_2"
         android:layout_width="156dp"
         android:layout_height="156dp"
+        android:scaleType="fitXY"
         android:viewportWidth="156"
         android:viewportHeight="156"
         android:src="@drawable/food_image"
@@ -133,11 +135,12 @@
         android:layout_height="156dp"
         android:src="@drawable/food_image"
         android:viewportWidth="156"
+        android:scaleType="fitXY"
         android:viewportHeight="156"
         app:layout_constraintTop_toBottomOf="@id/feed_item_1"
         app:layout_constraintRight_toLeftOf="@id/mid_line"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="80dp" />
 
     <TextView
         android:id="@+id/feed_title_3"
@@ -190,10 +193,11 @@
         android:src="@drawable/food_image"
         android:viewportWidth="156"
         android:viewportHeight="156"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@id/feed_item_2"
         app:layout_constraintLeft_toRightOf="@id/mid_line"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="80dp" />
 
     <TextView
         android:id="@+id/feed_title_4"
@@ -247,10 +251,11 @@
         android:src="@drawable/food_image"
         android:viewportWidth="156"
         android:viewportHeight="156"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@id/feed_item_3"
         app:layout_constraintRight_toLeftOf="@id/mid_line"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="80dp" />
 
     <TextView
         android:id="@+id/feed_title_5"
@@ -303,10 +308,11 @@
         android:src="@drawable/food_image"
         android:viewportWidth="156"
         android:viewportHeight="156"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@id/feed_item_4"
         app:layout_constraintLeft_toRightOf="@id/mid_line"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="80dp" />
 
     <TextView
         android:id="@+id/feed_title_6"

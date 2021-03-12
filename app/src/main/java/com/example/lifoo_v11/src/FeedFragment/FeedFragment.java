@@ -64,7 +64,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         title_iv = viewGroup.findViewById(R.id.feed_fragment_iv_title);
         title_iv.bringToFront();
 
-        bg_scrollView = viewGroup.findViewById(R.id.feed_fragment_sv_animation);
+        // bg_scrollView = viewGroup.findViewById(R.id.feed_fragment_sv_animation);
 
         // Feed list
         feed_recyclerView = viewGroup.findViewById(R.id.feed_fragment_rv);
@@ -77,7 +77,13 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
                 "100 개","100 개","100 개","100 개","100 개","100 개",
                 "0","1","2","3","4","5");
 
+        FeedItem feedItem_1 = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
+                "100 개","100 개","100 개","100 개","100 개","100 개",
+                "0","1","2","3","4","5");
+
         feed_list.add(feedItem);
+        feed_list.add(feedItem_1);
+
 
 
         // 통신을 통해 피드 받아 오는.
