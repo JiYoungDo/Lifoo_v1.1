@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/alert_fm_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"
+        android:text="@string/alert_title"
+        style="@style/PageName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17.9dp"
+        android:layout_marginEnd="194dp"
+        android:layout_marginRight="194dp"
+        android:layout_marginBottom="17dp"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorBlack"
+        />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/alert_fm_tv"
+        android:layout_height="0dp"
+        android:layout_marginTop="17dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/alert_rv"
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

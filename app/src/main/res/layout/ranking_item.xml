@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.example.lifoo.src.xmlClass.RoundImageView
+                android:id="@+id/ranking_post_image"
+                android:layout_width="wrap_content"
+                android:layout_height="340dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/food_image" />
+
+            <ImageView
+                android:id="@+id/ranking_post_badge"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/badge_green_50" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/ranking_post_title"
+            style="@style/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorBlack"
+            tools:text="인생 바베큐" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ranking_post_time"
+                style="@style/Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="0"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorBlack"
+                tools:text="4일 전" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/ranking_post_emojicounter"
+                style="@style/Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorBlack"
+                tools:text="631 개" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

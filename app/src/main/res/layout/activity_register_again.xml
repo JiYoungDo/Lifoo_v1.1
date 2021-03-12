@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="160dp"
+            android:layout_height="146dp"
+            android:layout_marginTop="102dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/logo"
+            android:contentDescription="desc"/>
+
+        <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="148.3dp">
+
+            <ImageView
+                android:id="@+id/slotImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/group_30"
+                android:contentDescription="desc" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/firstLetter"
+                    android:layout_width="19dp"
+                    android:layout_height="29.2dp"
+                    android:layout_marginStart="42dp"
+                    android:layout_marginLeft="42dp"
+                    android:layout_marginTop="81.7dp"
+                    android:layout_marginBottom="37.4dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:letterSpacing="-0.02"
+                    android:gravity="center_horizontal"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/secondLetter"
+                    android:layout_width="19dp"
+                    android:layout_height="29.2dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="81.7dp"
+                    android:layout_marginBottom="37.4dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:letterSpacing="-0.02"
+                    android:gravity="center_horizontal"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/thirdLetter"
+                    android:layout_width="19dp"
+                    android:layout_height="29.2dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="81.7dp"
+                    android:layout_marginBottom="37.4dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:letterSpacing="-0.02"
+                    android:gravity="center_horizontal"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/fourthLetter"
+                    android:layout_width="19dp"
+                    android:layout_height="29.2dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="81.7dp"
+                    android:layout_marginBottom="37.4dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:letterSpacing="-0.02"
+                    android:gravity="center_horizontal"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/fifthLetter"
+                    android:layout_width="19dp"
+                    android:layout_height="29.2dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="81.7dp"
+                    android:layout_marginBottom="37.4dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:letterSpacing="-0.02"
+                    android:gravity="center_horizontal"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/sixthLetter"
+                    android:layout_width="19dp"
+                    android:layout_height="29.2dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="81.7dp"
+                    android:layout_marginBottom="37.4dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medi"
+                    android:includeFontPadding="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:letterSpacing="-0.02"
+                    android:gravity="center_horizontal"
+                    android:text=" " />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41.7dp"
+            android:background="@drawable/btn_login_again"
+            android:contentDescription="desc"/>
+
+        <TextView
+            android:id="@+id/againText"
+            style="@style/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/register_info_1"
+            app:lineHeight="20sp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/reviseAtMypageText"
+            style="@style/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21.1dp"
+            android:gravity="center"
+            android:text="@string/register_info_2"
+            android:textColor="@color/colorBlack"
+            app:lineHeight="20sp" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            style="@style/DrawerName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="47.9dp"
+            android:background="@color/colorMain"
+            android:gravity="center"
+            android:text="@string/register_btn_txt"
+            android:textColor="@color/colorWhite" />
+
+
+
+    </LinearLayout>
+</ScrollView>

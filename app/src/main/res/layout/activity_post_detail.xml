@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/icon_back_24" />
+
+        <TextView
+            android:id="@+id/post_writer_nickname_1"
+            style="@style/PageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="17dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorBlack"
+            android:text="뜨거운 커피" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnPostManagement"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/icon_img_settings_56" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorWhite">
+
+            <ImageView
+                android:id="@+id/postImage"
+                android:layout_width="wrap_content"
+                android:layout_height="410dp"
+                android:src="@drawable/food_image" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/reaction_count"
+                    style="@style/Description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorBlack"
+                    android:text="18명이 리액션을 보냈습니다" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/btnShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/icon_share_48" />
+
+                <Button
+                    android:id="@+id/btnLike"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/icon_chat_48" />
+
+            </LinearLayout>
+
+            <!--이모지 스크롤뷰-->
+            <ImageView
+                android:id="@+id/emojiListImage"
+                android:layout_width="440dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/invalid_name" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/post_writer_nickname_2"
+                        style="@style/UserName"
+                        android:layout_width="88dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/colorBlack"
+                        android:text="뜨거운커피" />
+
+                    <TextView
+                        android:id="@+id/post_title"
+                        style="@style/UserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/colorBlack"
+                        android:text="밤에는 역시 라면이" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/post_content"
+                    style="@style/InvalidName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="114dp"
+                    android:layout_marginLeft="114dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorBlack"
+                    android:text="너무 배고파서 참다가 결국엔 라면 끓임ㅋ ㅋ
+계란 안풀고 후라이해서 치즈랑 같이 올렸더니 비주얼 미친다 ㅜ ㅜ 다들 이거 보고 라면 한젓가락씩 하세요~" />
+
+                <TextView
+                    android:id="@+id/post_time"
+                    style="@style/Time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="114dp"
+                    android:layout_marginLeft="114dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="7.5dp"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorBlack"
+                    android:text="15분 전" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="7.5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorLightGray" />
+
+            </LinearLayout>
+
+            <!--댓글-->
+            <include
+                android:id="@+id/comment_1"
+                layout="@layout/comment_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <include
+                android:id="@+id/comment_2"
+                layout="@layout/comment_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

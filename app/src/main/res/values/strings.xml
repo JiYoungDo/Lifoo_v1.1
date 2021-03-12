@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">lifoo_v11</string>
+    <string name="kakao_app_key">b3e5ebb2bf963fa90f8ab1b1671df957</string>
+
+    <string name="loading">로딩중입니다.</string>
+    <string name="confirm">확인</string>
+    <string name="network_error">네트워크 연결이 원활하지 않습니다.</string>
+    <string name="login_error">로그인 도중 오류가 발생했습니다.</string>
+    <string name="session_error">세션이 닫혔습니다. 다시 시도해주세요.</string>
+    <string name="social_login_welcome">라이푸에 오신 것을 환영합니다!</string>
+    <string name="social_login_welcome_eng">LIFE IS FOOD !</string>
+    <string name="social_login_welcome_info">소셜 로그인을 통해 간편하게 회원가입하세요.</string>
+    <string name="register_info_1">재설정을 원하시면 ‘다시 뽑기\'를 눌러주세요.</string>
+    <string name="register_info_2">닉네임을 직접 입력하고 싶으시다면\n마이페이지에서 수정 가능합니다.</string>
+    <string name="register_btn_txt">가입 완료</string>
+    <string name="splash_info">세상의 모든 음식이 한 곳에</string>
+    <string name="alert_title">알림</string>
+    <string name="hot_posts">핫 게시물</string>
+    <string name="new_post">새 게시물</string>
+    <string name="complete">완료</string>
+    <string name="new_post_title_hint">제목을 입력해주세요</string>
+    <string name="new_post_content_hint">내용을 입력해주세요</string>
+    <string name="comment_report">신고하기</string>
+    <string name="comment_re">댓글 달기</string>
+    <string name="post_delete_dialog_1">한번 삭제한 게시물은 복구가 불가합니다.\n정말 삭제하시겠습니까?</string>
+    <string name="back">취소</string>
+    <string name="delete">삭제</string>
+    <string name="post_declartion_dialog_1">한번 신고하시면 취소가 불가능합니다.\n정말 신고하시겠습니까?</string>
+    <string name="search_hint">찾으시는 음식을 검색하세요</string>
+    <string name="search_recent">최근 검색</string>
+
+
+</resources>

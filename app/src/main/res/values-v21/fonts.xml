@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="PageName">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_medi</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="UserName">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_medi</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="DrawerName">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_medi</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="MypageTitle">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_medi</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+    </style>
+
+    <style name="MainpageTitle">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="InvalidName">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_demilight</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="UserComment">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_demilight</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="AlarmText">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr_demilight</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="Description">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="Time">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="NumberOfEmoji">
+        <item name="android:fontFamily">@font/noto_sans_cjkkr</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/icon_home"
+        android:enabled="true"
+        android:title="home"/>
+
+    <item
+        android:id="@+id/ranking"
+        android:icon="@drawable/icon_crown"
+        android:enabled="true"
+        android:title="ranking"/>
+
+    <item
+        android:id="@+id/uproad"
+        android:enabled="false"
+        android:title="uproad"/>
+
+    <item
+        android:id="@+id/alarm"
+        android:icon="@drawable/icon_alarm"
+        android:enabled="true"
+        android:title="alarm"/>
+
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/icon_user"
+        android:enabled="true"
+        android:title="user"/>
+
+</menu>
