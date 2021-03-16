@@ -11,5 +11,5 @@ public interface MypageFragmentRetrofitInterface {
     // 회원 정보 조회
     @GET("/users/{userIdx}")
     Call<MypageFragmentResponse> GetProfileTest(
-           @Path("userId") int param);
+           @Path("userIdx") int param);
 }
