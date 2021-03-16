@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -109,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         }
+    }
+
+    public void onChangeFragment(int index)
+    {
+        if(index == 4)
+        {
+            // 5번일 때는 setting
+            getSupportFragmentManager().beginTransaction().replace(R.id.bottom_navigation_fl,mypageFragment).commitAllowingStateLoss();
+        }
+
     }
 
 //    private void getHashKey(){
