@@ -30,6 +30,7 @@
     <string name="search_recent">최근 검색</string>
     <string name="reaction_received">내가 받은 리액션</string>
     <string name="my_post">내 게시물 보기</string>
+    <string name="edit_post">게시물 수정</string>
 
 
 </resources>

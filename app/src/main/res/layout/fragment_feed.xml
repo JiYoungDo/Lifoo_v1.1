@@ -17,7 +17,7 @@
         android:layout_marginTop="57.3dp" />
     
     <ImageView
-        android:id="@+id/feed_fragment_iv_circle_search"
+        android:id="@+id/btnInformBadge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_search_50"

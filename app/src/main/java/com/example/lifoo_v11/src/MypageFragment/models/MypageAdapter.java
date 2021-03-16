@@ -1,4 +1,4 @@
-package com.example.lifoo_v11.src.MypageFragment;
+package com.example.lifoo_v11.src.MypageFragment.models;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -46,8 +46,6 @@ public class MypageAdapter extends RecyclerView.Adapter<MypageAdapter.MypageView
 
         holder.mypostImage.setImageDrawable(mypageItem.getMyPost());
         holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
-
-
     }
 
     @Override

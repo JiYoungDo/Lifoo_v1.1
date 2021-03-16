@@ -1,4 +1,4 @@
-package com.example.lifoo_v11.src.AlertFragment;
+package com.example.lifoo_v11.src.AlertFragment.models;
 
 import android.graphics.drawable.Drawable;
 

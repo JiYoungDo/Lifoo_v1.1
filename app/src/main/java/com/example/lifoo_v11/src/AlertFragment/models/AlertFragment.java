@@ -1,9 +1,10 @@
-package com.example.lifoo_v11.src.AlertFragment;
+package com.example.lifoo_v11.src.AlertFragment.models;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lifoo_v11.R;
+import com.example.lifoo_v11.src.AlertFragment.interfaces.AlertFragmentActivityView;
 import com.example.lifoo_v11.src.MainActivity.MainActivity;
+import com.example.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 
 import java.util.ArrayList;
 
-public class AlertFragment extends Fragment {
+public class AlertFragment extends Fragment implements AlertFragmentActivityView {
 
     MainActivity mainActivity;
     ViewGroup viewGroup;
@@ -27,6 +30,8 @@ public class AlertFragment extends Fragment {
     AlertAdapter alertAdapter;
     RecyclerView recyclerView;
     ArrayList alert_list;
+
+    AlertService alertService = new AlertService(this);
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -66,6 +71,9 @@ public class AlertFragment extends Fragment {
         alert_list.add(alertItem_1);
         alert_list.add(alertItem_2);
 
+        //통신으로 받아오기
+
+
 
 
         // 어댑터
@@ -75,7 +83,9 @@ public class AlertFragment extends Fragment {
         alertAdapter.setOnItemClickListener(new AlertAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-
+                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -83,4 +93,14 @@ public class AlertFragment extends Fragment {
         return viewGroup;
     }
 
+    @Override
+    public void GetAlertFailure(String message, int code) {
+        Log.d("알림 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+    }
+
+    @Override
+    public void GetAlertSuccess(AlertFragmentResponse alertFragmentResponse, int code) {
+        Log.d("알림 받아오기 성공 ",  "&& " + String.valueOf(code));
+
+    }
 }

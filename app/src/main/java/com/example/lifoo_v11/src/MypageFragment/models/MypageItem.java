@@ -1,8 +1,10 @@
-package com.example.lifoo_v11.src.MypageFragment;
+package com.example.lifoo_v11.src.MypageFragment.models;
 
 import android.graphics.drawable.Drawable;
 
-public class MypageItem {
+import java.io.Serializable;
+
+public class MypageItem implements Serializable {
     Drawable myPost;
     Drawable myBadge;
 

@@ -1,9 +1,10 @@
-package com.example.lifoo_v11.src.MypageFragment;
+package com.example.lifoo_v11.src.MypageFragment.models;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lifoo_v11.R;
 import com.example.lifoo_v11.src.MainActivity.MainActivity;
+import com.example.lifoo_v11.src.MypageFragment.Decorations.SpaceDecoration;
+import com.example.lifoo_v11.src.MypageFragment.interfaces.MypageFragmentActivityView;
 import com.example.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
-import com.example.lifoo_v11.src.RankingFragment.RankingAdapter;
-import com.example.lifoo_v11.src.RankingFragment.RankingItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MypageFragment extends Fragment {
+public class MypageFragment extends Fragment implements MypageFragmentActivityView {
 
     MainActivity mainActivity;
     ViewGroup viewGroup;
@@ -60,7 +61,7 @@ public class MypageFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        SpaceItemDecoration spaceItemDecoration = new SpaceItemDecoration();
+        SpaceDecoration spaceItemDecoration = new SpaceDecoration();
         recyclerView.addItemDecoration(spaceItemDecoration);
 
         btnViewAll = viewGroup.findViewById(R.id.btnViewAll);
@@ -68,6 +69,7 @@ public class MypageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ViewAllPost.class);
+//                intent.putExtra("list", list);
                 startActivity(intent);
             }
         });
@@ -105,4 +107,13 @@ public class MypageFragment extends Fragment {
         return viewGroup;
     }
 
+    @Override
+    public void GetProfileFailure(String message, int code) {
+        Log.d("회원 정보 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+    }
+
+    @Override
+    public void GetProfileSuccess(MypageFragmentResponse mypageFragmentResponse, int code) {
+        Log.d("회원 정보 받아오기 성공 ",  "&& " + String.valueOf(code));
+    }
 }

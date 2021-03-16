@@ -30,7 +30,7 @@
         <activity android:name=".src.PostDetailActivity.PostDetailActivity" />
         <activity android:name=".src.RegisterAgainActivity.RegisterAgainActivity" />
         <activity android:name=".src.CreateNewPostActivity.CreateNewPostActivity" />
-        <activity android:name=".src.MypageFragment.ViewAllPost"/>
+        <activity android:name=".src.MypageFragment.models.ViewAllPost" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
