@@ -22,6 +22,7 @@ import com.example.lifoo_v11.src.FeedFragment.interfaces.FeedFragmentActivityVie
 import com.example.lifoo_v11.src.FeedFragment.models.FeedFragmentResponse;
 import com.example.lifoo_v11.src.MainActivity.MainActivity;
 import com.example.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
+import com.example.lifoo_v11.src.SearchActivity.SearchActivity;
 
 import java.util.ArrayList;
 
@@ -111,6 +112,9 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         circle_search_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+                mainActivity.finish();
             }
         });
 

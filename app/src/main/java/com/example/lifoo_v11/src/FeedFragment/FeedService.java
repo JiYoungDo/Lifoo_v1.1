@@ -24,10 +24,6 @@ public class FeedService {
 
     public void GetBasicPosts(int page_num) {
 
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("type","BASIC");
-//        map.put("size","6");
-
         final FeedFragmentRetrofitInterface feedFragmentRetrofitInterface = getRetrofit().create(FeedFragmentRetrofitInterface.class);
         feedFragmentRetrofitInterface.GetFeedTest("BASIC", 6,page_num).enqueue(new Callback<FeedFragmentResponse>() {
 
