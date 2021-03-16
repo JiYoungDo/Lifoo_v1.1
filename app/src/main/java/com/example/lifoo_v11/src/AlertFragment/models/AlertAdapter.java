@@ -1,10 +1,9 @@
-package com.example.lifoo_v11.src.AlertFragment;
+package com.example.lifoo_v11.src.AlertFragment.models;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,7 +58,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
             this.Alert_time = itemView.findViewById(R.id.alert_item_tv_time);
 
 
-            // 뷰홀더가 만들어지는 시점에 클릭 이벤트 처리리
+            // 뷰홀더가 만들어지는 시점에 클릭 이벤트 처리
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

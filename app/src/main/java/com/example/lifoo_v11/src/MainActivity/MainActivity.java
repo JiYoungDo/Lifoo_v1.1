@@ -2,23 +2,20 @@ package com.example.lifoo_v11.src.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.lifoo_v11.R;
+import com.example.lifoo_v11.src.AlertFragment.models.AlertFragment;
+import com.example.lifoo_v11.src.MypageFragment.models.MypageFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView plus_btn;
 
 
-    com.example.lifoo_v11.src.AlertFragment.AlertFragment alertFragment;
+    AlertFragment alertFragment;
     com.example.lifoo_v11.src.FeedFragment.FeedFragment feedFragment;
-    com.example.lifoo_v11.src.MypageFragment.MypageFragment mypageFragment;
+    MypageFragment mypageFragment;
     com.example.lifoo_v11.src.RankingFragment.RankingFragment rankingFragment;
 
     @Override
@@ -37,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        alertFragment = new com.example.lifoo_v11.src.AlertFragment.AlertFragment();
+        alertFragment = new AlertFragment();
         feedFragment = new com.example.lifoo_v11.src.FeedFragment.FeedFragment();
-        mypageFragment = new com.example.lifoo_v11.src.MypageFragment.MypageFragment();
+        mypageFragment = new MypageFragment();
         rankingFragment = new com.example.lifoo_v11.src.RankingFragment.RankingFragment();
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -57,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.bottom_navigation_fl, fragment);
+        fragmentTransaction.commit();
+    }
+
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener{
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

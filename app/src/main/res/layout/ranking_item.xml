@@ -19,14 +19,14 @@
             android:layout_height="wrap_content">
 
             <com.example.lifoo_v11.src.xmlClass.RoundImageView
-                android:id="@+id/ranking_post_image"
+                android:id="@+id/my_post_image"
                 android:layout_width="wrap_content"
                 android:layout_height="340dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/food_image" />
 
             <ImageView
-                android:id="@+id/ranking_post_badge"
+                android:id="@+id/my_post_badge"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/badge_green_50" />

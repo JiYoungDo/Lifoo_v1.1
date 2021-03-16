@@ -106,7 +106,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
             }
         });
 
-        circle_search_iv = viewGroup.findViewById(R.id.feed_fragment_iv_circle_search);
+        circle_search_iv = viewGroup.findViewById(R.id.btnInformBadge);
         circle_search_iv.bringToFront();
 
         circle_search_iv.setOnClickListener(new View.OnClickListener() {

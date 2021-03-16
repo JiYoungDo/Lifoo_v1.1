@@ -1,0 +1,111 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_all_mypost_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center_vertical"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:id="@+id/menubar"-->
+    <!--        tools:ignore="MissingConstraints">-->
+
+    <!--        -->
+
+    <!--    </LinearLayout>-->
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16.9dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/icon_back_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/view_all_mypost"
+        style="@style/PageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="17.9dp"
+        android:layout_marginBottom="29dp"
+        android:includeFontPadding="false"
+        android:text="@string/my_post"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintLeft_toRightOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnInformBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="28dp"
+        android:src="@drawable/icon_info_50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgInformBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="55dp"
+        android:src="@drawable/alert_badge_color_ifo"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_all_mypost">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypagefragment_viewall_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </ScrollView>
+
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+
+    <!--        android:id="@+id/fab_icon"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:layout_gravity="right"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        android:adjustViewBounds="false"-->
+    <!--        android:src="@drawable/icon_info_50"-->
+    <!--        android:backgroundTint="@color/transparent"-->
+    <!--        app:borderWidth="0dp"-->
+    <!--        app:fabSize="mini"-->
+    <!--        app:useCompatPadding="false" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

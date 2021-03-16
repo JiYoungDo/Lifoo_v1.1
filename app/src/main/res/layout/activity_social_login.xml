@@ -1,102 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="160dp"
+        android:layout_height="161.7dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="61.3dp"
+        android:src="@drawable/_1_1" />
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangle_71"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/logoImage"
-            android:layout_width="160dp"
-            android:layout_height="146dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginBottom="71dp"
-            android:src="@drawable/logo"
-            android:contentDescription="desc"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/noto_sans_cjkkr"
+            android:letterSpacing="-0.02"
+            android:text="@string/social_login_welcome"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/proxima_nova_light"
+            android:letterSpacing="-0.02"
+            android:text="@string/social_login_welcome_eng"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <TextView
+            style="@style/InvalidName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="29dp"
+            android:text="@string/social_login_welcome_info"
+            android:textColor="@color/colorWhite" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/rectangle_71">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnSocialLogin"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/noto_sans_cjkkr"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="@color/colorWhite"
-                android:letterSpacing="-0.02"
-                android:text="@string/social_login_welcome" />
+                android:layout_marginTop="33dp"
+                android:background="@drawable/btn_social_login"
+                android:contentDescription="desc"
+                android:drawableLeft="@drawable/rectangle_76"
+                android:paddingLeft="22dp"
+                android:paddingBottom="5dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="13dp"
-                android:fontFamily="@font/proxima_nova_light"
-                android:letterSpacing="-0.02"
-                android:text="@string/social_login_welcome_eng"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
-                android:textStyle="italic" />
-
-            <TextView
-                style="@style/InvalidName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="29dp"
-                android:text="@string/social_login_welcome_info"
-                android:textColor="@color/colorWhite" />
-
-
-            <LinearLayout
+            <com.kakao.usermgmt.LoginButton
+                android:id="@+id/login_btn_kakao_gone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnSocialLogin"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="33dp"
-                    android:background="@drawable/btn_social_login"
-                    android:contentDescription="desc"
-                    android:drawableLeft="@drawable/rectangle_76"
-                    android:paddingLeft="22dp"
-                    android:paddingBottom="5dp" />
-
-                <com.kakao.usermgmt.LoginButton
-                    android:id="@+id/login_btn_kakao_gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginLeft= "100dp"
-                    android:visibility="invisible"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
     </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

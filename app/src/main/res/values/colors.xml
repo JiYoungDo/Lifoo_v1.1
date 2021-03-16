@@ -15,5 +15,6 @@
     <color name="colorBlack">#000000</color>
 
     <color name="transparent">#00ffffff</color>
+    <color name="translucentBlack">#99000000</color>
 
 </resources>

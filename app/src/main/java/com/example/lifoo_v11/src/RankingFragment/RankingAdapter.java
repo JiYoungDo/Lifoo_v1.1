@@ -29,6 +29,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
     {
         void onItemClick(View v, int pos);
     }
+
     private RankingAdapter.OnItemClickListener mListener = null;
     public void setOnItemClickListener(RankingAdapter.OnItemClickListener listener)
     {
@@ -69,9 +70,9 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
 
         public RankingViewHolder(final View itemView) {
             super(itemView);
-            this.rankingImage = itemView.findViewById(R.id.ranking_post_image);
+            this.rankingImage = itemView.findViewById(R.id.my_post_image);
             rankingImage.setRectRadius(15f);
-            this.badgeImage = itemView.findViewById(R.id.ranking_post_badge);
+            this.badgeImage = itemView.findViewById(R.id.my_post_badge);
             this.rankingPostTitle = itemView.findViewById(R.id.ranking_post_title);
             this.rankingPostTime = itemView.findViewById(R.id.ranking_post_time);
             this.rankingPostEmoji = itemView.findViewById(R.id.ranking_post_emojicounter);
