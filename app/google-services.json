@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "632718011687",
+    "project_id": "lifoo-c93c6",
+    "storage_bucket": "lifoo-c93c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632718011687:android:2c5b8c6342aef4eb480d02",
+        "android_client_info": {
+          "package_name": "com.example.lifoo_v11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632718011687-42igjuftmv5ncg52s03mofh8qh0ruh3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRL6QX4wcjcDrMrbiDj9T-nI0w6Rg5B6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632718011687-42igjuftmv5ncg52s03mofh8qh0ruh3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

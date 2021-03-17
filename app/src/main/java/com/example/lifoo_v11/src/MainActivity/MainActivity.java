@@ -6,17 +6,34 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lifoo_v11.R;
 import com.example.lifoo_v11.src.AlertFragment.models.AlertFragment;
 import com.example.lifoo_v11.src.MypageFragment.models.MypageFragment;
+import com.example.lifoo_v11.src.PhotoPickActivity.PhotoPickActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
+
+import static com.example.lifoo_v11.ApplicationClass.TAG;
+import static com.example.lifoo_v11.ApplicationClass.X_ACCESS_TOKEN;
+import static com.example.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
         plus_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 사진 올리기
+                // 카메라 버튼, 앨범 버튼 선택 팝업.
+                Popup_CAMERA_or_GALLERY popup_camera_or_gallery = new Popup_CAMERA_or_GALLERY(MainActivity.this);
+                popup_camera_or_gallery.callFunction();
             }
         });
     }
@@ -120,7 +139,84 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.bottom_navigation_fl,mypageFragment).commitAllowingStateLoss();
         }
 
+
     }
+
+
+
+
+
+    public class Popup_CAMERA_or_GALLERY {
+
+        private Context context;
+
+        public Popup_CAMERA_or_GALLERY(Context context) {
+            this.context = context;
+        }
+
+        //호출할 다이얼로그 함수
+        public void callFunction()
+        {
+            final Dialog dig = new Dialog(context);
+            dig.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+            dig.setContentView(R.layout.dialog_camera_or_gallery);
+            dig.show();
+
+            // 커스텀 다이얼로그 위젯 정의
+            ImageView camera_Iv = dig.findViewById(R.id.cam_or_alb_iv_camera);
+            ImageView album_Iv = dig.findViewById(R.id.cam_or_alb_iv_album);
+
+
+            // 카메라 아이콘을 클릭 시
+            camera_Iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dig.dismiss();
+                    // 카메라 에서 사진을 가져올 수 있게
+
+                    // 기존의 sharedpreference 에 저장되어있는  "photo_or_album" 키에 해당하는 값을 지우고 카메라를 의미하는 0 으로 저장.
+                    sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sSharedPreferences.edit();
+                    editor.remove("photo_or_album");
+                    editor.putInt("photo_or_album",0);
+                    editor.commit();
+
+                    Intent intent = new Intent(MainActivity.this, PhotoPickActivity.class);
+                    startActivity(intent);
+                    finish();
+
+
+                }
+            });
+
+
+            // 앨범 아이콘을 클릭 시
+            album_Iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dig.dismiss();
+                    // 앨범 에서 사진을 가져올수 있게
+
+                    // 기존의 sharedpreference 에 저장되어있는  "photo_or_album" 키에 해당하는 값을 지우고 카메라를 의미하는 0 으로 저장.
+                    sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sSharedPreferences.edit();
+                    editor.remove("photo_or_album");
+                    editor.putInt("photo_or_album",1);
+                    editor.commit();
+
+
+                    Intent intent = new Intent(MainActivity.this, PhotoPickActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+        }
+
+    }
+}
+
 
 //    private void getHashKey(){
 //        PackageInfo packageInfo = null;
@@ -142,6 +238,3 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
 //    }
-
-
-}
