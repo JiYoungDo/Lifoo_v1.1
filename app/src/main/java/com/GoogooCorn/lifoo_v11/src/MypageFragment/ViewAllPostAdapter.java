@@ -1,4 +1,4 @@
-package com.GoogooCorn.lifoo_v11.src.MypageFragment.models;
+package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -45,12 +45,14 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
     public void setOnItemLongClickListener(ViewAllPostAdapter.OnItemLongClickListener listener)
     {
         this.onItemLongClickListener = listener;
+
     }
 
     @NonNull
     @Override
     public MypageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypost_view_all_item, null);
+        context = v.getContext();
         return new MypageViewHolder(v);
     }
 
@@ -130,3 +132,4 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
         }
     }
 }
+

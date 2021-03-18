@@ -1,4 +1,4 @@
-package com.GoogooCorn.lifoo_v11.src.AlertFragment.models;
+package com.GoogooCorn.lifoo_v11.src.AlertFragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -93,7 +94,10 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
     @Override
     public void onBindViewHolder(@NonNull AlertViewHolder holder, int position) {
 
-        holder.Alert_img.setImageDrawable(mList.get(position).getAlert_img());
+        String Alert_img_url;
+        Alert_img_url = mList.get(position).getAlert_img();
+        Glide.with(this.context).load(Alert_img_url).into(holder.Alert_img);
+
         holder.Alert_txt.setText(mList.get(position).getAlert_string());
         holder.Alert_time.setText(mList.get(position).getAlert_hour());
 

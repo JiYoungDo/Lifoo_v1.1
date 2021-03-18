@@ -1,4 +1,4 @@
-package com.GoogooCorn.lifoo_v11.src.MypageFragment.models;
+package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -80,3 +80,4 @@ public class MypageAdapter extends RecyclerView.Adapter<MypageAdapter.MypageView
         }
     }
 }
+

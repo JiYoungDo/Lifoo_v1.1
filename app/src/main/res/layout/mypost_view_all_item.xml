@@ -16,7 +16,6 @@
             android:id="@+id/view_all_my_post_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_margin="6dp"
             android:scaleType="fitXY"
             android:src="@drawable/food_image" />
 
@@ -24,23 +23,22 @@
             android:id="@+id/view_all_my_post_badge"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="6dp"
             android:src="@drawable/badge_green_30" />
 
         <!--수정, 삭제 버튼-->
-        <ImageView
-            android:id="@+id/btn_contect_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/btn_contect_edit"
-            android:visibility="invisible"/>
-        <ImageView
-            android:id="@+id/btn_content_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="58dp"
-            android:src="@drawable/btn_content_delete"
-            android:visibility="invisible" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btn_contect_edit"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:src="@drawable/btn_contect_edit"-->
+        <!--            android:visibility="invisible"/>-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btn_content_delete"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="58dp"-->
+        <!--            android:src="@drawable/btn_content_delete"-->
+        <!--            android:visibility="invisible" />-->
     </FrameLayout>
 
 </androidx.cardview.widget.CardView>
