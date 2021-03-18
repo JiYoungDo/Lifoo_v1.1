@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">lifoo_v11</string>
+    <string name="app_name">라이푸</string>
     <string name="kakao_app_key">b3e5ebb2bf963fa90f8ab1b1671df957</string>
 
     <string name="loading">로딩중입니다.</string>
