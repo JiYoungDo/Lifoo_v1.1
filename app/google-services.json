@@ -7,6 +7,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:632718011687:android:5e7988bd7ba36de8480d02",
+        "android_client_info": {
+          "package_name": "com.GoogooCorn.lifoo_v11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632718011687-h8vu6f74pvk5ios7ae01c46bg3td3o47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.GoogooCorn.lifoo_v11",
+            "certificate_hash": "4401b422264521d5071c9cfac661ab7393f3cd51"
+          }
+        },
+        {
+          "client_id": "632718011687-42igjuftmv5ncg52s03mofh8qh0ruh3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRL6QX4wcjcDrMrbiDj9T-nI0w6Rg5B6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632718011687-42igjuftmv5ncg52s03mofh8qh0ruh3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:632718011687:android:2c5b8c6342aef4eb480d02",
         "android_client_info": {
           "package_name": "com.example.lifoo_v11"
