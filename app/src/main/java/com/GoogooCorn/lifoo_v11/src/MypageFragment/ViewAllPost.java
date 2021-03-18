@@ -1,4 +1,4 @@
-package com.GoogooCorn.lifoo_v11.src.MypageFragment.models;
+package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -46,13 +46,14 @@ public class ViewAllPost extends AppCompatActivity{
         btnEdit = findViewById(R.id.btn_contect_edit);
         btnDelete = findViewById(R.id.btn_content_delete);
 
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                MainActivity mainActivity = (MainActivity)getApplicationContext();
-//                mainActivity.getSupportFragmentManager().beginTransaction().replace(R.id.bottom_navigation_fl,mypageFragment).commit();
-//            }
-//        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                MainActivity mainActivity = new MainActivity();
+//                mainActivity.onChangeFragment(4);
+                finish();
+            }
+        });
 
         btnInformBadge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +94,7 @@ public class ViewAllPost extends AppCompatActivity{
 
         recyclerView.setLayoutManager(gridlayoutManager);
         recyclerView.setAdapter(viewAllPostAdapter);
+
         viewAllPostAdapter.setOnItemClickListener(new ViewAllPostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
@@ -103,12 +105,15 @@ public class ViewAllPost extends AppCompatActivity{
         viewAllPostAdapter.setOnItemLongClickListener(new ViewAllPostAdapter.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(View v, int pos) {
-                v.findViewById(R.id.btn_contect_edit).setVisibility(View.VISIBLE);
-                v.findViewById(R.id.btn_content_delete).setVisibility(View.VISIBLE);
+//                v.findViewById(R.id.btn_contect_edit).setVisibility(View.VISIBLE);
+//                v.findViewById(R.id.btn_content_delete).setVisibility(View.VISIBLE);
+                ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(v.getContext());
+                viewAllPostDialog.callFunction();
             }
         });
 
     }
 
 }
+
 

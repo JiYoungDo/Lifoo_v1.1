@@ -126,7 +126,7 @@
 
         </RelativeLayout>
 
-        <Button
+        <ImageView
             android:id="@+id/btnModifyNickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -392,6 +392,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
                 android:includeFontPadding="false"
                 android:text="@string/my_post"
                 android:textColor="@color/colorBlack" />
@@ -401,7 +402,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <Button
+            <ImageView
                 android:id="@+id/btnViewAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

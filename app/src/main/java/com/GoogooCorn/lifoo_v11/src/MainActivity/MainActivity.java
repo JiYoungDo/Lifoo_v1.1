@@ -18,8 +18,8 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.GoogooCorn.lifoo_v11.R;
-import com.GoogooCorn.lifoo_v11.src.AlertFragment.models.AlertFragment;
-import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.MypageFragment;
+import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertFragment;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.MypageFragment;
 import com.GoogooCorn.lifoo_v11.src.PhotoPickActivity.PhotoPickActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

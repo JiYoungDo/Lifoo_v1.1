@@ -37,6 +37,6 @@
     <string name="next">다음</string>
     <string name="enter_title">제목을 입력해주세요</string>
     <string name="enter_contents">내용을 입력해주세요</string>
-
+    <string name="modify_nickname">닉네임 수정</string>
 
 </resources>

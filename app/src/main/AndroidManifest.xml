@@ -45,7 +45,8 @@
         <activity android:name="com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity" />
         <activity android:name="com.GoogooCorn.lifoo_v11.src.RegisterAgainActivity.RegisterAgainActivity" />
         <activity android:name="com.GoogooCorn.lifoo_v11.src.CreateNewPostActivity.CreateNewPostActivity" />
-        <activity android:name="com.GoogooCorn.lifoo_v11.src.MypageFragment.models.ViewAllPost" />
+        <activity android:name="com.GoogooCorn.lifoo_v11.src.MypageFragment.ViewAllPost" />
+        <activity android:name=".src.MypageFragment.ModifyNickname"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

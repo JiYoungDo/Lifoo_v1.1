@@ -1,4 +1,4 @@
-package com.GoogooCorn.lifoo_v11.src.MypageFragment.models;
+package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.Decorations.SpaceDecoration;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.interfaces.MypageFragmentActivityView;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.MypageFragmentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 
 import java.util.ArrayList;
@@ -37,7 +39,8 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
     List<Integer> count;
     int i = 0;
 
-    Button btnViewAll;
+    ImageView btnViewAll;
+    ImageView btnModifyNickname;
 
 
     @Override
@@ -63,6 +66,15 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
         SpaceDecoration spaceItemDecoration = new SpaceDecoration();
         recyclerView.addItemDecoration(spaceItemDecoration);
+
+        btnModifyNickname = viewGroup.findViewById(R.id.btnModifyNickname);
+        btnModifyNickname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ModifyNickname.class);
+                startActivity(intent);
+            }
+        });
 
         btnViewAll = viewGroup.findViewById(R.id.btnViewAll);
         btnViewAll.setOnClickListener(new View.OnClickListener() {
@@ -117,3 +129,4 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
         Log.d("회원 정보 받아오기 성공 ",  "&& " + String.valueOf(code));
     }
 }
+

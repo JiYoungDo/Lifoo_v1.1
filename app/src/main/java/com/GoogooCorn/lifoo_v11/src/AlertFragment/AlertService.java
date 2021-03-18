@@ -1,7 +1,8 @@
-package com.GoogooCorn.lifoo_v11.src.AlertFragment.models;
+package com.GoogooCorn.lifoo_v11.src.AlertFragment;
 
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.interfaces.AlertFragmentActivityView;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.interfaces.AlertFragmentRetrofitInterface;
+import com.GoogooCorn.lifoo_v11.src.AlertFragment.models.AlertFragmentResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
