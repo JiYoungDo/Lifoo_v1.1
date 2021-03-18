@@ -3,7 +3,11 @@ package com.example.lifoo_v11.src.PhotoPostActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,6 +15,14 @@ import android.widget.TextView;
 
 import com.example.lifoo_v11.R;
 import com.example.lifoo_v11.src.PhotoPickActivity.PhotoPickActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.File;
+import java.io.IOException;
 
 // 파이어 베이스
 public class PhotoPostActivity extends AppCompatActivity {
@@ -22,6 +34,9 @@ public class PhotoPostActivity extends AppCompatActivity {
     ImageView user_img;
     EditText title_et;
     EditText contents_et;
+
+
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +60,7 @@ public class PhotoPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // uploadFile();
             }
         });
         Bottom_complete_btn = findViewById(R.id.photo_post_tv_complete_bottom);
@@ -52,6 +68,7 @@ public class PhotoPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // uploadFile();
             }
         });
 
@@ -63,5 +80,11 @@ public class PhotoPostActivity extends AppCompatActivity {
         title_et = findViewById(R.id.photo_post_et_title);
         contents_et = findViewById(R.id.photo_post_et_contents);
 
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
     }
+
+    
+
+
 }

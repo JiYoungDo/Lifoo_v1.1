@@ -39,7 +39,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
 
     private void TryAutoLogin()
     {
-        showProgressDialog();
+        // showProgressDialog();
         splashService.getAutoLogIn();
     }
 
