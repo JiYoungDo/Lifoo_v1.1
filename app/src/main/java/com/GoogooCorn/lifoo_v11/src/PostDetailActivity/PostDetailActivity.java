@@ -36,6 +36,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     RecyclerView comments_recyclerview;
     LottieAnimationView lottieAnimationView;
 
+    int get_imoge_count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +119,6 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("POST 상세 조회 성공!" , " " +String.valueOf(code));
 
         String get_host_name , get_post_title, get_post_contents , get_post_time , lottie_file_name;
-        int get_imoge_count;
         int get_best_count;
 
         get_host_name = getPostResponse.getResult().getHostNickname();
@@ -138,6 +139,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
 
         Log.d("가장 많이 눌린 이모지 뭔데?", String.valueOf(get_best_count));
+        Log.d(" 이모지 총 개수 몇갠데?", String.valueOf(get_imoge_count));
+
         switch (get_best_count)
         {
             case 1:
@@ -145,6 +148,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 lottieAnimationView.setAnimation(lottie_file_name);
                 lottieAnimationView.loop(false);
                 lottieAnimationView.playAnimation();
+
                 break;
             case 2:
                 lottie_file_name = "imoji_wow.json";
@@ -200,6 +204,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
 
 
-
     }
+
+
+
 }
