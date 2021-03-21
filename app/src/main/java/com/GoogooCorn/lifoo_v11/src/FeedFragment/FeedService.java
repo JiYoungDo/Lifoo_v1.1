@@ -4,6 +4,8 @@ import com.GoogooCorn.lifoo_v11.src.FeedFragment.interfaces.FeedFragmentActivity
 import com.GoogooCorn.lifoo_v11.src.FeedFragment.interfaces.FeedFragmentRetrofitInterface;
 import com.GoogooCorn.lifoo_v11.src.FeedFragment.models.FeedFragmentResponse;
 
+import java.util.HashMap;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,10 +21,16 @@ public class FeedService {
     }
 
 
-    public void GetBasicPosts(int page_num) {
+    void GetBasicPosts(int page_num) {
+
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("type","BASIC");
+        parameters.put("size","6");
+        parameters.put("page",String.valueOf(page_num));
 
         final FeedFragmentRetrofitInterface feedFragmentRetrofitInterface = getRetrofit().create(FeedFragmentRetrofitInterface.class);
-        feedFragmentRetrofitInterface.GetFeedTest("BASIC", 6,page_num).enqueue(new Callback<FeedFragmentResponse>() {
+        feedFragmentRetrofitInterface.GetFeedTest(parameters).enqueue(new Callback<FeedFragmentResponse>() {
+
 
             // 통신 성공 시
             @Override

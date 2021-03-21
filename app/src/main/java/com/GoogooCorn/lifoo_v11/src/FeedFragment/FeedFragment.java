@@ -1,5 +1,6 @@
 package com.GoogooCorn.lifoo_v11.src.FeedFragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 import com.GoogooCorn.lifoo_v11.src.SearchActivity.SearchActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class FeedFragment  extends Fragment implements FeedFragmentActivityView {
@@ -39,9 +42,9 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
     ArrayList feed_list;
     RecyclerView feed_recyclerView;
 
-    int page_idx = 0;
-
     FeedService feedService = new FeedService(this);
+
+    int page_num ;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -72,23 +75,26 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mainActivity,LinearLayoutManager.VERTICAL,false);
         feed_recyclerView.setLayoutManager(linearLayoutManager);
 
+
+        page_num = 0;
+
         feed_list = new ArrayList<FeedItem>();
 
-        FeedItem feedItem = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
-                "100 개","100 개","100 개","100 개","100 개","100 개",
-                "0","1","2","3","4","5");
-
-        FeedItem feedItem_1 = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
-                "100 개","100 개","100 개","100 개","100 개","100 개",
-                "0","1","2","3","4","5");
-
-        feed_list.add(feedItem);
-        feed_list.add(feedItem_1);
+//        FeedItem feedItem = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
+//                "100 개","100 개","100 개","100 개","100 개","100 개",
+//                "0","1","2","3","4","5");
+//
+//        FeedItem feedItem_1 = new FeedItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", "http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg","12분 전","12분 전","12분 전","12분 전","12분 전","12분 전",
+//                "100 개","100 개","100 개","100 개","100 개","100 개",
+//                "0","1","2","3","4","5");
+//
+//        feed_list.add(feedItem);
+//        feed_list.add(feedItem_1);
 
 
 
         // 통신을 통해 피드 받아 오는.
-       // TryGetPosts(0);
+        TryGetPosts(0);
 
         // 어댑터
         feedAdapter = new FeedAdapter(feed_list);
@@ -100,9 +106,12 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
             @Override
             public void onItemClick(View v, int pos) {
                 // post 세부화면으로 넘겨 주기.
+
                 Intent intent = new Intent(getActivity(), PostDetailActivity.class);
-                startActivity(intent);
+                getActivity().startActivity(intent);
                 getActivity().finish();
+
+               //  move_to_post_Detail();
             }
         });
 
@@ -123,12 +132,17 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         return viewGroup;
     }
 
+    public static void move_to_post_Detail(Activity context)
+    {
+        Intent intent = new Intent(context, PostDetailActivity.class);
+        context.startActivity(intent);
+        context.finish();
+    }
 
 
     private void TryGetPosts(int page_num)
     {
         feedService.GetBasicPosts(page_num);
-        page_idx += 1;
     }
 
 
@@ -142,13 +156,20 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
 
         Log.d("피드 성공 ",  "&& " + String.valueOf(code));
 
-        if(code == 2000)
+        /**
+         *  parameters.put("type","BASIC");
+         *  parameters.put("size","6");
+         *  parameters.put("page",String.valueOf(page_num));
+         * */
+
+        if(code == 2000 && feedFragmentResponse.getResult().getPostList().size() == 6)
         {
             Log.d("피드 성공 ",  "&& " + String.valueOf(code));
             String Img_url_1, Img_url_2, Img_url_3, Img_url_4, Img_url_5, Img_url_6;
             String hour_1, hour_2, hour_3, hour_4, hour_5, hour_6;
             String Imoji_1, Imoji_2, Imoji_3, Imoji_4, Imoji_5, Imoji_6;
             String Imoji_idx_1, Imoji_idx_2, Imoji_idx_3, Imoji_idx_4, Imoji_idx_5, Imoji_idx_6;
+            String title_1, title_2, title_3, title_4,title_5, title_6;
 
 
             Img_url_1 = feedFragmentResponse.getResult().getPostList().get(0).getPostUrl();
@@ -159,19 +180,12 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
             Img_url_6 = feedFragmentResponse.getResult().getPostList().get(5).getPostUrl();
 
 
-//            hour_1 = Calc_time(feedFragmentResponse.getResult().getPostList().get(0).getCreatedAt());
-//            hour_2 = Calc_time(feedFragmentResponse.getResult().getPostList().get(1).getCreatedAt());
-//            hour_3 = Calc_time(feedFragmentResponse.getResult().getPostList().get(2).getCreatedAt());
-//            hour_4 = Calc_time(feedFragmentResponse.getResult().getPostList().get(3).getCreatedAt());
-//            hour_5 = Calc_time(feedFragmentResponse.getResult().getPostList().get(4).getCreatedAt());
-//            hour_6 = Calc_time(feedFragmentResponse.getResult().getPostList().get(5).getCreatedAt());
-
-            hour_1 = "10분 전";
-            hour_2 = "10분 전";
-            hour_3 = "10분 전";
-            hour_4 = "10분 전";
-            hour_5 = "10분 전";
-            hour_6 = "10분 전";
+            hour_1 = feedFragmentResponse.getResult().getPostList().get(0).getCreatedAt().substring(2,10);
+            hour_2 = feedFragmentResponse.getResult().getPostList().get(1).getCreatedAt().substring(2,10);
+            hour_3 = feedFragmentResponse.getResult().getPostList().get(2).getCreatedAt().substring(2,10);
+            hour_4 = feedFragmentResponse.getResult().getPostList().get(3).getCreatedAt().substring(2,10);
+            hour_5 = feedFragmentResponse.getResult().getPostList().get(4).getCreatedAt().substring(2,10);
+            hour_6 = feedFragmentResponse.getResult().getPostList().get(5).getCreatedAt().substring(2,10);
 
 
 
@@ -179,29 +193,40 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
             Imoji_2 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(1).getTotalImoge())+" 개";
             Imoji_3 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getTotalImoge())+" 개";
             Imoji_4 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getTotalImoge())+" 개";
-            Imoji_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getTotalImoge())+" 개";
-            Imoji_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getTotalImoge())+" 개";
+            Imoji_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(4).getTotalImoge())+" 개";
+            Imoji_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(5).getTotalImoge())+" 개";
 
-//            Imoji_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(4).getTotalImoge())+" 개";
-//            Imoji_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(5).getTotalImoge())+" 개";
 
+            // Imoji_idx_1 이게 post_Idx
             Imoji_idx_1 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(0).getPostIdx());
             Imoji_idx_2 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(1).getPostIdx());
             Imoji_idx_3 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getPostIdx());
             Imoji_idx_4 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getPostIdx());
-            Imoji_idx_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(2).getPostIdx());
-            Imoji_idx_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(3).getPostIdx());
+            Imoji_idx_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(4).getPostIdx());
+            Imoji_idx_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(5).getPostIdx());
 
-//            Imoji_idx_5 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(4).getPostIdx());
-//            Imoji_idx_6 = String.valueOf(feedFragmentResponse.getResult().getPostList().get(5).getPostIdx());
+            title_1 = feedFragmentResponse.getResult().getPostList().get(0).getPostTitle();
+            title_2 = feedFragmentResponse.getResult().getPostList().get(1).getPostTitle();
+            title_3 = feedFragmentResponse.getResult().getPostList().get(2).getPostTitle();
+            title_4 = feedFragmentResponse.getResult().getPostList().get(3).getPostTitle();
+            title_5 = feedFragmentResponse.getResult().getPostList().get(4).getPostTitle();
+            title_6 = feedFragmentResponse.getResult().getPostList().get(5).getPostTitle();
+
 
 
             FeedItem feedItem = new FeedItem(Img_url_1,Img_url_2,Img_url_3,Img_url_4,Img_url_5,Img_url_6,
                     hour_1,hour_2,hour_3,hour_4,hour_5,hour_6,
                     Imoji_1,Imoji_2,Imoji_3,Imoji_4,Imoji_5,Imoji_6,
-                    Imoji_idx_1,Imoji_idx_2,Imoji_idx_3,Imoji_idx_4,Imoji_idx_5,Imoji_idx_6);
+                    Imoji_idx_1,Imoji_idx_2,Imoji_idx_3,Imoji_idx_4,Imoji_idx_5,Imoji_idx_6,
+                    title_1, title_2, title_3, title_4, title_5, title_6);
 
             feed_list.add(feedItem);
+
+            page_num +=1;
+
+            if(page_num <=10)
+                TryGetPosts(page_num);
+            feedAdapter.notifyDataSetChanged();
 
         }
         else{
@@ -212,7 +237,8 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
 
     }
 
-    private String Calc_time(String input_time)
+    @NotNull
+    private String Calc_time(@NotNull String input_time)
     {
 
         int result;

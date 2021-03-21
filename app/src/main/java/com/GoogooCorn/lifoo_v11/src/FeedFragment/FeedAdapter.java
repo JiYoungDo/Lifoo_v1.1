@@ -1,6 +1,11 @@
 package com.GoogooCorn.lifoo_v11.src.FeedFragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +14,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 import com.bumptech.glide.Glide;
 import com.GoogooCorn.lifoo_v11.R;;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.X_ACCESS_TOKEN;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
 
@@ -49,6 +61,7 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
         RoundImageView Feed_img_1,Feed_img_2,Feed_img_3,Feed_img_4,Feed_img_5,Feed_img_6 ;
         TextView Feed_hour_1,Feed_hour_2,Feed_hour_3,Feed_hour_4,Feed_hour_5,Feed_hour_6;
         TextView Feed_imoji_1, Feed_imoji_2, Feed_imoji_3, Feed_imoji_4, Feed_imoji_5, Feed_imoji_6;
+        TextView Feed_title_1, Feed_title_2, Feed_title_3,Feed_title_4,Feed_title_5,Feed_title_6;
 
         public FeedViewHolder(@NonNull View itemView) {
 
@@ -81,6 +94,14 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
             this.Feed_imoji_4 = itemView.findViewById(R.id.feed_imoji_4);
             this.Feed_imoji_5 = itemView.findViewById(R.id.feed_imoji_5);
             this.Feed_imoji_6 = itemView.findViewById(R.id.feed_imoji_6);
+
+            this.Feed_title_1 = itemView.findViewById(R.id.feed_title_1);
+            this.Feed_title_2 = itemView.findViewById(R.id.feed_title_2);
+            this.Feed_title_3 = itemView.findViewById(R.id.feed_title_3);
+            this.Feed_title_4 = itemView.findViewById(R.id.feed_title_4);
+            this.Feed_title_5 = itemView.findViewById(R.id.feed_title_5);
+            this.Feed_title_6 = itemView.findViewById(R.id.feed_title_6);
+
 
 
 
@@ -149,6 +170,96 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
         holder.Feed_imoji_4.setText(mList.get(position).getImoji_4());
         holder.Feed_imoji_5.setText(mList.get(position).getImoji_5());
         holder.Feed_imoji_6.setText(mList.get(position).getImoji_6());
+
+
+        holder.Feed_title_1.setText(mList.get(position).getTitle_1());
+        holder.Feed_title_2.setText(mList.get(position).getTitle_2());
+        holder.Feed_title_3.setText(mList.get(position).getTitle_3());
+        holder.Feed_title_4.setText(mList.get(position).getTitle_4());
+        holder.Feed_title_5.setText(mList.get(position).getTitle_5());
+        holder.Feed_title_6.setText(mList.get(position).getTitle_6());
+
+        holder.Feed_img_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_1());
+                editor.commit();
+                Log.d("클릭","1");
+              //   FeedFragment.move_to_post_Detail(context.);
+
+            }
+        });
+
+        holder.Feed_img_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_2());
+                editor.commit();
+                Log.d("클릭","2");
+            //     FeedFragment.move_to_post_Detail();
+            }
+        });
+
+        holder.Feed_img_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_3());
+                editor.commit();
+                Log.d("클릭","3");
+            //    FeedFragment.move_to_post_Detail();
+            }
+        });
+
+        holder.Feed_img_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_4());
+                editor.commit();
+             //   FeedFragment.move_to_post_Detail();
+            }
+        });
+
+        holder.Feed_img_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_5());
+                editor.commit();
+             //   FeedFragment.move_to_post_Detail();
+            }
+        });
+
+        holder.Feed_img_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_6());
+                editor.commit();
+             //   FeedFragment.move_to_post_Detail();
+            }
+        });
+
 
     }
 

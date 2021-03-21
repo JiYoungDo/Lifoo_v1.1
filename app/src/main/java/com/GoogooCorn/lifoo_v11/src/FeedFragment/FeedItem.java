@@ -6,8 +6,13 @@ public class FeedItem {
     String Hour_1, Hour_2, Hour_3, Hour_4, Hour_5, Hour_6;
     String Imoji_1, Imoji_2, Imoji_3, Imoji_4, Imoji_5, Imoji_6;
     String Imoji_idx_1, Imoji_idx_2, Imoji_idx_3, Imoji_idx_4, Imoji_idx_5, Imoji_idx_6;
+    String title_1, title_2, title_3, title_4, title_5, title_6;
 
-    public FeedItem(String img_url_1, String img_url_2, String img_url_3, String img_url_4, String img_url_5, String img_url_6, String hour_1, String hour_2, String hour_3, String hour_4, String hour_5, String hour_6, String imoji_1, String imoji_2, String imoji_3, String imoji_4, String imoji_5, String imoji_6, String imoji_idx_1, String imoji_idx_2, String imoji_idx_3, String imoji_idx_4, String imoji_idx_5, String imoji_idx_6) {
+    public FeedItem(String img_url_1, String img_url_2, String img_url_3, String img_url_4, String img_url_5, String img_url_6,
+                    String hour_1, String hour_2, String hour_3, String hour_4, String hour_5, String hour_6,
+                    String imoji_1, String imoji_2, String imoji_3, String imoji_4, String imoji_5, String imoji_6,
+                    String imoji_idx_1, String imoji_idx_2, String imoji_idx_3, String imoji_idx_4, String imoji_idx_5, String imoji_idx_6,
+                    String title_1, String title_2, String title_3, String title_4, String title_5, String title_6) {
         Img_url_1 = img_url_1;
         Img_url_2 = img_url_2;
         Img_url_3 = img_url_3;
@@ -17,7 +22,7 @@ public class FeedItem {
         Hour_1 = hour_1;
         Hour_2 = hour_2;
         Hour_3 = hour_3;
-        Hour_4= hour_4;
+        Hour_4 = hour_4;
         Hour_5 = hour_5;
         Hour_6 = hour_6;
         Imoji_1 = imoji_1;
@@ -32,6 +37,12 @@ public class FeedItem {
         Imoji_idx_4 = imoji_idx_4;
         Imoji_idx_5 = imoji_idx_5;
         Imoji_idx_6 = imoji_idx_6;
+        this.title_1 = title_1;
+        this.title_2 = title_2;
+        this.title_3 = title_3;
+        this.title_4 = title_4;
+        this.title_5 = title_5;
+        this.title_6 = title_6;
     }
 
     public String getImg_url_1() {
@@ -103,7 +114,7 @@ public class FeedItem {
     }
 
     public void setHour_3(String hour_3) {
-        Hour_3= hour_3;
+        Hour_3 = hour_3;
     }
 
     public String getHour_4() {
@@ -127,7 +138,7 @@ public class FeedItem {
     }
 
     public void setHour_6(String hour_6) {
-        this.Hour_6 = hour_6;
+        Hour_6 = hour_6;
     }
 
     public String getImoji_1() {
@@ -224,5 +235,53 @@ public class FeedItem {
 
     public void setImoji_idx_6(String imoji_idx_6) {
         Imoji_idx_6 = imoji_idx_6;
+    }
+
+    public String getTitle_1() {
+        return title_1;
+    }
+
+    public void setTitle_1(String title_1) {
+        this.title_1 = title_1;
+    }
+
+    public String getTitle_2() {
+        return title_2;
+    }
+
+    public void setTitle_2(String title_2) {
+        this.title_2 = title_2;
+    }
+
+    public String getTitle_3() {
+        return title_3;
+    }
+
+    public void setTitle_3(String title_3) {
+        this.title_3 = title_3;
+    }
+
+    public String getTitle_4() {
+        return title_4;
+    }
+
+    public void setTitle_4(String title_4) {
+        this.title_4 = title_4;
+    }
+
+    public String getTitle_5() {
+        return title_5;
+    }
+
+    public void setTitle_5(String title_5) {
+        this.title_5 = title_5;
+    }
+
+    public String getTitle_6() {
+        return title_6;
+    }
+
+    public void setTitle_6(String title_6) {
+        this.title_6 = title_6;
     }
 }
