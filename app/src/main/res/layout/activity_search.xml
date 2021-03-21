@@ -67,6 +67,7 @@
 
     <ScrollView
         android:id="@+id/search_sv_recent_search"
+        android:scrollbars="none"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/search_recent_title"
