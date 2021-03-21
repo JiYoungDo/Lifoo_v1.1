@@ -230,7 +230,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         }
         else{
             Log.d("피드 리스폰스 오류 : ", String.valueOf(code));
-            Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
 
 
