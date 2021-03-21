@@ -29,7 +29,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
     TextView recent_search_1,recent_search_2,recent_search_3,recent_search_4,recent_search_5,recent_search_6,
             recent_search_7,recent_search_8,recent_search_9,recent_search_10;
 
-    List<String> recent_search_list;
+    String temp_1, temp_2,  temp_3, temp_4, temp_5, temp_6, temp_7, temp_8, temp_9, temp_10;
 
     SearchService searchService = new SearchService(this);
 
@@ -50,6 +50,8 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 finish();
             }
         });
+
+
         search_et = findViewById(R.id.search_et_search);
         search_btn = findViewById(R.id.search_iv_search);
 
@@ -65,16 +67,10 @@ public class SearchActivity extends BaseActivity implements SearchView {
         recent_search_10 = findViewById(R.id.search_recent_10);
 
 
-        recent_search_list = new ArrayList<>();
-
-
         sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
-        SharedPreferences.Editor editor = sSharedPreferences.edit();
 
         // 저장해둔 갯수.
         count = sSharedPreferences.getInt("recent_search_count",0);
-
-        // 저장해둔 갯수에 따라 최근 검색어 보이
         switch (count)
         {
             case 0:
@@ -90,7 +86,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 recent_search_10.setText("");
                 break;
             case 1:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없"));
                 recent_search_2.setText("");
                 recent_search_3.setText("");
                 recent_search_4.setText("");
@@ -100,11 +96,11 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
                 break;
             case 2:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
                 recent_search_3.setText("");
                 recent_search_4.setText("");
                 recent_search_5.setText("");
@@ -113,14 +109,13 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
                 break;
             case 3:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
                 recent_search_4.setText("");
                 recent_search_5.setText("");
                 recent_search_6.setText("");
@@ -128,147 +123,145 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
                 break;
             case 4:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
                 recent_search_5.setText("");
                 recent_search_6.setText("");
                 recent_search_7.setText("");
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
                 break;
             case 5:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_5.setText(sSharedPreferences.getString("recent_search_5",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
+                recent_search_5.setText(sSharedPreferences.getString("recent_search_5","정보 없음"));
                 recent_search_6.setText("");
                 recent_search_7.setText("");
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_5",""));
-
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
+                temp_5 = sSharedPreferences.getString("recent_search_5","정보 없");
                 break;
             case 6:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_5.setText(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_6.setText(sSharedPreferences.getString("recent_search_6",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
+                recent_search_5.setText(sSharedPreferences.getString("recent_search_5","정보 없음"));
+                recent_search_6.setText(sSharedPreferences.getString("recent_search_6","정보 없음"));
                 recent_search_7.setText("");
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_6",""));
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
+                temp_5 = sSharedPreferences.getString("recent_search_5","정보 없");
+                temp_6 = sSharedPreferences.getString("recent_search_6","정보 없");
                 break;
             case 7:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_5.setText(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_6.setText(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_7.setText(sSharedPreferences.getString("recent_search_7",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
+                recent_search_5.setText(sSharedPreferences.getString("recent_search_5","정보 없음"));
+                recent_search_6.setText(sSharedPreferences.getString("recent_search_6","정보 없음"));
+                recent_search_7.setText(sSharedPreferences.getString("recent_search_7","정보 없음"));
                 recent_search_8.setText("");
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_7",""));
-
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
+                temp_5 = sSharedPreferences.getString("recent_search_5","정보 없");
+                temp_6 = sSharedPreferences.getString("recent_search_6","정보 없");
+                temp_7 = sSharedPreferences.getString("recent_search_7","정보 없");
                 break;
             case 8:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_5.setText(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_6.setText(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_7.setText(sSharedPreferences.getString("recent_search_7",""));
-                recent_search_8.setText(sSharedPreferences.getString("recent_search_8",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
+                recent_search_5.setText(sSharedPreferences.getString("recent_search_5","정보 없음"));
+                recent_search_6.setText(sSharedPreferences.getString("recent_search_6","정보 없음"));
+                recent_search_7.setText(sSharedPreferences.getString("recent_search_7","정보 없음"));
+                recent_search_8.setText(sSharedPreferences.getString("recent_search_8","정보 없음"));
                 recent_search_9.setText("");
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_7",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_8",""));
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
+                temp_5 = sSharedPreferences.getString("recent_search_5","정보 없");
+                temp_6 = sSharedPreferences.getString("recent_search_6","정보 없");
+                temp_7 = sSharedPreferences.getString("recent_search_7","정보 없");
+                temp_8 = sSharedPreferences.getString("recent_search_8","정보 없");
 
                 break;
             case 9:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_5.setText(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_6.setText(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_7.setText(sSharedPreferences.getString("recent_search_7",""));
-                recent_search_8.setText(sSharedPreferences.getString("recent_search_8",""));
-                recent_search_9.setText(sSharedPreferences.getString("recent_search_9",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
+                recent_search_5.setText(sSharedPreferences.getString("recent_search_5","정보 없음"));
+                recent_search_6.setText(sSharedPreferences.getString("recent_search_6","정보 없음"));
+                recent_search_7.setText(sSharedPreferences.getString("recent_search_7","정보 없음"));
+                recent_search_8.setText(sSharedPreferences.getString("recent_search_8","정보 없음"));
+                recent_search_9.setText(sSharedPreferences.getString("recent_search_9","정보 없음"));
                 recent_search_10.setText("");
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_7",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_8",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_9",""));
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
+                temp_5 = sSharedPreferences.getString("recent_search_5","정보 없");
+                temp_6 = sSharedPreferences.getString("recent_search_6","정보 없");
+                temp_7 = sSharedPreferences.getString("recent_search_7","정보 없");
+                temp_8 = sSharedPreferences.getString("recent_search_8","정보 없");
+                temp_9 = sSharedPreferences.getString("recent_search_9","정보 없");
 
                 break;
             case 10:
-                recent_search_1.setText(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_2.setText(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_3.setText(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_4.setText(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_5.setText(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_6.setText(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_7.setText(sSharedPreferences.getString("recent_search_7",""));
-                recent_search_8.setText(sSharedPreferences.getString("recent_search_8",""));
-                recent_search_9.setText(sSharedPreferences.getString("recent_search_9",""));
-                recent_search_10.setText(sSharedPreferences.getString("recent_search_10",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_1",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_2",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_3",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_4",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_5",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_6",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_7",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_8",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_9",""));
-                recent_search_list.add(sSharedPreferences.getString("recent_search_10",""));
+                recent_search_1.setText(sSharedPreferences.getString("recent_search_1","정보 없음"));
+                recent_search_2.setText(sSharedPreferences.getString("recent_search_2","정보 없음"));
+                recent_search_3.setText(sSharedPreferences.getString("recent_search_3","정보 없음"));
+                recent_search_4.setText(sSharedPreferences.getString("recent_search_4","정보 없음"));
+                recent_search_5.setText(sSharedPreferences.getString("recent_search_5","정보 없음"));
+                recent_search_6.setText(sSharedPreferences.getString("recent_search_6","정보 없음"));
+                recent_search_7.setText(sSharedPreferences.getString("recent_search_7","정보 없음"));
+                recent_search_8.setText(sSharedPreferences.getString("recent_search_8","정보 없음"));
+                recent_search_9.setText(sSharedPreferences.getString("recent_search_9","정보 없음"));
+                recent_search_10.setText(sSharedPreferences.getString("recent_search_10","정보 없음"));
+                temp_1 = sSharedPreferences.getString("recent_search_1","정보 없");
+                temp_2 = sSharedPreferences.getString("recent_search_2","정보 없");
+                temp_3 = sSharedPreferences.getString("recent_search_3","정보 없");
+                temp_4 = sSharedPreferences.getString("recent_search_4","정보 없");
+                temp_5 = sSharedPreferences.getString("recent_search_5","정보 없");
+                temp_6 = sSharedPreferences.getString("recent_search_6","정보 없");
+                temp_7 = sSharedPreferences.getString("recent_search_7","정보 없");
+                temp_8 = sSharedPreferences.getString("recent_search_8","정보 없");
+                temp_9 = sSharedPreferences.getString("recent_search_9","정보 없");
+                temp_10 = sSharedPreferences.getString("recent_search_10","정보 없");
+
                 break;
         }
 
@@ -301,15 +294,19 @@ public class SearchActivity extends BaseActivity implements SearchView {
     @Override
     public void GetPostsSearchSuccess(SearchResponse searchResponse, int code) {
 
-        Log.d("검색 성",  " && "+String.valueOf(code));
+        Log.d("검색 성공",  " && "+ String.valueOf(code));
 
-        // 내부 갯수, 검색어 저
+        // 내부 갯수, 검색어 저장.
         String now = search_et.getText().toString();
 
         sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
         SharedPreferences.Editor editor = sSharedPreferences.edit();
 
-
+        // 저장해둔 갯수.
+        count = sSharedPreferences.getInt("recent_search_count",0);
+        int next_count;
+        if (count+1 >10) { next_count = 10; }else{next_count = count+1;}
+        editor.remove("recent_search_count");
         editor.remove("recent_search_1");
         editor.remove("recent_search_2");
         editor.remove("recent_search_3");
@@ -320,38 +317,105 @@ public class SearchActivity extends BaseActivity implements SearchView {
         editor.remove("recent_search_8");
         editor.remove("recent_search_9");
         editor.remove("recent_search_10");
-
-        editor.putInt("recent_search_count",count);
-
+        editor.putInt("recent_search_count",next_count);
         editor.commit();
 
-        if(count > 0)
+
+        SharedPreferences.Editor editor2 = sSharedPreferences.edit();
+        switch (count)
         {
-            recent_search_list.remove(0);
-            recent_search_list.add(0,now);
+            case 0:
 
-            for(int i = 0; i< count; i++)
-            {
-                sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
-                SharedPreferences.Editor editor_3 = sSharedPreferences.edit();
-                String temp = "recent_search_"+ String.valueOf(i+1);
-                editor_3.putString(temp,recent_search_list.get(i));
-                editor_3.commit();
-
-            }
-
-        }else{
-            sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
-            SharedPreferences.Editor editor_2 = sSharedPreferences.edit();
-            editor_2.putString("recent_search_1",now);
-            editor_2.commit();
+                editor2.putString("recent_search_1",now);
+                editor2.commit();
+                break;
+            case 1:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.commit();
+                break;
+            case 2:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.commit();
+                break;
+            case 3:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.commit();
+                break;
+            case 4:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.putString("recent_search_5",temp_4);
+                editor2.commit();
+                break;
+            case 5:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.putString("recent_search_5",temp_4);
+                editor2.putString("recent_search_6",temp_5);
+                editor2.commit();
+                break;
+            case 6:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.putString("recent_search_5",temp_4);
+                editor2.putString("recent_search_6",temp_5);
+                editor2.putString("recent_search_7",temp_6);
+                editor2.commit();
+                break;
+            case 7:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.putString("recent_search_5",temp_4);
+                editor2.putString("recent_search_6",temp_5);
+                editor2.putString("recent_search_7",temp_6);
+                editor2.putString("recent_search_8",temp_7);
+                editor2.commit();
+                break;
+            case 8:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.putString("recent_search_5",temp_4);
+                editor2.putString("recent_search_6",temp_5);
+                editor2.putString("recent_search_7",temp_6);
+                editor2.putString("recent_search_8",temp_7);
+                editor2.putString("recent_search_9",temp_8);
+                editor2.commit();
+                break;
+            case 9:
+            case 10:
+                editor2.putString("recent_search_1",now);
+                editor2.putString("recent_search_2",temp_1);
+                editor2.putString("recent_search_3",temp_2);
+                editor2.putString("recent_search_4",temp_3);
+                editor2.putString("recent_search_5",temp_4);
+                editor2.putString("recent_search_6",temp_5);
+                editor2.putString("recent_search_7",temp_6);
+                editor2.putString("recent_search_8",temp_7);
+                editor2.putString("recent_search_9",temp_8);
+                editor2.putString("recent_search_10",temp_9);
+                editor2.commit();
+                break;
         }
 
-
-        if(count < 10){count += 1;}
-
-        // 통신 후 찾은 결과 값.
-        // [?] 어디로 보내서 보여주지 ?
-
     }
+
+
+
+
 }
