@@ -36,6 +36,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             imoji_ewww, imoji_fire, imoji_heart,
             imoji_question, imoji_sad_happy, imoji_wow;
     RecyclerView comments_recyclerview;
+
     LottieAnimationView lottieAnimationView;
 
     int get_imoge_count;
@@ -103,6 +104,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
         lottieAnimationView = findViewById(R.id.post_detail_lottie);
 
+
+
     }
 
 
@@ -123,7 +126,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     public void GetPostDetailSuccess(GetPostResponse getPostResponse, int code) {
         Log.d("POST 상세 조회 성공!" , " " +String.valueOf(code));
 
-        String get_host_name , get_post_title, get_post_contents , get_post_time , lottie_file_name;
+        String get_host_name , get_post_title, get_post_contents , get_post_time , lottie_file_name, lottie_file_name_2;
         String get_img_url;
         int get_best_count;
 
@@ -198,17 +201,44 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             case 8:
                 lottie_file_name = "imoji_fire.json";
                 lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(true);
+                lottieAnimationView.loop(false);
                 lottieAnimationView.playAnimation();
                 break;
             case 9:
                 lottie_file_name = "imoji_sad_happy.json";
                 lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(true);
+                lottieAnimationView.loop(false);
                 lottieAnimationView.playAnimation();
                 break;
         }
 
+//        if(get_imoge_count>50)
+//        {
+//            lottie_file_name_2 = "imoji_1000.json";
+//            lottieAnimationView.setAnimation(lottie_file_name_2);
+//            lottieAnimationView.loop(false);
+//            lottieAnimationView.playAnimation();
+//
+//        }else if (get_imoge_count >25)
+//        {
+//            lottie_file_name_2 = "imoji_500.json";
+//            lottieAnimationView.setAnimation(lottie_file_name_2);
+//            lottieAnimationView.loop(false);
+//            lottieAnimationView.playAnimation();
+//
+//        }else if (get_imoge_count >12)
+//        {
+//            lottie_file_name_2 = "imoji_100.json";
+//            lottieAnimationView.setAnimation(lottie_file_name_2);
+//            lottieAnimationView.loop(false);
+//            lottieAnimationView.playAnimation();
+//        }else
+//        {
+//            lottie_file_name_2 = "imoji_50.json";
+//            lottieAnimationView.setAnimation(lottie_file_name_2);
+//            lottieAnimationView.loop(false);
+//            lottieAnimationView.playAnimation();
+//        }
 
 
 

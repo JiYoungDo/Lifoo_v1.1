@@ -69,6 +69,7 @@
                 <ImageView
                     android:id="@+id/post_detail_iv_postImage"
                     android:layout_width="match_parent"
+                    android:scaleType="fitXY"
                     android:layout_height="match_parent"
                     android:src="@drawable/food_image"/>
 
@@ -77,9 +78,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:lottie_autoPlay="true"
-                    app:lottie_fileName="imoji_50.json"
-                    app:lottie_loop="true"
-                    />
+                    app:lottie_fileName="imoji_heart.json"
+                    app:lottie_loop="false"/>
+
 
             </FrameLayout>
 
