@@ -183,13 +183,16 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
             @Override
             public void onClick(View v) {
 
-                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sSharedPreferences.edit();
                 editor.remove("clicked_post_idx");
                 editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_1());
                 editor.commit();
                 Log.d("클릭","1");
-              //   FeedFragment.move_to_post_Detail(context.);
+
+                Intent gotoDetailActivity = new Intent(context,PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
+
 
             }
         });
@@ -197,40 +200,47 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
         holder.Feed_img_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sSharedPreferences.edit();
                 editor.remove("clicked_post_idx");
                 editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_2());
                 editor.commit();
                 Log.d("클릭","2");
-            //     FeedFragment.move_to_post_Detail();
+
+                Intent gotoDetailActivity = new Intent(context,PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
             }
         });
 
         holder.Feed_img_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
 
-                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                 SharedPreferences.Editor editor = sSharedPreferences.edit();
                 editor.remove("clicked_post_idx");
                 editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_3());
                 editor.commit();
                 Log.d("클릭","3");
-            //    FeedFragment.move_to_post_Detail();
+
+                Intent gotoDetailActivity = new Intent(context,PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
             }
         });
 
         holder.Feed_img_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sSharedPreferences.edit();
                 editor.remove("clicked_post_idx");
                 editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_4());
                 editor.commit();
-             //   FeedFragment.move_to_post_Detail();
+                Log.d("클릭","4");
+
+                Intent gotoDetailActivity = new Intent(context,PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
             }
         });
 
@@ -238,12 +248,15 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
             @Override
             public void onClick(View v) {
 
-                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sSharedPreferences.edit();
                 editor.remove("clicked_post_idx");
                 editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_5());
                 editor.commit();
-             //   FeedFragment.move_to_post_Detail();
+                Log.d("클릭","5");
+
+                Intent gotoDetailActivity = new Intent(context,PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
             }
         });
 
@@ -251,12 +264,15 @@ public class FeedAdapter  extends RecyclerView.Adapter<FeedAdapter.FeedViewHolde
             @Override
             public void onClick(View v) {
 
-                sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sSharedPreferences.edit();
                 editor.remove("clicked_post_idx");
                 editor.putString("clicked_post_idx",mList.get(position).getImoji_idx_6());
                 editor.commit();
-             //   FeedFragment.move_to_post_Detail();
+                Log.d("클릭","6");
+
+                Intent gotoDetailActivity = new Intent(context,PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
             }
         });
 

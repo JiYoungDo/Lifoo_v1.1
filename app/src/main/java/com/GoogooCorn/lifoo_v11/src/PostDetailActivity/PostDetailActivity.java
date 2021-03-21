@@ -52,8 +52,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
 
-        int to = Integer.parseInt(get_post_idx);
-        TryPostDetail(to);
+        int to = Integer.parseInt(get_post_idx); // to 잘 들어옴 .
+        TryPostDetail(3);
 
 
         back_btn = findViewById(R.id.post_detail_btnBack);

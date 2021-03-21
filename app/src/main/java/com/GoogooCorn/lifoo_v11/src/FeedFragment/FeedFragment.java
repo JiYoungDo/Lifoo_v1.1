@@ -29,6 +29,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.X_ACCESS_TOKEN;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
+
 public class FeedFragment  extends Fragment implements FeedFragmentActivityView {
 
     MainActivity mainActivity;
@@ -50,6 +53,8 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mainActivity = (MainActivity) getActivity();
+       //  String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
+       //  Log.d("피드 프레그먼트 jwt", jwtToken);
 
     }
 
@@ -106,12 +111,6 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
             @Override
             public void onItemClick(View v, int pos) {
                 // post 세부화면으로 넘겨 주기.
-
-                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
-                getActivity().startActivity(intent);
-                getActivity().finish();
-
-               //  move_to_post_Detail();
             }
         });
 
