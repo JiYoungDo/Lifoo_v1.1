@@ -49,11 +49,12 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
          * post_idx 를 sharedPreference에 저장 해놓은 것을 가져온다.
          * */
         String get_post_idx;
-        sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
 
         int to = Integer.parseInt(get_post_idx); // to 잘 들어옴 .
-        TryPostDetail(3);
+
+        TryPostDetail(to);
 
 
         back_btn = findViewById(R.id.post_detail_btnBack);
