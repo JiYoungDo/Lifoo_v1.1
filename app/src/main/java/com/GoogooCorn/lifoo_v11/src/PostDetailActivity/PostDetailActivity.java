@@ -17,6 +17,7 @@ import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.airbnb.lottie.LottieAnimationView;
+import com.bumptech.glide.Glide;
 
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.X_ACCESS_TOKEN;
@@ -123,6 +124,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("POST 상세 조회 성공!" , " " +String.valueOf(code));
 
         String get_host_name , get_post_title, get_post_contents , get_post_time , lottie_file_name;
+        String get_img_url;
         int get_best_count;
 
         get_host_name = getPostResponse.getResult().getHostNickname();
@@ -130,6 +132,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         get_post_contents = getPostResponse.getResult().getPostBody();
         get_imoge_count = getPostResponse.getResult().getTotalImoge();
         get_post_time = getPostResponse.getResult().getCreatedAt();
+        get_img_url = getPostResponse.getResult().getPostUrl();
+
+        Glide.with(this).load(get_img_url).into(post_iv);
 
         get_best_count = getPostResponse.getResult().getMostImoge();
 
