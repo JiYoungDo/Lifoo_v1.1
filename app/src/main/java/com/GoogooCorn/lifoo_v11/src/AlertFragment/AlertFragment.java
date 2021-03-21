@@ -73,8 +73,8 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
         alert_list.add(alertItem_1);
         alert_list.add(alertItem_2);
 
-//        //통신으로 받아오기
-//        alertService.GetAlarms();
+        //통신으로 받아오기
+        alertService.GetAlarms();
 
         // 어댑터
         alertAdapter = new AlertAdapter(alert_list);
@@ -118,6 +118,7 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
         else if(code == 3209){
             Log.d("알림 목록 없음", String.valueOf(code));
         }
+
         else{
             Log.d("알림 리스폰스 오류 : ", String.valueOf(code));
             Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();

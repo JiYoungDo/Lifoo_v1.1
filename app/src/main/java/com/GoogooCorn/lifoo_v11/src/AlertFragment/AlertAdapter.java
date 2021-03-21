@@ -83,7 +83,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
 
     // 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴
     @Override
-    public AlertAdapter.AlertViewHolder  onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public AlertAdapter.AlertViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.alert_item,viewGroup,false);
         AlertAdapter. AlertViewHolder viewHolder = new AlertAdapter.AlertViewHolder(view);

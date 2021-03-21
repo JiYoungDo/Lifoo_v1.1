@@ -46,12 +46,13 @@
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/btnFinishTop"
             style="@style/DrawerName"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:gravity="center"
             android:text="@string/complete"
-            android:textColor="@color/colorMain"/>
+            android:textColor="@color/colorMain" />
 
     </LinearLayout>
 
@@ -65,11 +66,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/post_img"
                 android:layout_width="match_parent"
                 android:layout_height="410dp"
                 android:src="@drawable/food_image" />
 
-            <TextView
+            <EditText
                 android:id="@+id/modifiable_title"
                 style="@style/InvalidName"
                 android:layout_width="match_parent"
@@ -92,7 +94,7 @@
                 android:layout_height="1dp"
                 android:background="@color/colorLightGray" />
 
-            <TextView
+            <EditText
                 android:id="@+id/modifiable_content"
                 style="@style/InvalidName"
                 android:layout_width="match_parent"
@@ -108,10 +110,12 @@
                 android:textColor="@color/colorBlack"/>
 
             <Button
+                android:id="@+id/btnFinishBottom"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:background="@drawable/btn_round_next"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/btn_round_next" />
         </LinearLayout>
 
     </ScrollView>

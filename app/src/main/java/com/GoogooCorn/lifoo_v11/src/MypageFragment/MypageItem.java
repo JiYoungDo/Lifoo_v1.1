@@ -5,18 +5,18 @@ import android.graphics.drawable.Drawable;
 import java.io.Serializable;
 
 public class MypageItem implements Serializable {
-    Drawable myPost;
+    String myPost;
     Drawable myBadge;
 
-    public MypageItem(Drawable myPost, Drawable myBadge){
+    public MypageItem(String myPost, Drawable myBadge){
         this.myPost = myPost;
         this.myBadge = myBadge;
     }
 
-    public Drawable getMyPost() {
+    public String getMyPost() {
         return myPost;
     }
-    public void setMyPost(Drawable MyPost) {
+    public void setMyPost(String MyPost) {
         this.myPost = myPost;
     }
 

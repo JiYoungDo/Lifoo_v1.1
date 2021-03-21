@@ -23,6 +23,7 @@
     <string name="comment_report">신고하기</string>
     <string name="comment_re">댓글 달기</string>
     <string name="post_delete_dialog_1">한번 삭제한 게시물은 복구가 불가합니다.\n정말 삭제하시겠습니까?</string>
+    <string name="post_delete_dialog_2">삭제가 완료되었습니다. 감사합니다.</string>
     <string name="back">취소</string>
     <string name="delete">삭제</string>
     <string name="post_declartion_dialog_1">한번 신고하시면 취소가 불가능합니다.\n정말 신고하시겠습니까?</string>
@@ -38,5 +39,6 @@
     <string name="enter_title">제목을 입력해주세요</string>
     <string name="enter_contents">내용을 입력해주세요</string>
     <string name="modify_nickname">닉네임 수정</string>
+    <string name="modify_nickname_info">닉네임은 최대 6글자로 설정가능합니다.\n형용사와 음식 이름 조합을 권장드려요!</string>
 
 </resources>

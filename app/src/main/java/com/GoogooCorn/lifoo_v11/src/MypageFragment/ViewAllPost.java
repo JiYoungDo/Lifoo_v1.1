@@ -1,11 +1,15 @@
 package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,11 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.Decorations.SpaceGridDecoration;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.interfaces.MypageFragmentActivityView;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.ImogeResponse;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.MyPostResponse;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.MypageFragmentResponse;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameResponse;
+import com.GoogooCorn.lifoo_v11.src.PhotoPickActivity.PhotoPickActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ViewAllPost extends AppCompatActivity{
+public class ViewAllPost extends AppCompatActivity implements MypageFragmentActivityView {
 
     Button btnBack;
     MypageFragment mypageFragment;
@@ -30,6 +41,9 @@ public class ViewAllPost extends AppCompatActivity{
     ViewAllPostAdapter viewAllPostAdapter;
     GridLayoutManager gridlayoutManager;
     ArrayList<MypageItem> list;
+
+    // 서비스 선언
+    MypageService mypageService = new MypageService(this);
 
 
     @Override
@@ -49,8 +63,6 @@ public class ViewAllPost extends AppCompatActivity{
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                MainActivity mainActivity = new MainActivity();
-//                mainActivity.onChangeFragment(4);
                 finish();
             }
         });
@@ -76,15 +88,26 @@ public class ViewAllPost extends AppCompatActivity{
         Drawable drawable3 = getResources().getDrawable(R.drawable.badge_blue_40);
         Drawable drawable4 = getResources().getDrawable(R.drawable.badge_red_40);
 
-        MypageItem mypageItem1 = new MypageItem(drawable1, drawable3);
-        MypageItem mypageItem2 = new MypageItem(drawable2, drawable4);
-        MypageItem mypageItem3 = new MypageItem(drawable1, drawable3);
-        MypageItem mypageItem4 = new MypageItem(drawable2, drawable4);
+        MypageItem mypageItem1 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
+        MypageItem mypageItem2 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
+        MypageItem mypageItem3 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
+        MypageItem mypageItem4 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
+        MypageItem mypageItem5 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
+        MypageItem mypageItem6 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
+        MypageItem mypageItem7 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
+        MypageItem mypageItem8 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
 
         list.add(mypageItem1);
         list.add(mypageItem2);
         list.add(mypageItem3);
         list.add(mypageItem4);
+        list.add(mypageItem5);
+        list.add(mypageItem6);
+        list.add(mypageItem7);
+        list.add(mypageItem8);
+
+        // 통신으로 내 게시물 받아오기
+        mypageService.GetMyPost();
 
         recyclerView = findViewById(R.id.mypagefragment_viewall_recyclerview);
         viewAllPostAdapter = new ViewAllPostAdapter(list);
@@ -105,15 +128,91 @@ public class ViewAllPost extends AppCompatActivity{
         viewAllPostAdapter.setOnItemLongClickListener(new ViewAllPostAdapter.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(View v, int pos) {
-//                v.findViewById(R.id.btn_contect_edit).setVisibility(View.VISIBLE);
-//                v.findViewById(R.id.btn_content_delete).setVisibility(View.VISIBLE);
                 ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(v.getContext());
-                viewAllPostDialog.callFunction();
+                viewAllPostDialog.show();
+
             }
         });
 
     }
 
+    @Override
+    public void GetProfileFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void GetProfileSuccess(MypageFragmentResponse mypageFragmentResponse, int code) {
+
+    }
+
+    @Override
+    public void GetProfileSuccess(NicknameResponse nicknameResponse, int code) {
+
+    }
+
+    @Override
+    public void GetImogeFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void GetImogeSuccess(ImogeResponse imogeResponse, int code) {
+
+    }
+
+    @Override
+    public void GetMyPostFailure(String message, int code) {
+        Log.d("내 게시물 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    @Override
+    public void GetMyPostSuccess(MyPostResponse myPostResponse, int code) {
+        Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
+
+        if(code == 2000){
+            Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
+            MyPostResponse.Result result = myPostResponse.getResult();
+            List<MyPostResponse.Post> postList = result.getPostList();
+            MypageItem mypageItem;
+
+            for(int i = 0; i < postList.size() ; i++) {
+                Drawable badge = null;
+                if(postList.get(i).getTotalImoge() < 50){
+//                    badge = getResources().getDrawable(R.drawable.badge_blue_30);
+//                    badge.setVisible(false, false);
+                }
+                else if(postList.get(i).getTotalImoge() >= 50
+                        && postList.get(i).getTotalImoge() < 100){
+                    badge = getResources().getDrawable(R.drawable.badge_red_30);
+                }
+                else if(postList.get(i).getTotalImoge() >= 100
+                        && postList.get(i).getTotalImoge() < 500){
+                    badge = getResources().getDrawable(R.drawable.badge_yellow_30);
+                }
+                else if(postList.get(i).getTotalImoge() >= 500
+                        && postList.get(i).getTotalImoge() < 1000){
+                    badge = getResources().getDrawable(R.drawable.badge_green_30);
+                }
+                else if(postList.get(i).getTotalImoge() >= 1000){
+                    badge = getResources().getDrawable(R.drawable.badge_blue_30);
+                }
+                mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge);
+                list.add(mypageItem);
+            }
+        }
+
+        else if(code == 3208){
+            Log.d("게시물 목록 없음", String.valueOf(code));
+        }
+
+        else{
+            Log.d("내 게시물 리스폰스 오류 : ", String.valueOf(code));
+            Toast.makeText(getApplicationContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
 
 

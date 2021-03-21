@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -60,7 +61,10 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
     public void onBindViewHolder(@NonNull MypageViewHolder holder, int position) {
         MypageItem mypageItem = mypageItems.get(position);
 
-        holder.mypostImage.setImageDrawable(mypageItem.getMyPost());
+        String post_img_url;
+        post_img_url = mypageItems.get(position).getMyPost();
+        Glide.with(this.context).load(post_img_url).into(holder.mypostImage);
+
         holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
     }
 

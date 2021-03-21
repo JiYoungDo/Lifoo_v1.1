@@ -74,10 +74,19 @@
 
         </LinearLayout>
 
+        <TextView
+            style="@style/InvalidName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="43dp"
+            android:text="@string/modify_nickname_info" />
+
         <RelativeLayout
-            android:layout_width="334dp"
-            android:layout_height="107dp"
-            android:layout_marginTop="116dp">
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="29dp"
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/slotImage"
@@ -85,112 +94,126 @@
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/rectangle_17" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/modify_nickname"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_cjkkr_medi"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.2"
+                android:text="하쿠"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="normal" />
 
-                <TextView
-                    android:id="@+id/firstLetter"
-                    android:layout_width="19dp"
-                    android:layout_height="29.2dp"
-                    android:layout_marginStart="47dp"
-                    android:layout_marginLeft="47dp"
-                    android:layout_marginTop="37.7dp"
-                    android:layout_marginBottom="40.1dp"
-                    android:fontFamily="@font/noto_sans_cjkkr_medi"
-                    android:gravity="center_horizontal"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="-0.02"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="normal" />
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent">-->
 
-                <TextView
-                    android:id="@+id/secondLetter"
-                    android:layout_width="19dp"
-                    android:layout_height="29.2dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="37.7dp"
-                    android:layout_marginBottom="40.1dp"
-                    android:fontFamily="@font/noto_sans_cjkkr_medi"
-                    android:gravity="center_horizontal"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="-0.02"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="normal"/>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/firstLetter"-->
+            <!--                    android:layout_width="19dp"-->
+            <!--                    android:layout_height="29.2dp"-->
+            <!--                    android:layout_marginStart="47dp"-->
+            <!--                    android:layout_marginLeft="47dp"-->
+            <!--                    android:layout_marginTop="37.7dp"-->
+            <!--                    android:layout_marginBottom="40.1dp"-->
+            <!--                    android:fontFamily="@font/noto_sans_cjkkr_medi"-->
+            <!--                    android:gravity="center_horizontal"-->
+            <!--                    android:includeFontPadding="false"-->
+            <!--                    android:letterSpacing="-0.02"-->
+            <!--                    android:text=""-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="20sp"-->
+            <!--                    android:textStyle="normal" />-->
 
-                <TextView
-                    android:id="@+id/thirdLetter"
-                    android:layout_width="19dp"
-                    android:layout_height="29.2dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="37.7dp"
-                    android:layout_marginBottom="40.1dp"
-                    android:fontFamily="@font/noto_sans_cjkkr_medi"
-                    android:gravity="center_horizontal"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="-0.02"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="normal"/>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/secondLetter"-->
+            <!--                    android:layout_width="19dp"-->
+            <!--                    android:layout_height="29.2dp"-->
+            <!--                    android:layout_marginStart="25dp"-->
+            <!--                    android:layout_marginLeft="25dp"-->
+            <!--                    android:layout_marginTop="37.7dp"-->
+            <!--                    android:layout_marginBottom="40.1dp"-->
+            <!--                    android:fontFamily="@font/noto_sans_cjkkr_medi"-->
+            <!--                    android:gravity="center_horizontal"-->
+            <!--                    android:includeFontPadding="false"-->
+            <!--                    android:letterSpacing="-0.02"-->
+            <!--                    android:text=""-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="20sp"-->
+            <!--                    android:textStyle="normal"/>-->
 
-                <TextView
-                    android:id="@+id/fourthLetter"
-                    android:layout_width="19dp"
-                    android:layout_height="29.2dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="37.7dp"
-                    android:layout_marginBottom="40.1dp"
-                    android:fontFamily="@font/noto_sans_cjkkr_medi"
-                    android:gravity="center_horizontal"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="-0.02"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="normal"/>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/thirdLetter"-->
+            <!--                    android:layout_width="19dp"-->
+            <!--                    android:layout_height="29.2dp"-->
+            <!--                    android:layout_marginStart="25dp"-->
+            <!--                    android:layout_marginLeft="25dp"-->
+            <!--                    android:layout_marginTop="37.7dp"-->
+            <!--                    android:layout_marginBottom="40.1dp"-->
+            <!--                    android:fontFamily="@font/noto_sans_cjkkr_medi"-->
+            <!--                    android:gravity="center_horizontal"-->
+            <!--                    android:includeFontPadding="false"-->
+            <!--                    android:letterSpacing="-0.02"-->
+            <!--                    android:text=""-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="20sp"-->
+            <!--                    android:textStyle="normal"/>-->
 
-                <TextView
-                    android:id="@+id/fifthLetter"
-                    android:layout_width="19dp"
-                    android:layout_height="29.2dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="37.7dp"
-                    android:layout_marginBottom="40.1dp"
-                    android:fontFamily="@font/noto_sans_cjkkr_medi"
-                    android:gravity="center_horizontal"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="-0.02"
-                    android:text=""
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="normal"/>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/fourthLetter"-->
+            <!--                    android:layout_width="19dp"-->
+            <!--                    android:layout_height="29.2dp"-->
+            <!--                    android:layout_marginStart="25dp"-->
+            <!--                    android:layout_marginLeft="25dp"-->
+            <!--                    android:layout_marginTop="37.7dp"-->
+            <!--                    android:layout_marginBottom="40.1dp"-->
+            <!--                    android:fontFamily="@font/noto_sans_cjkkr_medi"-->
+            <!--                    android:gravity="center_horizontal"-->
+            <!--                    android:includeFontPadding="false"-->
+            <!--                    android:letterSpacing="-0.02"-->
+            <!--                    android:text=""-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="20sp"-->
+            <!--                    android:textStyle="normal"/>-->
 
-                <TextView
-                    android:id="@+id/sixthLetter"
-                    android:layout_width="19dp"
-                    android:layout_height="29.2dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="37.7dp"
-                    android:layout_marginBottom="40.1dp"
-                    android:fontFamily="@font/noto_sans_cjkkr_medi"
-                    android:gravity="center_horizontal"
-                    android:includeFontPadding="false"
-                    android:letterSpacing="-0.02"
-                    android:text=" "
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="normal"/>
-            </LinearLayout>
+            <!--                <TextView-->
+            <!--                    android:id="@+id/fifthLetter"-->
+            <!--                    android:layout_width="19dp"-->
+            <!--                    android:layout_height="29.2dp"-->
+            <!--                    android:layout_marginStart="25dp"-->
+            <!--                    android:layout_marginLeft="25dp"-->
+            <!--                    android:layout_marginTop="37.7dp"-->
+            <!--                    android:layout_marginBottom="40.1dp"-->
+            <!--                    android:fontFamily="@font/noto_sans_cjkkr_medi"-->
+            <!--                    android:gravity="center_horizontal"-->
+            <!--                    android:includeFontPadding="false"-->
+            <!--                    android:letterSpacing="-0.02"-->
+            <!--                    android:text=""-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="20sp"-->
+            <!--                    android:textStyle="normal"/>-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/sixthLetter"-->
+            <!--                    android:layout_width="19dp"-->
+            <!--                    android:layout_height="29.2dp"-->
+            <!--                    android:layout_marginStart="25dp"-->
+            <!--                    android:layout_marginLeft="25dp"-->
+            <!--                    android:layout_marginTop="37.7dp"-->
+            <!--                    android:layout_marginBottom="40.1dp"-->
+            <!--                    android:fontFamily="@font/noto_sans_cjkkr_medi"-->
+            <!--                    android:gravity="center_horizontal"-->
+            <!--                    android:includeFontPadding="false"-->
+            <!--                    android:letterSpacing="-0.02"-->
+            <!--                    android:text=" "-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="20sp"-->
+            <!--                    android:textStyle="normal"/>-->
+            <!--            </LinearLayout>-->
 
         </RelativeLayout>
 

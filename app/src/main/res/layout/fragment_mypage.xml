@@ -186,12 +186,10 @@
 
             <TextView
                 android:id="@+id/heart_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginLeft="26dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
                 android:text="062"
@@ -201,10 +199,10 @@
 
             <TextView
                 android:id="@+id/wow_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginLeft="72dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -216,10 +214,10 @@
 
             <TextView
                 android:id="@+id/cheer_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginLeft="72dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -259,10 +257,8 @@
 
             <TextView
                 android:id="@+id/money_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginLeft="26dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -274,10 +270,10 @@
 
             <TextView
                 android:id="@+id/ques_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginLeft="72dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -289,10 +285,10 @@
 
             <TextView
                 android:id="@+id/celebrate_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginLeft="72dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -332,10 +328,8 @@
 
             <TextView
                 android:id="@+id/disgusting_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginLeft="26dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -347,10 +341,10 @@
 
             <TextView
                 android:id="@+id/fire_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginLeft="72dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
@@ -362,10 +356,10 @@
 
             <TextView
                 android:id="@+id/happysad_cnt"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="72dp"
-                android:layout_marginLeft="72dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginLeft="46dp"
                 android:fontFamily="@font/noto_sans_cjkkr_demi_light"
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"

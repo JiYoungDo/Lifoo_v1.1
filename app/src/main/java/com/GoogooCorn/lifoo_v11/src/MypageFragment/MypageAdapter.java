@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class MypageAdapter extends RecyclerView.Adapter<MypageAdapter.MypageViewHolder> {
+
+    private ArrayList<MypageItem> mypageItems;
     Context context;
-    ArrayList<MypageItem> mypageItems;
 
     public MypageAdapter(ArrayList<MypageItem> MypageItems){
         this.mypageItems = MypageItems;
@@ -33,24 +35,9 @@ public class MypageAdapter extends RecyclerView.Adapter<MypageAdapter.MypageView
         this.mListener = listener;
     }
 
-    @NonNull
-    @Override
-    public MypageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypost_item, null);
-        return new MypageViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MypageViewHolder holder, int position) {
-        MypageItem mypageItem = mypageItems.get(position);
-
-        holder.mypostImage.setImageDrawable(mypageItem.getMyPost());
-        holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
-    }
-
     @Override
     public int getItemCount() {
-        return this.mypageItems.size();
+        return (null != mypageItems ? mypageItems.size():0);
     }
 
     public class MypageViewHolder extends RecyclerView.ViewHolder {
@@ -79,5 +66,25 @@ public class MypageAdapter extends RecyclerView.Adapter<MypageAdapter.MypageView
             });
         }
     }
+
+    @NonNull
+    @Override
+    public MypageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.mypost_item, null);
+        context = v.getContext();
+        return new MypageViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MypageViewHolder holder, int position) {
+        MypageItem mypageItem = mypageItems.get(position);
+
+        String post_img_url;
+        post_img_url = mypageItems.get(position).getMyPost();
+        Glide.with(this.context).load(post_img_url).into(holder.mypostImage);
+
+        holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
+    }
+
 }
 
