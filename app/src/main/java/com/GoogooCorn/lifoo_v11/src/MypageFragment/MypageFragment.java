@@ -93,6 +93,11 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
         mainActivity = null;
     }
 
+    public void update(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
+    }
+
 
     @Nullable
     @Override
@@ -132,6 +137,7 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
                 Intent intent = new Intent(getActivity(), ModifyNickname.class);
                 intent.putExtra("Nickname", user_nick_name);
                 startActivity(intent);
+
             }
         });
 
@@ -146,8 +152,8 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
         mypost_list = new ArrayList<MypageItem>();
 
-//        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
-//        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);
+        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
+        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);
 
         Drawable drawable3 = getResources().getDrawable(R.drawable.badge_blue_40);
         Drawable drawable4 = getResources().getDrawable(R.drawable.badge_red_40);
@@ -180,6 +186,8 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
         mypageAdapter = new MypageAdapter(mypost_list);
         recyclerView.setAdapter(mypageAdapter);
+
+
         mypageAdapter.setOnItemClickListener(new MypageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
@@ -303,6 +311,7 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
         if(code == 2000){
             Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
+            Log.d("postList 사이즈 ",  String.valueOf(myPostResponse.getResult().getPostList().size()));
             MyPostResponse.Result result = myPostResponse.getResult();
             List<MyPostResponse.Post> postList = result.getPostList();
             MypageItem mypageItem;

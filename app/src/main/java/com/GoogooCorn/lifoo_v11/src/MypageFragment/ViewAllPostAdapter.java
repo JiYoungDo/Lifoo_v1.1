@@ -66,6 +66,8 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
         Glide.with(this.context).load(post_img_url).into(holder.mypostImage);
 
         holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
+
+
     }
 
     @Override

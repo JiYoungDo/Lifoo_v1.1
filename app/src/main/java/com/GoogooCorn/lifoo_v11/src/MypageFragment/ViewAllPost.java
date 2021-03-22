@@ -117,6 +117,7 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
 
         recyclerView.setLayoutManager(gridlayoutManager);
         recyclerView.setAdapter(viewAllPostAdapter);
+        viewAllPostAdapter.notifyDataSetChanged();
 
         viewAllPostAdapter.setOnItemClickListener(new ViewAllPostAdapter.OnItemClickListener() {
             @Override
