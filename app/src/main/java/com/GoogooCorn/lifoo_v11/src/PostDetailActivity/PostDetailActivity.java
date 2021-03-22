@@ -63,8 +63,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
+//                startActivity(intent);
                 finish();
             }
         });

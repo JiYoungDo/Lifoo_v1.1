@@ -78,6 +78,8 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
     TextView fire_cnt;
     TextView happysad_cnt;
 
+    int page_num;
+
     // 서비스 선언
     MypageService mypageService = new MypageService(this);
 
@@ -103,8 +105,9 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_mypage,container,false);
+
         recyclerView = viewGroup.findViewById(R.id.mypagefragment_recyclerview);
-        linearLayoutManager = new LinearLayoutManager(mainActivity,LinearLayoutManager.HORIZONTAL,true);
+        linearLayoutManager = new LinearLayoutManager(mainActivity,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -152,21 +155,27 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
         mypost_list = new ArrayList<MypageItem>();
 
-        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
-        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);
+//        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
+//        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);
+//
+//        Drawable drawable3 = getResources().getDrawable(R.drawable.badge_blue_40);
+//        Drawable drawable4 = getResources().getDrawable(R.drawable.badge_red_40);
+//
+//        MypageItem mypageItem1 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3, 1);
+//        MypageItem mypageItem2 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4, 1);
+//        MypageItem mypageItem3 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3, 1);
+//        MypageItem mypageItem4 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4, 1);
+//
+//        mypost_list.add(mypageItem1);
+//        mypost_list.add(mypageItem2);
+//        mypost_list.add(mypageItem3);
+//        mypost_list.add(mypageItem4);
 
-        Drawable drawable3 = getResources().getDrawable(R.drawable.badge_blue_40);
-        Drawable drawable4 = getResources().getDrawable(R.drawable.badge_red_40);
 
-        MypageItem mypageItem1 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
-        MypageItem mypageItem2 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
-        MypageItem mypageItem3 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
-        MypageItem mypageItem4 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
+        // 통신으로 내 게시물 받아오기
+//        mypageService.GetMyPost();
+        TryGetMyPosts(0);
 
-        mypost_list.add(mypageItem1);
-        mypost_list.add(mypageItem2);
-        mypost_list.add(mypageItem3);
-        mypost_list.add(mypageItem4);
 
         // 통신으로 닉네임 받아오기
         Context context = getContext();
@@ -180,25 +189,27 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
         // 통신으로 이모지 받아오기
         mypageService.GetImoge();
 
-        // 통신으로 내 게시물 받아오기
-        mypageService.GetMyPost();
-
 
         mypageAdapter = new MypageAdapter(mypost_list);
         recyclerView.setAdapter(mypageAdapter);
-
-
-        mypageAdapter.setOnItemClickListener(new MypageAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
-                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-        recyclerView.scrollToPosition(mypageAdapter.getItemCount() - 1);
         mypageAdapter.notifyDataSetChanged();
+
+//        mypageAdapter.setOnItemClickListener(new MypageAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int pos) {
+//                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+//                startActivity(intent);
+//                getActivity().finish();
+//            }
+//        });
+        recyclerView.scrollToPosition(mypageAdapter.getItemCount() - 1);
+
         return viewGroup;
+    }
+
+    private void TryGetMyPosts(int page_num)
+    {
+        mypageService.GetMyPost(page_num);
     }
 
     @Override
@@ -337,8 +348,13 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
                 else if(postList.get(i).getTotalImoge() >= 1000){
                     badge = getResources().getDrawable(R.drawable.badge_blue_40);
                 }
-                mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge);
+                mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge, postList.get(i).getPostIdx());
                 mypost_list.add(mypageItem);
+                page_num +=1;
+
+                if(page_num <=10)
+                    TryGetMyPosts(page_num);
+                mypageAdapter.notifyDataSetChanged();
             }
         }
 

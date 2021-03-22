@@ -7,10 +7,12 @@ import java.io.Serializable;
 public class MypageItem implements Serializable {
     String myPost;
     Drawable myBadge;
+    Integer postIdx;
 
-    public MypageItem(String myPost, Drawable myBadge){
+    public MypageItem(String myPost, Drawable myBadge, Integer postIdx){
         this.myPost = myPost;
         this.myBadge = myBadge;
+        this.postIdx = postIdx;
     }
 
     public String getMyPost() {
@@ -25,5 +27,12 @@ public class MypageItem implements Serializable {
     }
     public void setMyBadge(Drawable MyBadge) {
         this.myBadge = myBadge;
+    }
+
+    public Integer getPostIdx(){
+        return postIdx;
+    }
+    public void setPostIdx(Integer postIdx) {
+        this.postIdx = postIdx;
     }
 }

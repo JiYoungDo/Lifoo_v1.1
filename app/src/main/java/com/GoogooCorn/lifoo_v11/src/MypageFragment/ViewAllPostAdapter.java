@@ -1,6 +1,8 @@
 package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
+import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.MypageViewHolder>{
     Context context;
@@ -67,6 +75,31 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
 
         holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
 
+        holder.mypostImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // post idx sharedpreferences에 담아서 postDetail에서 사용
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mypageItems.get(position).getPostIdx().toString());
+                editor.commit();
+
+                Intent gotoDetailActivity = new Intent(context, PostDetailActivity.class);
+                context.startActivity(gotoDetailActivity);
+            }
+        });
+        holder.mypostImage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(context);
+                viewAllPostDialog.show();
+
+                return true;
+            }
+        });
 
     }
 
@@ -89,20 +122,6 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
             this.btnEdit = itemView.findViewById(R.id.btn_contect_edit);
             this.btnDelete = itemView.findViewById(R.id.btn_content_delete);
 
-
-//            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-//                    int pos = getAdapterPosition();
-//                    if (pos != RecyclerView.NO_POSITION) {
-//                        // click event
-////                        v.findViewById(R.id.view_all_mypost_background).setBackgroundColor(Color.parseColor("#99000000"));
-//                        btnEdit.setVisibility(View.VISIBLE);
-//                        btnDelete.setVisibility(View.VISIBLE);
-//                    }
-//                    return true;
-//                }
-//            });
 
             itemView.setOnClickListener(new View.OnClickListener()
             {

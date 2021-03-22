@@ -40,7 +40,9 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
     RecyclerView recyclerView;
     ViewAllPostAdapter viewAllPostAdapter;
     GridLayoutManager gridlayoutManager;
-    ArrayList<MypageItem> list;
+    ArrayList<MypageItem> view_all_list;
+
+    int page_num;
 
     // 서비스 선언
     MypageService mypageService = new MypageService(this);
@@ -80,37 +82,37 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
         });
 
 
-        list = new ArrayList<MypageItem>();
+        view_all_list = new ArrayList<MypageItem>();
 
-        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
-        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);
-
-        Drawable drawable3 = getResources().getDrawable(R.drawable.badge_blue_40);
-        Drawable drawable4 = getResources().getDrawable(R.drawable.badge_red_40);
-
-        MypageItem mypageItem1 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
-        MypageItem mypageItem2 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
-        MypageItem mypageItem3 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
-        MypageItem mypageItem4 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
-        MypageItem mypageItem5 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
-        MypageItem mypageItem6 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
-        MypageItem mypageItem7 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3);
-        MypageItem mypageItem8 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4);
-
-        list.add(mypageItem1);
-        list.add(mypageItem2);
-        list.add(mypageItem3);
-        list.add(mypageItem4);
-        list.add(mypageItem5);
-        list.add(mypageItem6);
-        list.add(mypageItem7);
-        list.add(mypageItem8);
+//        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
+//        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);
+//
+//        Drawable drawable3 = getResources().getDrawable(R.drawable.badge_blue_40);
+//        Drawable drawable4 = getResources().getDrawable(R.drawable.badge_red_40);
+//
+//        MypageItem mypageItem1 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3, 1);
+//        MypageItem mypageItem2 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4, 1);
+//        MypageItem mypageItem3 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3, 1);
+//        MypageItem mypageItem4 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4, 1);
+//        MypageItem mypageItem5 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3, 1);
+//        MypageItem mypageItem6 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4, 1);
+//        MypageItem mypageItem7 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable3, 1);
+//        MypageItem mypageItem8 = new MypageItem("http://res.heraldm.com/phpwas/restmb_idxmake.php?idx=507&simg=/content/image/2019/09/27/20190927000594_0.jpg", drawable4, 1);
+//
+//        view_all_list.add(mypageItem1);
+//        view_all_list.add(mypageItem2);
+//        view_all_list.add(mypageItem3);
+//        view_all_list.add(mypageItem4);
+//        view_all_list.add(mypageItem5);
+//        view_all_list.add(mypageItem6);
+//        view_all_list.add(mypageItem7);
+//        view_all_list.add(mypageItem8);
 
         // 통신으로 내 게시물 받아오기
-        mypageService.GetMyPost();
+        TryGetMyPosts(0);
 
         recyclerView = findViewById(R.id.mypagefragment_viewall_recyclerview);
-        viewAllPostAdapter = new ViewAllPostAdapter(list);
+        viewAllPostAdapter = new ViewAllPostAdapter(view_all_list);
 
         gridlayoutManager = new GridLayoutManager(getApplicationContext(), 3);
         recyclerView.addItemDecoration(new SpaceGridDecoration(30));
@@ -122,19 +124,23 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
         viewAllPostAdapter.setOnItemClickListener(new ViewAllPostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-                Intent intent = new Intent(getApplicationContext(), PostDetailActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), PostDetailActivity.class);
+//                startActivity(intent);
             }
         });
         viewAllPostAdapter.setOnItemLongClickListener(new ViewAllPostAdapter.OnItemLongClickListener() {
             @Override
             public void onItemLongClick(View v, int pos) {
-                ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(v.getContext());
-                viewAllPostDialog.show();
+//                ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(v.getContext());
+//                viewAllPostDialog.show();
 
             }
         });
+    }
 
+    private void TryGetMyPosts(int page_num)
+    {
+        mypageService.GetMyPost(page_num);
     }
 
     @Override
@@ -199,8 +205,13 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
                 else if(postList.get(i).getTotalImoge() >= 1000){
                     badge = getResources().getDrawable(R.drawable.badge_blue_30);
                 }
-                mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge);
-                list.add(mypageItem);
+                mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge, postList.get(i).getPostIdx());
+                view_all_list.add(mypageItem);
+                page_num +=1;
+
+                if(page_num <=10)
+                    TryGetMyPosts(page_num);
+                viewAllPostAdapter.notifyDataSetChanged();
             }
         }
 

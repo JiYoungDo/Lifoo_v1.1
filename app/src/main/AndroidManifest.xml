@@ -48,6 +48,7 @@
         <activity android:name=".src.CreateNewPostActivity.CreateNewPostActivity" />
         <activity android:name=".src.MypageFragment.ViewAllPost" />
         <activity android:name=".src.MypageFragment.ModifyNickname" />
+        <activity android:name=".src.MypageFragment.EditMyPost"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

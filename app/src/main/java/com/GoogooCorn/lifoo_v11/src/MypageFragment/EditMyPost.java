@@ -49,16 +49,6 @@ public class EditMyPost extends AppCompatActivity {
                 return false;
             }
         });
-        modifiable_content.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow( modifiable_content.getWindowToken(), 0);
-                    return true;
-                }
-                return false;
-            }
-        });
 
         btnFinishTop = findViewById(R.id.btnFinishTop);
         btnFinishBottom = findViewById(R.id.btnFinishBottom);

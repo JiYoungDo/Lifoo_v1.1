@@ -103,9 +103,9 @@ public class MypageService {
         });
     }
 
-    public void GetMyPost(){
+    public void GetMyPost(int page_num){
         final MypageFragmentRetrofitInterface mypageFragmentRetrofitInterface = getRetrofit().create(MypageFragmentRetrofitInterface.class);
-        mypageFragmentRetrofitInterface.GetMyPostTest("USER", 30, 0).enqueue(new Callback<MyPostResponse>() {
+        mypageFragmentRetrofitInterface.GetMyPostTest("USER", 6, page_num).enqueue(new Callback<MyPostResponse>() {
             // 통신 성공
             @Override
             public void onResponse(Call<MyPostResponse> call, Response<MyPostResponse> response) {
