@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.PostDeleteDialog;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.EditMyPost;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 
 import java.util.Objects;
@@ -24,6 +25,7 @@ public class ViewAllPostDialog extends Dialog {
 
     private ImageView btnEdit;
     private ImageView btnDelete;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -154,7 +154,12 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
     }
 
     @Override
-    public void GetProfileSuccess(NicknameResponse nicknameResponse, int code) {
+    public void EditProfileFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void EditProfileSuccess(NicknameResponse nicknameResponse, int code) {
 
     }
 
@@ -170,16 +175,16 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
 
     @Override
     public void GetMyPostFailure(String message, int code) {
-        Log.d("내 게시물 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+        Log.d("내 게시물 받아오기 실패", message + "&&" + String.valueOf(code));
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void GetMyPostSuccess(MyPostResponse myPostResponse, int code) {
-        Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
+        Log.d("내 게시물 받아오기 성공", String.valueOf(code));
 
         if(code == 2000){
-            Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
+            Log.d("내 게시물 받아오기 성공", String.valueOf(code));
             MyPostResponse.Result result = myPostResponse.getResult();
             List<MyPostResponse.Post> postList = result.getPostList();
             MypageItem mypageItem;
@@ -220,7 +225,7 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
         }
 
         else{
-            Log.d("내 게시물 리스폰스 오류 : ", String.valueOf(code));
+            Log.d("내 게시물 리스폰스 오류", String.valueOf(code));
             Toast.makeText(getApplicationContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
 

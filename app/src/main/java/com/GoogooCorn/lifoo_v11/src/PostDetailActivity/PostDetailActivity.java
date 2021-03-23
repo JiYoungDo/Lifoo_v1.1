@@ -16,6 +16,7 @@ import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 
@@ -245,6 +246,25 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
     }
 
+    @Override
+    public void EditPostFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void EditPostSuccess(GetPostResponse getPostResponse, int code) {
+
+    }
+
+    @Override
+    public void DeletePostFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code) {
+
+    }
 
 
 }

@@ -25,7 +25,7 @@ public interface MypageFragmentRetrofitInterface {
 
     // 회원 정보(닉네임) 수정
     @PATCH("/users/{userIdx}")
-    Call<NicknameResponse> SetProfileTest(
+    Call<NicknameResponse> EditProfileTest(
             @Path("userIdx") String userIdx,
             @Body NicknameBody body
     );

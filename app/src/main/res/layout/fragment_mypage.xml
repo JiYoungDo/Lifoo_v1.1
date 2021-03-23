@@ -192,7 +192,7 @@
                 android:gravity="center"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="062"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -207,7 +207,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="000"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -222,7 +222,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="123"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -263,7 +263,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="092"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -278,7 +278,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="011"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -293,7 +293,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="989"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -334,7 +334,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="000"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -349,7 +349,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="037"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />
@@ -364,7 +364,7 @@
                 android:gravity="center_horizontal"
                 android:letterSpacing="-0.03"
                 android:lineSpacingExtra="10sp"
-                android:text="002"
+                android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 android:textStyle="normal" />

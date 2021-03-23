@@ -90,7 +90,7 @@ public class ModifyNickname extends AppCompatActivity implements MypageFragmentA
                         Toast.makeText(getApplicationContext(), "1~6글자로 작성해주세요", Toast.LENGTH_SHORT).show();
                     } else { //닉네임 수정
                         NicknameBody nicknameBody = new NicknameBody(modify_nickname.getText().toString());
-                        mypageService.SetNickname(userIdx, nicknameBody);
+                        mypageService.EditNickname(userIdx, nicknameBody);
 
                     }
                 }
@@ -110,7 +110,7 @@ public class ModifyNickname extends AppCompatActivity implements MypageFragmentA
                         Toast.makeText(getApplicationContext(), "1~6글자로 작성해주세요", Toast.LENGTH_SHORT).show();
                     } else { //닉네임 수정
                         NicknameBody nicknameBody = new NicknameBody(modify_nickname.getText().toString());
-                        mypageService.SetNickname(userIdx, nicknameBody);
+                        mypageService.EditNickname(userIdx, nicknameBody);
 
                     }
                 }
@@ -121,7 +121,7 @@ public class ModifyNickname extends AppCompatActivity implements MypageFragmentA
 
     @Override
     public void GetProfileFailure(String message, int code) {
-        Log.d("회원 정보 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+
     }
 
     @Override
@@ -130,11 +130,16 @@ public class ModifyNickname extends AppCompatActivity implements MypageFragmentA
     }
 
     @Override
-    public void GetProfileSuccess(NicknameResponse nicknameResponse, int code) {
-        Log.d("닉네임 수정 성공 ",  "&& " + String.valueOf(code));
+    public void EditProfileFailure(String message, int code) {
+        Log.d("닉네임 수정 실패 ", message+ "&& " + String.valueOf(code));
+    }
+
+    @Override
+    public void EditProfileSuccess(NicknameResponse nicknameResponse, int code) {
+        Log.d("닉네임 수정 성공 ",  String.valueOf(code));
 
         if(code == 2000){
-            Log.d("닉네임 수정 성공 ",  "&& " + String.valueOf(code));
+            Log.d("닉네임 수정 성공 ",  String.valueOf(code));
 
             Toast.makeText(getApplicationContext(), "닉네임이 수정되었습니다 :)" , Toast.LENGTH_SHORT).show();
 
@@ -145,7 +150,7 @@ public class ModifyNickname extends AppCompatActivity implements MypageFragmentA
         }
 
         else{
-            Log.d("회원 정보 리스폰스 오류 : ", String.valueOf(code));
+            Log.d("회원 정보 리스폰스 오류", String.valueOf(code));
             Toast.makeText(getApplicationContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
     }

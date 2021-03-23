@@ -214,15 +214,15 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
     @Override
     public void GetProfileFailure(String message, int code) {
-        Log.d("회원 정보 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+        Log.d("회원 정보 받아오기 실패 ", message + "&&" + String.valueOf(code));
     }
 
     @Override
     public void GetProfileSuccess(MypageFragmentResponse mypageFragmentResponse, int code) {
-        Log.d("회원 정보 받아오기 성공 ",  "&& " + String.valueOf(code));
+        Log.d("회원 정보 받아오기 성공 ",  String.valueOf(code));
 
         if(code == 2000){
-            Log.d("회원 정보 받아오기 성공 ",  "&& " + String.valueOf(code));
+            Log.d("회원 정보 받아오기 성공 ", String.valueOf(code));
             Log.d("회원 닉네임: ", mypageFragmentResponse.getResult().getNickname());
             user_nick_name = mypageFragmentResponse.getResult().getNickname();
             String temp_str = user_nick_name.replaceAll(" ","");
@@ -270,27 +270,33 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
         }
 
         else{
-            Log.d("회원 정보 리스폰스 오류 : ", String.valueOf(code));
+            Log.d("회원 정보 리스폰스 오류", String.valueOf(code));
             Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void GetProfileSuccess(NicknameResponse nicknameResponse, int code) {
+    public void EditProfileFailure(String message, int code) {
 
     }
 
     @Override
+    public void EditProfileSuccess(NicknameResponse nicknameResponse, int code) {
+
+    }
+
+
+    @Override
     public void GetImogeFailure(String message, int code) {
-        Log.d("이모지 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+        Log.d("이모지 받아오기 실패 ", message + "&&" + String.valueOf(code));
     }
 
     @Override
     public void GetImogeSuccess(ImogeResponse imogeResponse, int code) {
-        Log.d("이모지 받아오기 성공 ",  "&& " + String.valueOf(code));
+        Log.d("이모지 받아오기 성공 ",  String.valueOf(code));
 
         if(code == 2000){
-            Log.d("이모지 받아오기 성공 ",  "&& " + String.valueOf(code));
+            Log.d("이모지 받아오기 성공 ", String.valueOf(code));
             Log.d("하트 이모지 개수", imogeResponse.getResult().getImogeList().get(0).getimogeNum());
 
             heart_cnt.setText(imogeResponse.getResult().getImogeList().get(0).getimogeNum());
@@ -305,24 +311,24 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
         }
 
         else{
-            Log.d("이모지 리스폰스 오류 : ", String.valueOf(code));
+            Log.d("이모지 리스폰스 오류", String.valueOf(code));
             Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void GetMyPostFailure(String message, int code) {
-        Log.d("내 게시물 받아오기 실패 ", message+ "&& " + String.valueOf(code));
+        Log.d("내 게시물 받아오기 실패", message + "&&" + String.valueOf(code));
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void GetMyPostSuccess(MyPostResponse myPostResponse, int code) {
-        Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
+        Log.d("내 게시물 받아오기 성공", String.valueOf(code));
 
         if(code == 2000){
-            Log.d("내 게시물 받아오기 성공 ",  "&& " + String.valueOf(code));
-            Log.d("postList 사이즈 ",  String.valueOf(myPostResponse.getResult().getPostList().size()));
+            Log.d("내 게시물 받아오기 성공", String.valueOf(code));
+            Log.d("postList 사이즈", String.valueOf(myPostResponse.getResult().getPostList().size()));
             MyPostResponse.Result result = myPostResponse.getResult();
             List<MyPostResponse.Post> postList = result.getPostList();
             MypageItem mypageItem;
@@ -363,7 +369,7 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
         }
 
         else{
-            Log.d("내 게시물 리스폰스 오류 : ", String.valueOf(code));
+            Log.d("내 게시물 리스폰스 오류", String.valueOf(code));
             Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
 

@@ -94,6 +94,13 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
             @Override
             public boolean onLongClick(View v) {
 
+                // post idx sharedpreferences에 담아서 editPost와 deletePost에서 사용
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx",mypageItems.get(position).getPostIdx().toString());
+                editor.commit();
+
                 ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(context);
                 viewAllPostDialog.show();
 

@@ -51,9 +51,9 @@ public class MypageService {
     }
 
     // 닉네임 수정하기
-    public void SetNickname(String userIdx, NicknameBody body){
+    public void EditNickname(String userIdx, NicknameBody body){
         final MypageFragmentRetrofitInterface mypageFragmentRetrofitInterface = getRetrofit().create(MypageFragmentRetrofitInterface.class);
-        mypageFragmentRetrofitInterface.SetProfileTest(userIdx, body).enqueue(new Callback<NicknameResponse>() {
+        mypageFragmentRetrofitInterface.EditProfileTest(userIdx, body).enqueue(new Callback<NicknameResponse>() {
 
             // 통신 성공
             @Override
@@ -62,17 +62,17 @@ public class MypageService {
 
                 if (nicknameResponse == null) {
                     // 통신 성공인데 값 받아오기 실패
-                    mypageFragmentActivityView.GetProfileFailure("null", 0);
+                    mypageFragmentActivityView.EditProfileFailure("null", 0);
                     return;
                 }
                 // 통신, 값 받아오기 성공
-                mypageFragmentActivityView.GetProfileSuccess(nicknameResponse,nicknameResponse.getCode());
+                mypageFragmentActivityView.EditProfileSuccess(nicknameResponse,nicknameResponse.getCode());
             }
 
             // API 통신 자체가 실패
             @Override
             public void onFailure(Call<NicknameResponse> call, Throwable t) {
-                mypageFragmentActivityView.GetProfileFailure("통신 자체 실패",0);
+                mypageFragmentActivityView.EditProfileFailure("통신 자체 실패",0);
             }
         });
     }
