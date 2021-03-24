@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorWhite"
-    android:layout_height="match_parent">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/alert_fm_tv"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="16sp"
-        android:text="@string/alert_title"
         style="@style/PageName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="left"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -24,23 +24,18 @@
         android:layout_marginBottom="17dp"
         android:includeFontPadding="false"
         android:textColor="@color/colorBlack"
-        />
-
-
+        android:text="@string/alert_title" />
 
     <ScrollView
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/alert_fm_tv"
-        android:layout_height="0dp"
-        android:layout_marginTop="17dp">
+        android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/alert_rv"
             android:layout_width="match_parent"
-            android:layout_gravity="top"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
 
+        </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

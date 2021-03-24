@@ -49,6 +49,16 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
         btnConfirm = findViewById(R.id.btnConfirm);
 
 
+
+        // post_idx로 게시물 조회
+        String get_post_idx;
+        sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
+        get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
+        Log.d("포스트 인덱스" , get_post_idx);
+
+        int post_idx = Integer.parseInt(get_post_idx);
+
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,17 +73,8 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
                 btnDelete.setVisibility(View.INVISIBLE);
                 btnConfirm.setVisibility(View.VISIBLE);
 
-                // post_idx로 게시물 조회
-                String get_post_idx;
-                sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
-                get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
-                Log.d("포스트 인덱스" , get_post_idx);
-
-                int post_idx = Integer.parseInt(get_post_idx);
-
-                // 게시물 삭제
+                // 게시물 삭제 -> 안됨
 //                postDetailActivityService.DeleteMyPost(post_idx);
-
             }
         });
         btnConfirm.setOnClickListener(new View.OnClickListener() {

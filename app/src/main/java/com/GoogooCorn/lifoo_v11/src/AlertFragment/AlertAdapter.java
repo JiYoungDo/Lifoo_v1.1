@@ -1,6 +1,8 @@
 package com.GoogooCorn.lifoo_v11.src.AlertFragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
+import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
+import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHolder> {
 
@@ -100,6 +108,28 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
 
         holder.Alert_txt.setText(mList.get(position).getAlert_string());
         holder.Alert_time.setText(mList.get(position).getAlert_hour());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // post idx sharedpreferences에 담아서 postDetail에서 사용
+                sSharedPreferences = context.getSharedPreferences(TAG,MODE_PRIVATE);
+                SharedPreferences.Editor editor = sSharedPreferences.edit();
+                editor.remove("clicked_post_idx");
+                editor.putString("clicked_post_idx", mList.get(position).getAlert_postIdx().toString());
+
+                editor.remove("clicked_imoge_idx");
+                editor.putString("clicked_imoge_idx", mList.get(position).getAlert_imoji().toString());
+
+                editor.remove("from_alert_activity");
+                editor.putString("from_alert_activity", "yes");
+
+                editor.commit();
+
+                Intent gotoDetailActivity = new Intent(context, PostDetailActivity.class);
+                ((MainActivity)context).startActivity(gotoDetailActivity);
+            }
+        });
 
     }
 }

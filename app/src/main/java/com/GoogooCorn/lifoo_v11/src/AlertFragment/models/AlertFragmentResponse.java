@@ -52,8 +52,8 @@ public class AlertFragmentResponse {
         private String postUrl;
         @SerializedName("ImogeIdx")
         private int ImogeIdx;
-        @SerializedName("alarmTxt")
-        private String alarmTxt;
+        @SerializedName("alarmText")
+        private String alarmText;
         @SerializedName("createdAt")
         private String createdAt;
 
@@ -70,8 +70,8 @@ public class AlertFragmentResponse {
             return ImogeIdx;
         }
 
-        public String getAlarmTxt() {
-            return alarmTxt;
+        public String getAlarmText() {
+            return alarmText;
         }
 
         public String getCreatedAt() {

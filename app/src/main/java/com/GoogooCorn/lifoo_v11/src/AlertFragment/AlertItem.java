@@ -1,5 +1,6 @@
 package com.GoogooCorn.lifoo_v11.src.AlertFragment;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
 public class AlertItem {
@@ -8,12 +9,14 @@ public class AlertItem {
     String alert_string;
     String alert_hour;
     String alert_img;
+    Integer alert_postIdx;
 
-    public AlertItem(Integer alert_imoji, String alert_string, String alert_hour, String alert_img) {
+    public AlertItem(Integer alert_imoji, String alert_string, String alert_hour, String alert_img, Integer alert_postIdx) {
         this.alert_imoji = alert_imoji;
         this.alert_string = alert_string;
         this.alert_hour = alert_hour;
         this.alert_img = alert_img;
+        this.alert_postIdx = alert_postIdx;
     }
 
 
@@ -47,5 +50,13 @@ public class AlertItem {
 
     public void setAlert_img(String alert_img) {
         this.alert_img = alert_img;
+    }
+
+    public Integer getAlert_postIdx() {
+        return alert_postIdx;
+    }
+
+    public void setAlert_postIdx(Integer alert_postIdx) {
+        this.alert_postIdx = alert_postIdx;
     }
 }
