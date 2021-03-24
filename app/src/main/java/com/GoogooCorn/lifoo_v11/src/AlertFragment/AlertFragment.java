@@ -78,8 +78,8 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
 
         // 어댑터
         alertAdapter = new AlertAdapter(alert_list);
-        alertAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(alertAdapter);
+        alertAdapter.notifyDataSetChanged();
 
 
         alertAdapter.setOnItemClickListener(new AlertAdapter.OnItemClickListener() {
@@ -91,7 +91,6 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
             }
         });
 
-        alertAdapter.notifyDataSetChanged();
         return viewGroup;
     }
 
