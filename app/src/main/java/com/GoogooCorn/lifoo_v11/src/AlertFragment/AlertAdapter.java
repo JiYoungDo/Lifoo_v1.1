@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,7 +54,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
 
     public class AlertViewHolder extends RecyclerView.ViewHolder {
 
-        RoundImageView Alert_img;
+        ImageView Alert_img;
         TextView Alert_txt;
         TextView Alert_time;
 
@@ -62,7 +63,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
             super(itemView);
 
             this.Alert_img = itemView.findViewById(R.id.alert_item_iv);
-            Alert_img.setRectRadius(15f);
+//            Alert_img.setRectRadius(15f);
             this.Alert_txt = itemView.findViewById(R.id.alert_item_tv_reaction_nick_name);
             this.Alert_time = itemView.findViewById(R.id.alert_item_tv_time);
 
