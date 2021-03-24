@@ -7,12 +7,14 @@ import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostImogeBody;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -42,6 +44,12 @@ public interface PostDetailRetrofitInterface {
     @DELETE("/posts/{postIdx}")
     Call<PostDeleteResponse> DeleteMyPostTest(
             @Path("postIdx") int postIdx
+    );
+
+    // 이모지 등록
+    @POST("/imoges")
+    Call<PostDeleteResponse> PostImogeTest(
+            @Body PostImogeBody body
     );
 
 }

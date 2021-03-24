@@ -17,4 +17,9 @@ public interface PostDetailActivityView {
     //게시물 삭제
     void DeletePostFailure(String message, int code);
     void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code);
+
+    // 이모지 등록
+   void PostImogeFailure(String message, int code);
+   void PostImogeSuccess(String message, int code);
+
 }

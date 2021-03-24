@@ -160,4 +160,14 @@ public class EditMyPost extends AppCompatActivity implements PostDetailActivityV
     public void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code) {
 
     }
+
+    @Override
+    public void PostImogeFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void PostImogeSuccess(String message, int code) {
+
+    }
 }

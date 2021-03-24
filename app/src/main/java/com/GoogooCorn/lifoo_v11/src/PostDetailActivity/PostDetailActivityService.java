@@ -8,6 +8,7 @@ import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailRetr
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostImogeBody;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -107,4 +108,31 @@ public class PostDetailActivityService {
         });
     }
 
+    // 이모지 보내기
+    void postImoge(String postIdx, String ImogeIdx ) {
+
+        final PostDetailRetrofitInterface postDetailRetrofitInterface = getRetrofit().create(PostDetailRetrofitInterface.class);
+        postDetailRetrofitInterface.PostImogeTest(new PostImogeBody(postIdx,ImogeIdx)).enqueue(new Callback<PostDeleteResponse>() {
+
+            // 통신 성공 시
+            @Override
+            public void onResponse(Call<PostDeleteResponse> call, Response<PostDeleteResponse> response) {
+                final PostDeleteResponse postImogeResponse = response.body();
+
+                if (postImogeResponse == null) {
+                    // 통신은 됬는데 결과 값이 null 이면?
+                    postDetailActivityView.PostImogeFailure("null", 0);
+                    return;
+                }
+                // 통신도 성공! 받아오는 값도 성공!
+                postDetailActivityView.PostImogeSuccess(postImogeResponse.getMessage(), postImogeResponse.getCode());
+            }
+
+            // API 통신 자체가 실패
+            @Override
+            public void onFailure(Call<PostDeleteResponse> call, Throwable t) {
+                postDetailActivityView.PostImogeFailure("통신 자체 실패",0);
+            }
+        });
+    }
 }

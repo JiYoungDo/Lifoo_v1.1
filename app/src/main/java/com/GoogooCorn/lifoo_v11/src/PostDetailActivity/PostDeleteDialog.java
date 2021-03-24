@@ -129,4 +129,14 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
             Toast.makeText(getApplicationContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void PostImogeFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void PostImogeSuccess(String message, int code) {
+
+    }
 }

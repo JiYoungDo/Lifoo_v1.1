@@ -40,6 +40,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
     LottieAnimationView lottieAnimationView;
 
+    // 클릭된 포스트 인덱스 , 클릭된 이모지 인덱스
+    String get_post_idx , clicked_imoge_idx;
+
     int get_imoge_count;
 
     @Override
@@ -51,12 +54,11 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
          * 앞선 feedfragment 에서 아이템 클릭시,
          * post_idx 를 sharedPreference에 저장 해놓은 것을 가져온다.
          * */
-        String get_post_idx;
+
         sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
 
         int to = Integer.parseInt(get_post_idx); // to 잘 들어옴 .
-
         TryPostDetail(to);
 
 
@@ -84,14 +86,95 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
         // 이모지
         imoji_cheer_up = findViewById(R.id.post_detail_iv_cheer_up_imoji);
+        imoji_cheer_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "3";
+                Log.d("이모지 클", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+
+            }
+        });
+
         imoji_congratuation = findViewById(R.id.post_detail_iv_congratuation_imoji);
+        imoji_congratuation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "6";
+                Log.d("이모지 클", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_don = findViewById(R.id.post_detail_iv_don_imoji);
+        imoji_don.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "4";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_ewww = findViewById(R.id.post_detail_iv_ewww_imoji);
+        imoji_ewww.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "7";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_fire = findViewById(R.id.post_detail_iv_fire_imoji);
+        imoji_fire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "8";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_heart = findViewById(R.id.post_detail_iv_heart_imoji);
+        imoji_heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "1";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_question = findViewById(R.id.post_detail_iv_question_imoji);
+        imoji_question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "5";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_sad_happy = findViewById(R.id.post_detail_iv_sad_happy_imoji);
+        imoji_sad_happy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "9";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
+
         imoji_wow = findViewById(R.id.post_detail_iv_wow_imoji);
+        imoji_wow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked_imoge_idx = "2";
+                Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                TryPostImoge(get_post_idx, clicked_imoge_idx);
+            }
+        });
 
         // 포스트 정보
         post_iv = findViewById(R.id.post_detail_iv_postImage);
@@ -115,6 +198,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     {
         postDetailActivityService.getDetailPost(postIdx);
     }
+
+    private void TryPostImoge(String postIdx, String ImogeIdx) {postDetailActivityService.postImoge(postIdx,ImogeIdx);}
+
 
 
     @Override
@@ -264,6 +350,16 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     @Override
     public void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code) {
 
+    }
+
+    @Override
+    public void PostImogeFailure(String message, int code) {
+        Log.d("이모지 포스트 실패", message+String.valueOf(code));
+    }
+
+    @Override
+    public void PostImogeSuccess(String message, int code) {
+        Log.d("이모지 포스트 성공", message+String.valueOf(code));
     }
 
 
