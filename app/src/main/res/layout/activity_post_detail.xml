@@ -135,6 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_heart_selector"/>
 
                     <ImageView
@@ -142,6 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_wow_selector"/>
 
                     <ImageView
@@ -149,6 +151,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_cheer_up_selector"/>
 
                     <ImageView
@@ -156,6 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_don_selector"/>
 
                     <ImageView
@@ -163,6 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_question_selector"/>
 
                     <ImageView
@@ -170,6 +175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_congratuation_selector"/>
 
                     <ImageView
@@ -177,6 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_ewww_selector"/>
 
                     <ImageView
@@ -184,6 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_fire_selector"/>
 
                     <ImageView
@@ -191,6 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="16dp"
+                        android:clickable="true"
                         android:src="@drawable/imoji_sad_happy_selector"/>
 
                     <View
