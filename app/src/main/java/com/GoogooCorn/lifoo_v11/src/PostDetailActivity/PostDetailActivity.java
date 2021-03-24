@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+
+import android.os.Bundle;
+import android.os.Handler;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.GoogooCorn.lifoo_v11.R;
-import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
@@ -78,11 +80,12 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         share_btn = findViewById(R.id.post_detail_btnShare);
         comments_btn = findViewById(R.id.post_detail_comments_btn);
 
+
         // 포스트 바로 아래
         title_nick = findViewById(R.id.post_detail_tv_title_nick);
         reaction_count = findViewById(R.id.post_detail_tv_reaction_count);
 
-
+        lottieAnimationView = findViewById(R.id.post_detail_lottie);
 
         // 이모지
         imoji_cheer_up = findViewById(R.id.post_detail_iv_cheer_up_imoji);
@@ -91,8 +94,10 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "3";
                 Log.d("이모지 클", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_cheer_up.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
-
             }
         });
 
@@ -102,6 +107,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "6";
                 Log.d("이모지 클", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_congratuation.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -112,6 +120,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "4";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_don.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -122,6 +133,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "7";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_ewww.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -132,6 +146,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "8";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_fire.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -142,6 +159,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "1";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_heart.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -152,6 +172,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "5";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_question.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -162,6 +185,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "9";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_sad_happy.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -172,6 +198,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
                 clicked_imoge_idx = "2";
                 Log.d("이모지 클릭", get_post_idx+"&&"+clicked_imoge_idx);
+                lottieAnimationView.setAnimation("imoji_wow.json");
+                lottieAnimationView.loop(false);
+                lottieAnimationView.playAnimation();
                 TryPostImoge(get_post_idx, clicked_imoge_idx);
             }
         });
@@ -186,7 +215,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
         comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
 
-        lottieAnimationView = findViewById(R.id.post_detail_lottie);
+
 
 
 
@@ -240,92 +269,88 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("가장 많이 눌린 이모지 뭔데?", String.valueOf(get_best_count));
         Log.d(" 이모지 총 개수 몇갠데?", String.valueOf(get_imoge_count));
 
-        switch (get_best_count)
-        {
-            case 1:
-                lottie_file_name = "imoji_heart.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-
-                break;
-            case 2:
-                lottie_file_name = "imoji_wow.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 3:
-                lottie_file_name = "imoji_cheer_up.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 4:
-                lottie_file_name = "imoji_don.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 5:
-                lottie_file_name = "imoji_question.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 6:
-                lottie_file_name = "imoji_congratuation.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 7:
-                lottie_file_name = "imoji_ewww.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 8:
-                lottie_file_name = "imoji_fire.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-            case 9:
-                lottie_file_name = "imoji_sad_happy.json";
-                lottieAnimationView.setAnimation(lottie_file_name);
-                lottieAnimationView.loop(false);
-                lottieAnimationView.playAnimation();
-                break;
-        }
-
-//        if(get_imoge_count>50)
+//        switch (get_best_count)
 //        {
-//            lottie_file_name_2 = "imoji_1000.json";
-//            lottieAnimationView.setAnimation(lottie_file_name_2);
-//            lottieAnimationView.loop(false);
-//            lottieAnimationView.playAnimation();
+//            case 1:
+//                lottie_file_name = "imoji_heart.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
 //
-//        }else if (get_imoge_count >25)
-//        {
-//            lottie_file_name_2 = "imoji_500.json";
-//            lottieAnimationView.setAnimation(lottie_file_name_2);
-//            lottieAnimationView.loop(false);
-//            lottieAnimationView.playAnimation();
-//
-//        }else if (get_imoge_count >12)
-//        {
-//            lottie_file_name_2 = "imoji_100.json";
-//            lottieAnimationView.setAnimation(lottie_file_name_2);
-//            lottieAnimationView.loop(false);
-//            lottieAnimationView.playAnimation();
-//        }else
-//        {
-//            lottie_file_name_2 = "imoji_50.json";
-//            lottieAnimationView.setAnimation(lottie_file_name_2);
-//            lottieAnimationView.loop(false);
-//            lottieAnimationView.playAnimation();
+//                break;
+//            case 2:
+//                lottie_file_name = "imoji_wow.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 3:
+//                lottie_file_name = "imoji_cheer_up.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 4:
+//                lottie_file_name = "imoji_don.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 5:
+//                lottie_file_name = "imoji_question.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 6:
+//                lottie_file_name = "imoji_congratuation.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 7:
+//                lottie_file_name = "imoji_ewww.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 8:
+//                lottie_file_name = "imoji_fire.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
+//            case 9:
+//                lottie_file_name = "imoji_sad_happy.json";
+//                lottieAnimationView.setAnimation(lottie_file_name);
+//                lottieAnimationView.loop(false);
+//                lottieAnimationView.playAnimation();
+//                break;
 //        }
+
+        if(get_imoge_count > 50)
+        {
+            lottieAnimationView.setAnimation("imoji_1000.json");
+            lottieAnimationView.loop(false);
+            lottieAnimationView.playAnimation();
+
+        }else if (get_imoge_count >25)
+        {
+            lottieAnimationView.setAnimation("imoji_500.json");
+            lottieAnimationView.loop(false);
+            lottieAnimationView.playAnimation();
+
+        }else if (get_imoge_count > 12)
+        {
+            lottieAnimationView.setAnimation("imoji_100.json");
+            lottieAnimationView.loop(false);
+            lottieAnimationView.playAnimation();
+        }else
+        {
+            lottieAnimationView.setAnimation("imoji_50.json");
+            lottieAnimationView.loop(false);
+            lottieAnimationView.playAnimation();
+        }
 
 
 
@@ -360,6 +385,15 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     @Override
     public void PostImogeSuccess(String message, int code) {
         Log.d("이모지 포스트 성공", message+String.valueOf(code));
+
+
+        Handler hand = new Handler();
+        hand.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                TryPostDetail(Integer.parseInt(get_post_idx));
+            }
+        },3000);
     }
 
 
