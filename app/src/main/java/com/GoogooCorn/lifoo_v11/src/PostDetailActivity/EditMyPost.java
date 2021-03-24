@@ -19,6 +19,7 @@ import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
@@ -168,6 +169,16 @@ public class EditMyPost extends AppCompatActivity implements PostDetailActivityV
 
     @Override
     public void PostImogeSuccess(String message, int code) {
+
+    }
+
+    @Override
+    public void GetCommentsFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void GetCommentsSuccess(GetCommentResponse getCommentResponse, int code) {
 
     }
 }

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 
@@ -30,7 +31,6 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
     private TextView post_delete_dialog_guide;
     private TextView btnConfirm;
 
-    
     PostDetailActivityService postDetailActivityService = new PostDetailActivityService(this);
 
     public PostDeleteDialog(@NonNull Context context) {
@@ -137,6 +137,16 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
 
     @Override
     public void PostImogeSuccess(String message, int code) {
+
+    }
+
+    @Override
+    public void GetCommentsFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void GetCommentsSuccess(GetCommentResponse getCommentResponse, int code) {
 
     }
 }

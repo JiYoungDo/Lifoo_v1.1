@@ -27,11 +27,11 @@ public interface PostDetailRetrofitInterface {
 
 
     // 댓글 상세 조회
-    /**@GET("/posts/{postIdx}/comments")
+    @GET("/posts/{postIdx}/comments")
     Call<GetCommentResponse> GetCommentTest(
             @Path("postIdx") int postIdx,
             @Query("size") Integer size_num,
-            @Query("page") Integer page_num); */
+            @Query("page") Integer page_num);
 
     // 게시물 수정
     @PATCH("/posts/{postIdx}")

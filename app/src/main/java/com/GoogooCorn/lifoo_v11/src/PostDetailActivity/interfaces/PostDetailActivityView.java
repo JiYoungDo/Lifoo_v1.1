@@ -1,6 +1,7 @@
 package com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces;
 
 
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 
@@ -19,7 +20,11 @@ public interface PostDetailActivityView {
     void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code);
 
     // 이모지 등록
-   void PostImogeFailure(String message, int code);
-   void PostImogeSuccess(String message, int code);
+    void PostImogeFailure(String message, int code);
+    void PostImogeSuccess(String message, int code);
+
+    // 댓글 등록 조회
+    void GetCommentsFailure(String message, int code);
+    void GetCommentsSuccess(GetCommentResponse getCommentResponse, int code);
 
 }

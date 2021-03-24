@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.GoogooCorn.lifoo_v11.R;
+import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertItem;
 
 import java.util.ArrayList;
 
@@ -22,10 +24,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
     private ArrayList<CommentItem> mList;
     Context context;
 
+    public CommentAdapter(ArrayList<CommentItem> mList) {
+        this.mList = mList;
+    }
+
     // 리스너 인터페이스 정의하기
     public interface OnItemClickListener
     {
-    void onItemClick(View v, int pos);
+        void onItemClick(View v, int pos);
     }
 
 
@@ -51,7 +57,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
         TextView Comment_nick_name;
         TextView Comment_contents;
-        Button Comment_like_btn;
+        ImageView Comment_like_btn;
         Button Comment_declare;
         Button Comment_comment;
         TextView Comment_like_count;
@@ -63,7 +69,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
             this.Comment_nick_name = itemView.findViewById(R.id.comment_view_writer_nickname);
             this.Comment_contents = itemView.findViewById(R.id.comment_view_content);
-            this.Comment_like_btn = itemView.findViewById(R.id.comment_view_btnLike);
+            this.Comment_like_btn = itemView.findViewById(R.id.comment_view_iv_btnLike);
             this.Comment_declare = itemView.findViewById(R.id.comment_view_btnReport);
             this.Comment_comment = itemView.findViewById(R.id.comment_view_btnAddComment);
             this.Comment_like_count = itemView.findViewById(R.id.comment_view_like_count);
@@ -86,8 +92,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
 
 
-    // 생성자에서 List 객체를 전달
-    public void CommentViewHolder(ArrayList<CommentItem> mList) { this.mList = mList; }
 
 
 
@@ -115,6 +119,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         holder.Comment_like_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /** 댓글 좋아요 api */
 
             }
         });
@@ -124,7 +129,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         holder.Comment_declare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                /** 댓글 신고 api */
             }
         });
 
@@ -133,7 +138,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         holder.Comment_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                /** 댓글 달기 api */
             }
         });
 

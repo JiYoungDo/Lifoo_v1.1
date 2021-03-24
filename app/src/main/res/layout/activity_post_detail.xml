@@ -9,6 +9,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+<!--    상단-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -54,14 +55,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/colorWhite">
 
-
+<!--            이미지 + 애니메이션 뷰-->
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="410dp">
@@ -83,6 +83,7 @@
 
             </FrameLayout>
 
+<!--            이모지 위 텍스트 & 공유 & 댓글-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -302,25 +303,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-
                 </androidx.recyclerview.widget.RecyclerView>
 
 
             </ScrollView>
 
-            <include
-                android:id="@+id/comment_1"
-                layout="@layout/comment_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp" />
-
-            <include
-                android:id="@+id/comment_2"
-                layout="@layout/comment_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="11dp" />
 
 
         </LinearLayout>
