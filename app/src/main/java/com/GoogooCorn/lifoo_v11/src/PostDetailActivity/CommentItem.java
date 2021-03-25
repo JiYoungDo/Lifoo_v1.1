@@ -5,11 +5,15 @@ public class CommentItem {
     String comment_nick_name;
     String comment_body;
     int comment_like_count;
+    String comment_idx;
+    String is_clicked;
 
-    public CommentItem(String comment_nick_name, String comment_body, int comment_like_count) {
+    public CommentItem(String comment_nick_name, String comment_body, int comment_like_count,String comment_idx, String is_clicked) {
         this.comment_nick_name = comment_nick_name;
         this.comment_body = comment_body;
         this.comment_like_count = comment_like_count;
+        this.comment_idx = comment_idx;
+        this.is_clicked = is_clicked;
     }
 
     public String getComment_nick_name() {
@@ -34,5 +38,21 @@ public class CommentItem {
 
     public void setComment_like_count(int comment_like_count) {
         this.comment_like_count = comment_like_count;
+    }
+
+    public String getComment_idx() {
+        return comment_idx;
+    }
+
+    public void setComment_idx(String comment_idx) {
+        this.comment_idx = comment_idx;
+    }
+
+    public String getIs_clicked() {
+        return is_clicked;
+    }
+
+    public void setIs_clicked(String is_clicked) {
+        this.is_clicked = is_clicked;
     }
 }

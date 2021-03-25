@@ -2,10 +2,12 @@ package com.GoogooCorn.lifoo_v11.src.PostDetailActivity;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,18 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertItem;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.CommentsActivityView;
 
 import java.util.ArrayList;
 
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder>{
-
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder> implements CommentsActivityView {
 
     private ArrayList<CommentItem> mList;
     Context context;
 
+    CommentsService commentsService = new CommentsService(this);
+
     public CommentAdapter(ArrayList<CommentItem> mList) {
         this.mList = mList;
     }
+
 
     // 리스너 인터페이스 정의하기
     public interface OnItemClickListener
@@ -57,7 +62,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
         TextView Comment_nick_name;
         TextView Comment_contents;
-        ImageView Comment_like_btn;
+        ImageButton Comment_like_btn;
         Button Comment_declare;
         Button Comment_comment;
         TextView Comment_like_count;
@@ -115,11 +120,26 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         holder.Comment_contents.setText(mList.get(position).getComment_body());
         holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count));
 
+        if(mList.get(position).getIs_clicked().equals("N"))
+        { holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
+        }else{ holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
+        }
+
         // 좋아요
         holder.Comment_like_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /** 댓글 좋아요 api */
+                if(mList.get(position).getIs_clicked().equals("N"))
+                {
+                    holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
+                    holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count+1));
+                }else{
+                    holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
+                    holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count-1));
+                }
+
+                TryPostCommetLikeTest(mList.get(position).getComment_idx());
 
             }
         });
@@ -146,12 +166,21 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
     }
 
 
+    private void TryPostCommetLikeTest(String commentIdx)
+    {
+        commentsService.postLikes(commentIdx);
+    }
 
+    @Override
+    public void PostCommentsLikesFailure(String message, int code) {
+        Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
+    }
 
+    @Override
+    public void PostCommentsLikesSuccess(String message, int code) {
+        Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
 
-
-
-
+    }
 
 
 }

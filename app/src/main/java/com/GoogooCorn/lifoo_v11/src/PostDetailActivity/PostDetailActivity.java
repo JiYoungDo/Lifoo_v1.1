@@ -414,7 +414,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 String comment_nick_name = getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getCommentNickname();
                 String comment_body = getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getCommentBody();
                 int comment_like_count = getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getLikeNum();
-                CommentItem commentItem = new CommentItem(comment_nick_name,comment_body,comment_like_count);
+                String comment_idx = String.valueOf(getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getCommentIdx());
+                String is_clicked = String.valueOf(getCommentResponse.getResult().getCommentLists().get(list_size-((i+1))).getIsLikeClicked());
+                CommentItem commentItem = new CommentItem(comment_nick_name,comment_body,comment_like_count,comment_idx,is_clicked);
 
                 comment_list.add(commentItem);
 

@@ -40,15 +40,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <ImageView
-            android:clickable="true"
+        <ImageButton
             android:id="@+id/comment_view_iv_btnLike"
-            android:layout_width="9dp"
-            android:layout_height="9dp"
+            android:layout_width="13sp"
+            android:layout_height="14sp"
             android:layout_gravity="center"
             android:layout_marginEnd="21.8dp"
             android:layout_marginRight="21.8dp"
-            android:src="@drawable/heart_not_filled" />
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:src="@drawable/heart_selector" />
 
     </LinearLayout>
 
