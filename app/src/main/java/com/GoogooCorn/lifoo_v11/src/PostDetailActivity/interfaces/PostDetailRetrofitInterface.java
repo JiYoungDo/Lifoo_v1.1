@@ -35,7 +35,7 @@ public interface PostDetailRetrofitInterface {
             @Query("page") Integer page_num);
 
     // 댓글 게시
-    @GET("/comments")
+    @POST("/comments")
     Call<PostDeleteResponse> PostCommentTest(
             @Body CommentBody body);
 

@@ -310,13 +310,11 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
 
+
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:layout_marginTop="20dp">
 
                         <EditText
                             android:id="@+id/post_detail_et_post_comments"
@@ -325,8 +323,9 @@
                             android:textSize="13sp"
                             android:fontFamily="@font/noto_sans_cjkkr"
                             android:background="@drawable/red_line_bg"
-                            android:layout_gravity="left|center_horizontal"
                             android:hint="@string/enter_hint"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
                             android:paddingLeft="25dp"
                             android:textColorHint="@color/colorDarkGray"
                             android:textColor="@color/colorBlack"/>
@@ -334,15 +333,23 @@
                         <Button
                             android:id="@+id/post_detail_btn_post_comments"
                             android:clickable="true"
-                            android:layout_width="wrap_content"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right|center_vertical"
-                            android:background="@color/transparent"
                             android:paddingRight="30dp"
-                            android:paddingBottom="10dp"
+                            android:layout_gravity="end|center_vertical|center_horizontal"
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="13sp"
+                            android:background="@color/transparent"
+                            android:fontFamily="@font/noto_sans_cjkkr"
+                            android:padding="15dp"
+                            android:layout_marginBottom="10dp"
                             android:text="@string/post"/>
 
+
                     </FrameLayout>
+
 
                 </LinearLayout>
 

@@ -252,6 +252,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         // 댓글 게시
         comment_body_et = findViewById(R.id.post_detail_et_post_comments);
         comment_post_btn = findViewById(R.id.post_detail_btn_post_comments);
+        comment_post_btn.bringToFront();
+
         comment_post_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -279,7 +281,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
     private void TryPostComments(String postIdx,String postBody)
     {
-        // postDetailActivityService.postComments(postIdx,postBody);
+        postDetailActivityService.postComments(postIdx,postBody);
     }
 
 
@@ -433,6 +435,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     @Override
     public void PostCommentsSuccess(String message, int code) {
         Log.d("포스트 게시 성공" , message+String.valueOf(code));
+        // 댓글 보냈으니까 화면 갱신.
         TryGetComments(Integer.parseInt(get_post_idx));
     }
 
