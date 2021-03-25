@@ -121,8 +121,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count));
 
         if(mList.get(position).getIs_clicked().equals("N"))
-        { holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
-        }else{ holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
+        {
+            holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
+        }else if(mList.get(position).getIs_clicked().equals("Y")){
+            holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
+        }else {
         }
 
         // 좋아요
@@ -133,13 +136,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
                 if(mList.get(position).getIs_clicked().equals("N"))
                 {
                     holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
-                    holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count+1));
-                }else{
+                    holder.Comment_like_count.setText("좋아요 "+ String.valueOf(like_count+1));
+                    TryPostCommetLikeTest(mList.get(position).getComment_idx());
+
+                }else if(mList.get(position).getIs_clicked().equals("Y")){
+
                     holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
                     holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count-1));
+                    TryPostCommetLikeTest(mList.get(position).getComment_idx());
+                }else{
                 }
-
-                TryPostCommetLikeTest(mList.get(position).getComment_idx());
 
             }
         });
@@ -150,6 +156,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
             @Override
             public void onClick(View v) {
                 /** 댓글 신고 api */
+
             }
         });
 
@@ -179,7 +186,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
     @Override
     public void PostCommentsLikesSuccess(String message, int code) {
         Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
-
     }
 
 

@@ -306,9 +306,12 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/post_detail_comment_rv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </androidx.recyclerview.widget.RecyclerView>
+                        android:layout_height="wrap_content"
+                        android:scrollbarFadeDuration="0"
+                        android:scrollbarSize="5dp"
+                        android:scrollbars="vertical"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
 
                     <FrameLayout

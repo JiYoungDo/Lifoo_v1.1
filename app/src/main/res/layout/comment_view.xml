@@ -52,7 +52,7 @@
             android:scaleType="fitXY"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:src="@drawable/heart_selector" />
+            android:src="@drawable/heart_not_filled" />
 
     </LinearLayout>
 

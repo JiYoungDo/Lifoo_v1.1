@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.airbnb.lottie.LottieAnimationView;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -58,6 +60,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
     LottieAnimationView lottieAnimationView;
 
+    public static Context mContext;
+
     // 클릭된 포스트 인덱스 , 클릭된 이모지 인덱스
     String get_post_idx , clicked_imoge_idx;
 
@@ -67,6 +71,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+
+        mContext = this;
 
         /**
          * 앞선 feedfragment 에서 아이템 클릭시,
@@ -230,18 +236,21 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         post_time = findViewById(R.id.post_detail_time);
 
 
-        comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        comments_recyclerview.setLayoutManager(linearLayoutManager);
-
         comment_list = new ArrayList<CommentItem>();
 
         commentAdapter = new CommentAdapter(comment_list);
+
+        comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
         comments_recyclerview.setAdapter(commentAdapter);
+
+         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+         comments_recyclerview.setLayoutManager(linearLayoutManager);
+         comments_recyclerview.setAdapter(commentAdapter);
 
         commentAdapter.setOnItemClickListener(new CommentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
+                // commentAdapter.notifyDataSetChanged();
             }
         });
 
@@ -446,6 +455,14 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         TryGetComments(Integer.parseInt(get_post_idx));
 
     }
+
+    public void Call_comment_Adapter()
+    {
+        commentAdapter.notifyDataSetChanged();
+    }
+
+    
+
 
 
 }
