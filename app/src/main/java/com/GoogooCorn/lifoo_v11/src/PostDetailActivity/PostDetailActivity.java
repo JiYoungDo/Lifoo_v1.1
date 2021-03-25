@@ -259,6 +259,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void onClick(View v) {
 
                 TryPostComments(get_post_idx,comment_body_et.getText().toString());
+                comment_body_et.setText("");
 
             }
         });
@@ -403,14 +404,16 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
         Log.d("댓글 조회 성공", getCommentResponse.getMessage()+"&&"+String.valueOf(code));
 
+
+
         if(!(code == 3210))
         {
             int list_size = getCommentResponse.getResult().getCommentLists().size();
             for(int i = 0; i<list_size; i++)
             {
-                String comment_nick_name = getCommentResponse.getResult().getCommentLists().get(i).getCommentNickname();
-                String comment_body = getCommentResponse.getResult().getCommentLists().get(i).getCommentBody();
-                int comment_like_count = getCommentResponse.getResult().getCommentLists().get(i).getLikeNum();
+                String comment_nick_name = getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getCommentNickname();
+                String comment_body = getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getCommentBody();
+                int comment_like_count = getCommentResponse.getResult().getCommentLists().get(list_size - (i+1)).getLikeNum();
                 CommentItem commentItem = new CommentItem(comment_nick_name,comment_body,comment_like_count);
 
                 comment_list.add(commentItem);
@@ -436,7 +439,10 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     public void PostCommentsSuccess(String message, int code) {
         Log.d("포스트 게시 성공" , message+String.valueOf(code));
         // 댓글 보냈으니까 화면 갱신.
+        comment_list.clear();
+        commentAdapter.notifyDataSetChanged();
         TryGetComments(Integer.parseInt(get_post_idx));
+
     }
 
 
