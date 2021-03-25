@@ -150,4 +150,14 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
     public void GetCommentsSuccess(GetCommentResponse getCommentResponse, int code) {
 
     }
+
+    @Override
+    public void PostCommentsFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void PostCommentsSuccess(String message, int code) {
+
+    }
 }

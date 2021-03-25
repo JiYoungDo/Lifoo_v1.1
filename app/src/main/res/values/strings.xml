@@ -40,5 +40,7 @@
     <string name="enter_contents">내용을 입력해주세요</string>
     <string name="modify_nickname">닉네임 수정</string>
     <string name="modify_nickname_info">닉네임은 최대 6글자로 설정가능합니다.\n형용사와 음식 이름 조합을 권장드려요!</string>
+    <string name="enter_hint">댓글 입력...</string>
+    <string name="post">게시</string>
 
 </resources>

@@ -181,4 +181,14 @@ public class EditMyPost extends AppCompatActivity implements PostDetailActivityV
     public void GetCommentsSuccess(GetCommentResponse getCommentResponse, int code) {
 
     }
+
+    @Override
+    public void PostCommentsFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void PostCommentsSuccess(String message, int code) {
+
+    }
 }

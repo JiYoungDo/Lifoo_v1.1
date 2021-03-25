@@ -27,4 +27,7 @@ public interface PostDetailActivityView {
     void GetCommentsFailure(String message, int code);
     void GetCommentsSuccess(GetCommentResponse getCommentResponse, int code);
 
+    // 댓글 게시
+    void PostCommentsFailure(String message, int code);
+    void PostCommentsSuccess(String message, int code);
 }

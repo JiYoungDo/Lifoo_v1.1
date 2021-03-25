@@ -3,6 +3,7 @@ package com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.models.AlertFragmentResponse;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameBody;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameResponse;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
@@ -32,6 +33,11 @@ public interface PostDetailRetrofitInterface {
             @Path("postIdx") int postIdx,
             @Query("size") Integer size_num,
             @Query("page") Integer page_num);
+
+    // 댓글 게시
+    @GET("/comments")
+    Call<PostDeleteResponse> PostCommentTest(
+            @Body CommentBody body);
 
     // 게시물 수정
     @PATCH("/posts/{postIdx}")

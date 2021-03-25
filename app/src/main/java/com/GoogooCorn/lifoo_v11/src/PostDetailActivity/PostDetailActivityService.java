@@ -5,6 +5,7 @@ package com.GoogooCorn.lifoo_v11.src.PostDetailActivity;
 
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailRetrofitInterface;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
@@ -161,6 +162,35 @@ public class PostDetailActivityService {
             @Override
             public void onFailure(Call<GetCommentResponse> call, Throwable t) {
                 postDetailActivityView.GetCommentsFailure("통신 자체 실패",0);
+            }
+        });
+    }
+
+
+    // 댓글 게시하기
+    void postComments(String postIdx, String postBody) {
+
+        final PostDetailRetrofitInterface postDetailRetrofitInterface = getRetrofit().create(PostDetailRetrofitInterface.class);
+        postDetailRetrofitInterface.PostCommentTest(new CommentBody(postIdx,postBody)).enqueue(new Callback<PostDeleteResponse>() {
+
+            // 통신 성공 시
+            @Override
+            public void onResponse(Call<PostDeleteResponse> call, Response<PostDeleteResponse> response) {
+                final PostDeleteResponse postCommentResponse = response.body();
+
+                if (postCommentResponse == null) {
+                    // 통신은 됬는데 결과 값이 null 이면?
+                    postDetailActivityView.PostCommentsFailure("null", 0);
+                    return;
+                }
+                // 통신도 성공! 받아오는 값도 성공!
+                postDetailActivityView.PostCommentsSuccess(postCommentResponse.getMessage(), postCommentResponse.getCode());
+            }
+
+            // API 통신 자체가 실패
+            @Override
+            public void onFailure(Call<PostDeleteResponse> call, Throwable t) {
+                postDetailActivityView.PostCommentsFailure("통신 자체 실패",0);
             }
         });
     }

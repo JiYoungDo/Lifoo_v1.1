@@ -14,12 +14,14 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertAdapter;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertItem;
+import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
@@ -51,6 +53,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     ArrayList comment_list;
     CommentAdapter commentAdapter;
 
+    EditText comment_body_et;
+    Button comment_post_btn;
 
     LottieAnimationView lottieAnimationView;
 
@@ -81,8 +85,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -238,12 +242,24 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         commentAdapter.setOnItemClickListener(new CommentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int pos) {
-
-
             }
         });
 
         commentAdapter.notifyDataSetChanged();
+
+
+
+        // 댓글 게시
+        comment_body_et = findViewById(R.id.post_detail_et_post_comments);
+        comment_post_btn = findViewById(R.id.post_detail_btn_post_comments);
+        comment_post_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TryPostComments(get_post_idx,comment_body_et.getText().toString());
+
+            }
+        });
 
     }
 
@@ -260,6 +276,12 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     {
         postDetailActivityService.getComments(postIdx);
     }
+
+    private void TryPostComments(String postIdx,String postBody)
+    {
+        // postDetailActivityService.postComments(postIdx,postBody);
+    }
+
 
 
     @Override
@@ -399,6 +421,19 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
 
 
+    }
+
+    @Override
+    public void PostCommentsFailure(String message, int code) {
+        Log.d("포스트 게시 실패" , message+String.valueOf(code));
+
+
+    }
+
+    @Override
+    public void PostCommentsSuccess(String message, int code) {
+        Log.d("포스트 게시 성공" , message+String.valueOf(code));
+        TryGetComments(Integer.parseInt(get_post_idx));
     }
 
 
