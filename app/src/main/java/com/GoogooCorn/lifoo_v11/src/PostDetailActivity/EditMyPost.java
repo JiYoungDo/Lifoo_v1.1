@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.ViewAllPost;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
@@ -91,9 +92,6 @@ public class EditMyPost extends AppCompatActivity implements PostDetailActivityV
                 PostEditBody postEditBody = new PostEditBody(post_img_url, modifiable_title.getText().toString(), modifiable_content.getText().toString());
                 postDetailActivityService.EditMyPost(post_idx, postEditBody);
 
-//                Intent intent = new Intent(getApplicationContext(), ViewAllPost.class);
-//                startActivity(intent);
-                finish();
             }
         });
         btnFinishBottom.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +101,6 @@ public class EditMyPost extends AppCompatActivity implements PostDetailActivityV
                 PostEditBody postEditBody = new PostEditBody(post_img_url, modifiable_title.getText().toString(), modifiable_content.getText().toString());
                 postDetailActivityService.EditMyPost(post_idx, postEditBody);
 
-                finish();
             }
         });
     }
@@ -140,8 +137,8 @@ public class EditMyPost extends AppCompatActivity implements PostDetailActivityV
 
             Toast.makeText(getApplicationContext(), "게시물이 수정되었습니다 :)" , Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), ViewAllPost.class);
+//            startActivity(intent);
 
             finish();
         }

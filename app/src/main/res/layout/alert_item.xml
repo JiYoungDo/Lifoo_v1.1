@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <ImageView
         android:id="@+id/alert_item_iv"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -14,7 +14,7 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:scaleType="fitXY"
-        android:src="@drawable/frame_1"/>
+        android:src="@drawable/food_image"/>
 
     <TextView
         android:id="@+id/alert_item_tv_reaction_nick_name"

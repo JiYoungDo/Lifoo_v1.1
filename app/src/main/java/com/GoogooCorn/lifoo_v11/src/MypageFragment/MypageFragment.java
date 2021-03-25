@@ -223,7 +223,7 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
         if(code == 2000){
             Log.d("회원 정보 받아오기 성공 ", String.valueOf(code));
-            Log.d("회원 닉네임: ", mypageFragmentResponse.getResult().getNickname());
+            Log.d("회원 닉네임 ", mypageFragmentResponse.getResult().getNickname());
             user_nick_name = mypageFragmentResponse.getResult().getNickname();
             String temp_str = user_nick_name.replaceAll(" ","");
             Log.d("빈칸 없나 확인", temp_str);
@@ -318,16 +318,16 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
     @Override
     public void GetMyPostFailure(String message, int code) {
-        Log.d("내 게시물 받아오기 실패", message + "&&" + String.valueOf(code));
+        Log.d("내 게시물 받아오기 실패 ", message + "&&" + String.valueOf(code));
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void GetMyPostSuccess(MyPostResponse myPostResponse, int code) {
-        Log.d("내 게시물 받아오기 성공", String.valueOf(code));
+        Log.d("내 게시물 받아오기 성공 ", String.valueOf(code));
 
         if(code == 2000){
-            Log.d("내 게시물 받아오기 성공", String.valueOf(code));
+            Log.d("내 게시물 받아오기 성공 ", String.valueOf(code));
             Log.d("postList 사이즈", String.valueOf(myPostResponse.getResult().getPostList().size()));
             MyPostResponse.Result result = myPostResponse.getResult();
             List<MyPostResponse.Post> postList = result.getPostList();
@@ -335,11 +335,8 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
 
             for(int i = 0; i < postList.size(); i++) {
                 Drawable badge = null;
-                if(postList.get(i).getTotalImoge() < 50){
-//                    badge = getResources().getDrawable(R.drawable.badge_blue_40);
-//                    badge.setVisible(false, false);
-                }
-                else if(postList.get(i).getTotalImoge() >= 50
+
+                if(postList.get(i).getTotalImoge() >= 20
                         && postList.get(i).getTotalImoge() < 100){
                     badge = getResources().getDrawable(R.drawable.badge_red_40);
                 }
@@ -356,12 +353,18 @@ public class MypageFragment extends Fragment implements MypageFragmentActivityVi
                 }
                 mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge, postList.get(i).getPostIdx());
                 mypost_list.add(mypageItem);
-                page_num +=1;
-
-                if(page_num <=10)
-                    TryGetMyPosts(page_num);
+//                page_num += 1;
+//
+//                if(page_num <= 10)
+//                    TryGetMyPosts(page_num);
                 mypageAdapter.notifyDataSetChanged();
+
+                if(i == 9){
+                    page_num += 1;
+                    TryGetMyPosts(page_num);
+                }
             }
+            page_num = 0;
         }
 
         else if(code == 3208){
