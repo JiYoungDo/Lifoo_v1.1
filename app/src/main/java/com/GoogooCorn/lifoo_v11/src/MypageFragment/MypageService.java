@@ -103,9 +103,10 @@ public class MypageService {
         });
     }
 
+    // 내 게시물 가져오기
     public void GetMyPost(int page_num){
         final MypageFragmentRetrofitInterface mypageFragmentRetrofitInterface = getRetrofit().create(MypageFragmentRetrofitInterface.class);
-        mypageFragmentRetrofitInterface.GetMyPostTest("USER", 6, page_num).enqueue(new Callback<MyPostResponse>() {
+        mypageFragmentRetrofitInterface.GetMyPostTest("USER", 10, page_num).enqueue(new Callback<MyPostResponse>() {
             // 통신 성공
             @Override
             public void onResponse(Call<MyPostResponse> call, Response<MyPostResponse> response) {

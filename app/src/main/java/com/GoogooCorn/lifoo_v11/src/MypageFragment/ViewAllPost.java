@@ -185,17 +185,15 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
 
         if(code == 2000){
             Log.d("내 게시물 받아오기 성공", String.valueOf(code));
+            Log.d("postList 사이즈", String.valueOf(myPostResponse.getResult().getPostList().size()));
             MyPostResponse.Result result = myPostResponse.getResult();
             List<MyPostResponse.Post> postList = result.getPostList();
             MypageItem mypageItem;
 
             for(int i = 0; i < postList.size() ; i++) {
                 Drawable badge = null;
-                if(postList.get(i).getTotalImoge() < 50){
-//                    badge = getResources().getDrawable(R.drawable.badge_blue_30);
-//                    badge.setVisible(false, false);
-                }
-                else if(postList.get(i).getTotalImoge() >= 50
+
+                if(postList.get(i).getTotalImoge() >= 20
                         && postList.get(i).getTotalImoge() < 100){
                     badge = getResources().getDrawable(R.drawable.badge_red_30);
                 }
@@ -212,12 +210,18 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
                 }
                 mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge, postList.get(i).getPostIdx());
                 view_all_list.add(mypageItem);
-                page_num +=1;
-
-                if(page_num <=10)
-                    TryGetMyPosts(page_num);
+//                page_num +=1;
+//
+//                if(page_num <= 10)
+//                    TryGetMyPosts(page_num);
                 viewAllPostAdapter.notifyDataSetChanged();
+
+                if(i == 9){
+                    page_num += 1;
+                    TryGetMyPosts(page_num);
+                }
             }
+            page_num = 0;
         }
 
         else if(code == 3208){

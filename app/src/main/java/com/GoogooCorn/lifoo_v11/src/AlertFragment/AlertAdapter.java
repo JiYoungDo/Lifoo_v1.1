@@ -25,9 +25,9 @@ import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHolder> {
-
-    private ArrayList<AlertItem> mList;
     Context context;
+    private ArrayList<AlertItem> mList;
+
 
     // 리스너 인터페이스 정의하기
     public interface OnItemClickListener
@@ -49,7 +49,6 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
         // mList 비어 있으면 0리턴, 아니면 mList 사이즈 리턴
         return (null != mList ? mList.size():0);
     }
-
 
 
     public class AlertViewHolder extends RecyclerView.ViewHolder {
@@ -94,7 +93,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.alert_item,viewGroup,false);
         AlertAdapter. AlertViewHolder viewHolder = new AlertAdapter.AlertViewHolder(view);
-        this.context =viewGroup.getContext();
+        this.context = viewGroup.getContext();
         return viewHolder;
     }
 
