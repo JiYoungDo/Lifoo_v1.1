@@ -306,7 +306,7 @@
                     <com.baoyz.swipemenulistview.SwipeMenuListView
                         android:id="@+id/post_detail_comment_rv"
                         android:layout_width="match_parent"
-                        android:layout_height="500dp"
+                        android:layout_height="900dp"
                         android:scrollbarFadeDuration="0"
                         android:scrollbarSize="5dp"
                         android:outlineProvider="none"

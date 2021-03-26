@@ -712,6 +712,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     @Override
     public void DeleteCommentsSuccess(String message, int code) {
         Log.d("댓글 삭패제 성", message+"&&"+String.valueOf(code));
+        comment_list.clear();
+        appAdapter.notifyDataSetChanged();
         TryGetComments(Integer.parseInt(get_post_idx));
     }
 
