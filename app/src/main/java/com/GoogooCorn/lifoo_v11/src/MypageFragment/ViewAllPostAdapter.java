@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.EditMyPost;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDeleteDialog;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 import com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView;
 import com.bumptech.glide.Glide;
@@ -110,9 +112,12 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
                     @Override
                     public void onClick(View v) {
                         // 해당 게시물 삭제
-                        Toast.makeText(context, "삭제 클릭", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "삭제 클릭", Toast.LENGTH_SHORT).show();
                         holder.btnDelete.setVisibility(View.GONE);
                         holder.btnEdit.setVisibility(View.GONE);
+                        // 삭제 다이얼로그
+                        PostDeleteDialog postDeleteDialog = new PostDeleteDialog(context);
+                        postDeleteDialog.show();
                     }
                 });
                 holder.btnEdit.setVisibility(View.VISIBLE);
@@ -121,9 +126,12 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
                     public void onClick(View v) {
                         // 해당 게시물 편짐
                         // 해당 게시물 삭제
-                        Toast.makeText(context, "편집 클릭", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "편집 클릭", Toast.LENGTH_SHORT).show();
                         holder.btnDelete.setVisibility(View.GONE);
                         holder.btnEdit.setVisibility(View.GONE);
+                        // 게시물 수정 페이지로 이동
+                        Intent intent = new Intent(context, EditMyPost.class);
+                        context.startActivity(intent);
                     }
                 });
 

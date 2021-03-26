@@ -92,6 +92,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     int get_imoge_count;
     int get_host_idx;
     String user_idx;
+    String get_imoge_idx;
+    String from_alert_activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,9 +108,12 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
          * */
 
         sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sSharedPreferences.edit();
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
         user_idx = sSharedPreferences.getString("user_idx", "");
-
+        get_imoge_idx = sSharedPreferences.getString("clicked_imoge_idx", "");
+        from_alert_activity = sSharedPreferences.getString("from_alert_activity", "");
+        editor.remove("from_alert_activity");
 
         int to = Integer.parseInt(get_post_idx); // to 잘 들어옴 .
 
@@ -122,8 +127,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(PostDetailActivity.this, MainActivity.class);
+//                startActivity(intent);
                 finish();
             }
         });
@@ -456,7 +461,6 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("가장 많이 눌린 이모지 뭔데?", String.valueOf(get_best_count));
         Log.d(" 이모지 총 개수 몇갠데?", String.valueOf(get_imoge_count));
 
-
         if(get_imoge_count > 50)
         {
             lottieAnimationView.setAnimation("imoji_1000.json");
@@ -481,8 +485,61 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             lottieAnimationView.playAnimation();
         }
 
-
-
+//        // 알림에서 넘어온 상세화면일 경우
+//        if(from_alert_activity.equals("yes")){
+//            switch (get_imoge_idx){
+//                case "1":
+//                    lottieAnimationView.setAnimation("imoji_heart.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "2":
+//                    lottieAnimationView.setAnimation("imoji_wow.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "3":
+//                    lottieAnimationView.setAnimation("imoji_cheer_up.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "4":
+//                    lottieAnimationView.setAnimation("imoji_don.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "5":
+//                    lottieAnimationView.setAnimation("imoji_question.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "6":
+//                    lottieAnimationView.setAnimation("imoji_congratuation.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "7":
+//                    lottieAnimationView.setAnimation("imoji_ewww.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "8":
+//                    lottieAnimationView.setAnimation("imoji_fire.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//                case "9":
+//                    lottieAnimationView.setAnimation("imoji_sad_happy.json");
+//                    lottieAnimationView.loop(false);
+//                    lottieAnimationView.playAnimation();
+//                    break;
+//            }
+//        }
+//
+//        // 그냥 상세화면일 경우
+//        else {
+//
+//        }
 
     }
     @Override
