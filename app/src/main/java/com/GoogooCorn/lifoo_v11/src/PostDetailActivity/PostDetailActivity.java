@@ -266,17 +266,14 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 //"edit" item
                 SwipeMenuItem editItem = new SwipeMenuItem(getApplicationContext());
                 editItem.setBackground(R.color.colorLightGray);
-                editItem.setWidth(dp2px(90));
-                editItem.setTitle("수");
+                editItem.setWidth(dp2px(60));
                 editItem.setIcon(R.drawable.edit_icon);
-                editItem.setTitleSize(18);
-                editItem.setTitleColor(Color.WHITE);
                 menu.addMenuItem(editItem);
 
                 //"delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
                 deleteItem.setBackground(R.color.colorRed);
-                deleteItem.setWidth(dp2px(90));
+                deleteItem.setWidth(dp2px(60));
                 deleteItem.setIcon(R.drawable.delete_icon);
                 menu.addMenuItem(deleteItem);
             }
@@ -311,7 +308,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                             }
                         });
                         builder.setMessage("해당 댓글을 정말 삭제하시겠어요?");
-                       builder.setTitle("삭제 알림창");
+                        builder.setTitle("삭제 알림창");
                         builder.show();
                         break;
                 }
@@ -498,7 +495,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             public void run() {
                 TryPostDetail(Integer.parseInt(get_post_idx));
             }
-        },3000);
+        },2500);
     }
 
 
@@ -578,8 +575,6 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             ViewHolder holder = (ViewHolder)convertView.getTag();
             CommentItem item =(CommentItem) getItem(position);
 
-//            holder.tv_title.setText(mMemoList.get(position).getTitle());
-//            holder.tv_contents.setText(mMemoList.get(position).getContents());
 
             int like_count = comment_list.get(position).getComment_like_count();
             holder.Comment_nick_name.setText(comment_list.get(position).getComment_nick_name());
