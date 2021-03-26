@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,6 +76,9 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
 
         holder.badgeImage.setImageDrawable(mypageItem.getMyBadge());
 
+        holder.btnDelete.setVisibility(View.GONE);
+        holder.btnEdit.setVisibility(View.GONE);
+
         holder.mypostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,12 +105,31 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
                 editor.putString("clicked_post_idx",mypageItems.get(position).getPostIdx().toString());
                 editor.commit();
 
-                ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(context);
-                viewAllPostDialog.show();
+                holder.btnDelete.setVisibility(View.VISIBLE);
+                holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 해당 게시물 삭제
+                        Toast.makeText(context, "삭제 클릭", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                holder.btnEdit.setVisibility(View.VISIBLE);
+                holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 해당 게시물 편짐
+                        // 해당 게시물 삭제
+                        Toast.makeText(context, "편집 클릭", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+//                ViewAllPostDialog viewAllPostDialog = new ViewAllPostDialog(context);
+//                viewAllPostDialog.show();
 
                 return true;
             }
         });
+
 
     }
 
