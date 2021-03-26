@@ -303,7 +303,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <androidx.recyclerview.widget.RecyclerView
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/post_detail_comment_rv"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:scrollbarFadeDuration="0"-->
+<!--                        android:scrollbarSize="5dp"-->
+<!--                        android:scrollbars="vertical"-->
+<!--                        app:layout_constraintHorizontal_bias="1.0"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"/>-->
+
+                    <com.baoyz.swipemenulistview.SwipeMenuListView
                         android:id="@+id/post_detail_comment_rv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -312,7 +322,6 @@
                         android:scrollbars="vertical"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"/>
-
 
                     <FrameLayout
                         android:layout_width="match_parent"

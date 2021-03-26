@@ -1,11 +1,15 @@
 package com.GoogooCorn.lifoo_v11.src.PostDetailActivity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -13,9 +17,16 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,11 +34,15 @@ import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertAdapter;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertItem;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.CommentsActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.airbnb.lottie.LottieAnimationView;
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.bumptech.glide.Glide;
 
@@ -39,7 +54,7 @@ import static com.GoogooCorn.lifoo_v11.ApplicationClass.getRetrofit;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 
-public class PostDetailActivity extends AppCompatActivity implements PostDetailActivityView {
+public class PostDetailActivity extends AppCompatActivity implements PostDetailActivityView, CommentsActivityView {
 
     PostDetailActivityService postDetailActivityService = new PostDetailActivityService(this);
 
@@ -50,9 +65,13 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             imoji_ewww, imoji_fire, imoji_heart,
             imoji_question, imoji_sad_happy, imoji_wow;
 
+    CommentsService commentsService = new CommentsService(this);
 
-    RecyclerView comments_recyclerview;
-    ArrayList comment_list;
+//     RecyclerView comments_recyclerview;
+    SwipeMenuListView comments_recyclerview;
+
+    ArrayList<CommentItem> comment_list;
+    private AppAdapter appAdapter;
     CommentAdapter commentAdapter;
 
     EditText comment_body_et;
@@ -237,24 +256,111 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
 
         comment_list = new ArrayList<CommentItem>();
-
-        commentAdapter = new CommentAdapter(comment_list);
-
         comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
-        comments_recyclerview.setAdapter(commentAdapter);
+        appAdapter = new AppAdapter();
+        comments_recyclerview.setAdapter(appAdapter);
 
-         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-         comments_recyclerview.setLayoutManager(linearLayoutManager);
-         comments_recyclerview.setAdapter(commentAdapter);
-
-        commentAdapter.setOnItemClickListener(new CommentAdapter.OnItemClickListener() {
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
             @Override
-            public void onItemClick(View v, int pos) {
-                // commentAdapter.notifyDataSetChanged();
+            public void create(SwipeMenu menu) {
+                //"edit" item
+                SwipeMenuItem editItem = new SwipeMenuItem(getApplicationContext());
+                editItem.setBackground(R.color.colorLightGray);
+                editItem.setWidth(dp2px(90));
+                editItem.setTitle("수");
+                editItem.setIcon(R.drawable.edit_icon);
+                editItem.setTitleSize(18);
+                editItem.setTitleColor(Color.WHITE);
+                menu.addMenuItem(editItem);
+
+                //"delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
+                deleteItem.setBackground(R.color.colorRed);
+                deleteItem.setWidth(dp2px(90));
+                deleteItem.setIcon(R.drawable.delete_icon);
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+        comments_recyclerview.setMenuCreator(creator);
+
+        comments_recyclerview.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(final int position, SwipeMenu menu, int index) {
+                switch(index)
+                {
+                    case 0:
+                        //edit
+                        break;
+
+                    case 1:
+                        //delete
+                        AlertDialog.Builder builder = new AlertDialog.Builder(PostDetailActivity.this);
+
+                        builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 삭제 작업
+
+                            }
+                        });
+                        builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        builder.setMessage("해당 댓글을 정말 삭제하시겠어요?");
+                       builder.setTitle("삭제 알림창");
+                        builder.show();
+                        break;
+                }
+                return false;
             }
         });
 
-        commentAdapter.notifyDataSetChanged();
+        comments_recyclerview.setOnSwipeListener(new SwipeMenuListView.OnSwipeListener() {
+            @Override
+            public void onSwipeStart(int position) {
+                //swipe start
+            }
+
+            @Override
+            public void onSwipeEnd(int position) {
+                // swipe end
+            }
+        });
+
+        comments_recyclerview.setOnMenuStateChangeListener(new SwipeMenuListView.OnMenuStateChangeListener() {
+            @Override
+            public void onMenuOpen(int position) {
+
+            }
+
+            @Override
+            public void onMenuClose(int position) {
+
+            }
+        });
+
+
+//        comment_list = new ArrayList<CommentItem>();
+//        comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
+//        commentAdapter = new CommentAdapter(comment_list);
+//        comments_recyclerview.setAdapter(commentAdapter);
+//
+//         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+//         comments_recyclerview.setLayoutManager(linearLayoutManager);
+//         comments_recyclerview.setAdapter(commentAdapter);
+//
+//        commentAdapter.setOnItemClickListener(new CommentAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int pos) {
+//                // commentAdapter.notifyDataSetChanged();
+//            }
+//        });
+//
+//        commentAdapter.notifyDataSetChanged();
 
 
 
@@ -301,7 +407,6 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("POST 상세 조회 실패!" , message + " " +String.valueOf(code));
 
     }
-
     @Override
     public void GetPostDetailSuccess(GetPostResponse getPostResponse, int code) {
         Log.d("POST 상세 조회 성공!" , " " +String.valueOf(code));
@@ -362,32 +467,26 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
 
     }
-
     @Override
     public void EditPostFailure(String message, int code) {
 
     }
-
     @Override
     public void EditPostSuccess(GetPostResponse getPostResponse, int code) {
 
     }
-
     @Override
     public void DeletePostFailure(String message, int code) {
 
     }
-
     @Override
     public void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code) {
 
     }
-
     @Override
     public void PostImogeFailure(String message, int code) {
         Log.d("이모지 포스트 실패", message+String.valueOf(code));
     }
-
     @Override
     public void PostImogeSuccess(String message, int code) {
         Log.d("이모지 포스트 성공", message+String.valueOf(code));
@@ -433,7 +532,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
         }
 
-        commentAdapter.notifyDataSetChanged();
+       appAdapter.notifyDataSetChanged();
 
 
 
@@ -451,18 +550,171 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("포스트 게시 성공" , message+String.valueOf(code));
         // 댓글 보냈으니까 화면 갱신.
         comment_list.clear();
-        commentAdapter.notifyDataSetChanged();
+        appAdapter.notifyDataSetChanged();
         TryGetComments(Integer.parseInt(get_post_idx));
 
     }
 
-    public void Call_comment_Adapter()
+    class AppAdapter extends BaseAdapter
     {
-        commentAdapter.notifyDataSetChanged();
+
+        @Override
+        public int getCount() { return comment_list.size();}
+
+        @Override
+        public Object getItem(int position) { return comment_list.get(position);}
+
+        @Override
+        public long getItemId(int position) { return position; }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            if(convertView == null)
+            {
+                convertView = View.inflate(getApplicationContext(),
+                        R.layout.comment_view,null);
+                new ViewHolder(convertView);
+            }
+            ViewHolder holder = (ViewHolder)convertView.getTag();
+            CommentItem item =(CommentItem) getItem(position);
+
+//            holder.tv_title.setText(mMemoList.get(position).getTitle());
+//            holder.tv_contents.setText(mMemoList.get(position).getContents());
+
+            int like_count = comment_list.get(position).getComment_like_count();
+            holder.Comment_nick_name.setText(comment_list.get(position).getComment_nick_name());
+            holder.Comment_contents.setText(comment_list.get(position).getComment_body());
+            holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count));
+
+            if(comment_list.get(position).getIs_clicked().equals("N"))
+            {
+                holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
+            }else if(comment_list.get(position).getIs_clicked().equals("Y")){
+                holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
+            }else {
+            }
+
+            // 좋아요
+            holder.Comment_like_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /** 댓글 좋아요 api */
+                    if(comment_list.get(position).getIs_clicked().equals("N"))
+                    {
+                        holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
+                        holder.Comment_like_count.setText("좋아요 "+ String.valueOf(like_count+1));
+                        TryPostCommetLikeTest(comment_list.get(position).getComment_idx());
+
+                    }else if(comment_list.get(position).getIs_clicked().equals("Y")){
+
+                        holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
+                        holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count-1));
+                        TryPostCommetLikeTest(comment_list.get(position).getComment_idx());
+                    }else{
+                    }
+
+                }
+            });
+
+
+            // 신고하기
+            holder.Comment_declare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /** 댓글 신고 api */
+
+                }
+            });
+
+
+            // 댓글 달기
+            holder.Comment_comment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /** 댓글 달기 api */
+                }
+            });
+
+            return convertView;
+        }
+
+        class ViewHolder
+        {
+            TextView Comment_nick_name;
+            TextView Comment_contents;
+            ImageButton Comment_like_btn;
+            Button Comment_declare;
+            Button Comment_comment;
+            TextView Comment_like_count;
+
+            public ViewHolder(View view)
+            {
+                Comment_nick_name = (TextView)view.findViewById(R.id.comment_view_writer_nickname);
+                Comment_contents = (TextView)view.findViewById(R.id.comment_view_content);
+                Comment_like_btn = (ImageButton)view.findViewById(R.id.comment_view_iv_btnLike);
+                Comment_declare = (Button)view.findViewById(R.id.comment_view_btnReport);
+                Comment_comment = (Button)view.findViewById(R.id.comment_view_btnAddComment);
+                Comment_like_count = (TextView)view.findViewById(R.id.comment_view_like_count);
+
+                view.setTag(this);
+            }
+        }
+
+        public boolean getSwipeEnableByPosition(int position)
+        {
+            if(position % 2 == 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 
-    
+    private int dp2px(int dp)
+    {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,
+                getResources().getDisplayMetrics());
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.comment_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if(id ==R.id.action_left)
+        {
+            comments_recyclerview.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+            return true;
+        }
+        if(id == R.id.action_right)
+        {
+            comments_recyclerview.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private void TryPostCommetLikeTest(String commentIdx)
+    {
+        commentsService.postLikes(commentIdx);
+    }
+
+    @Override
+    public void PostCommentsLikesFailure(String message, int code) {
+        Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
+    }
+
+    @Override
+    public void PostCommentsLikesSuccess(String message, int code) {
+        Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
+    }
 
 
 }
