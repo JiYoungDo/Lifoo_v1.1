@@ -198,5 +198,15 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     }
 
+    @Override
+    public void EditommentsFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void EditCommentsSuccess(String message, int code) {
+
+    }
+
 
 }

@@ -42,5 +42,6 @@
     <string name="modify_nickname_info">닉네임은 최대 6글자로 설정가능합니다.\n형용사와 음식 이름 조합을 권장드려요!</string>
     <string name="enter_hint">댓글 입력...</string>
     <string name="post">게시</string>
+    <string name="edit">수정</string>
 
 </resources>

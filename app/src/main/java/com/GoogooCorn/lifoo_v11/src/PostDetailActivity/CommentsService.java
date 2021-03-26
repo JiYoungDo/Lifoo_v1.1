@@ -5,6 +5,7 @@ import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.CommentsRetrof
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailRetrofitInterface;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentLikesResponse;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.EditCommentsBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 
 import retrofit2.Call;
@@ -49,6 +50,7 @@ public class CommentsService {
     }
 
 
+    // 댓글 삭제
     void delComment (String commentIdx) {
         final CommentsRetrofitInterface commentsRetrofitInterface = getRetrofit().create(CommentsRetrofitInterface.class);
         commentsRetrofitInterface.DelCommentTest(commentIdx).enqueue(new Callback<CommentLikesResponse>() {
@@ -74,4 +76,32 @@ public class CommentsService {
             }
         });
     }
+
+    // 댓글 수정
+    void EditComment (String commentIdx, String CommentBody) {
+        final CommentsRetrofitInterface commentsRetrofitInterface = getRetrofit().create(CommentsRetrofitInterface.class);
+        commentsRetrofitInterface.EditCommentTest(commentIdx,new EditCommentsBody(CommentBody)).enqueue(new Callback<CommentLikesResponse>() {
+
+            // 통신 성공 시
+            @Override
+            public void onResponse(Call<CommentLikesResponse> call, Response<CommentLikesResponse> response) {
+                final CommentLikesResponse editResponse = response.body();
+
+                if (editResponse == null) {
+                    // 통신은 됬는데 결과 값이 null 이면?
+                    commentsActivityView.EditommentsFailure("null", 0);
+                    return;
+                }
+                // 통신도 성공! 받아오는 값도 성공!
+                commentsActivityView.EditCommentsSuccess(editResponse.getMessage(),editResponse.getCode());
+            }
+
+            // API 통신 자체가 실패
+            @Override
+            public void onFailure(Call<CommentLikesResponse> call, Throwable t) {
+                commentsActivityView.EditommentsFailure("통신 자체 실패",0);
+            }
+        });
+    }
+
 }

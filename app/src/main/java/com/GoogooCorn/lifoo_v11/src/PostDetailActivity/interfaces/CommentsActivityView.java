@@ -11,4 +11,9 @@ public interface CommentsActivityView {
     void DeleteCommentsFailure(String message, int code);
     void DeleteCommentsSuccess(String message, int code);
 
+
+    // 댓글 수정
+    void EditommentsFailure(String message, int code);
+    void EditCommentsSuccess(String message, int code);
+
 }

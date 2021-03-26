@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -34,6 +37,7 @@ import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertAdapter;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertItem;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.PhotoPickActivity.PhotoPickActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.CommentsActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
@@ -291,6 +295,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 {
                     case 0:
                         //edit
+                        Popup_Edit_comments popup_edit_comments = new Popup_Edit_comments(PostDetailActivity.this);
+                        popup_edit_comments.callFunction(comment_list.get(position).getComment_body(), comment_list.get(position).getComment_idx());
                         break;
 
                     case 1:
@@ -717,5 +723,57 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         TryGetComments(Integer.parseInt(get_post_idx));
     }
 
+    private void TryEditComment(String comments_idx, String comments_body)
+    {
+        commentsService.EditComment(comments_idx,comments_body);
+    }
 
+    @Override
+    public void EditommentsFailure(String message, int code) {
+        Log.d("댓글 편집 실",message+ "&&" +String.valueOf(code));
+    }
+
+    @Override
+    public void EditCommentsSuccess(String message, int code) {
+        Log.d("댓글 편집 성공",message+ "&&" +String.valueOf(code));
+        comment_list.clear();
+        appAdapter.notifyDataSetChanged();
+        TryGetComments(Integer.parseInt(get_post_idx));
+    }
+
+    public class Popup_Edit_comments
+    {
+
+        private Context context;
+
+        public Popup_Edit_comments(Context context) {
+            this.context = context;
+        }
+
+        //호출할 다이얼로그 함수
+        public void callFunction(String this_comments_before, String comments_idx)
+        {
+            final Dialog dig = new Dialog(context);
+            dig.requestWindowFeature(Window.FEATURE_NO_TITLE) ;
+            dig.setContentView(R.layout.dialog_et_comments_edit);
+            dig.show();
+
+            // 커스텀 다이얼로그 위젯 정의
+            EditText et_comments = dig.findViewById(R.id.dialog_et_comments);
+            Button et_confirm_btn = dig.findViewById(R.id.dialog_et_btn_comments);
+
+            // 사용자 입력 값을 넣어준다. (수정 용이하게)
+            et_comments.setText(this_comments_before);
+
+            et_confirm_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TryEditComment(comments_idx,et_comments.getText().toString());
+                    dig.dismiss();
+                }
+            });
+
+        }
+
+    }
 }

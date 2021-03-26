@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <EditText
+            android:id="@+id/dialog_et_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:fontFamily="@font/noto_sans_cjkkr"
+            android:background="@drawable/red_line_bg"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:paddingLeft="25dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textColor="@color/colorDarkGray"/>
+
+        <Button
+            android:id="@+id/dialog_et_btn_comments"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="30dp"
+            android:layout_gravity="end|center_vertical|center_horizontal"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="13sp"
+            android:background="@color/transparent"
+            android:fontFamily="@font/noto_sans_cjkkr"
+            android:text="@string/edit"/>
+
+
+    </FrameLayout>
+
+
+
+
+
+</LinearLayout>

@@ -2,11 +2,15 @@ package com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces;
 
 
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentLikesResponse;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.EditCommentsBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
 
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CommentsRetrofitInterface {
@@ -21,5 +25,12 @@ public interface CommentsRetrofitInterface {
     @DELETE("/comments/{commentIdx}")
     Call<CommentLikesResponse> DelCommentTest(
             @Path("commentIdx") String commentIdx);
+
+
+    // 댓글 수정
+    @PUT("/comments/{commentIdx}")
+    Call<CommentLikesResponse> EditCommentTest(
+            @Path("commentIdx") String commentIdx,
+            @Body EditCommentsBody body);
 
 }
