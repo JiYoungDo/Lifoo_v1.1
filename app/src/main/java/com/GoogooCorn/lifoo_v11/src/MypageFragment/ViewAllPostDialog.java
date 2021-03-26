@@ -1,6 +1,5 @@
 package com.GoogooCorn.lifoo_v11.src.MypageFragment;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,20 +7,18 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.GoogooCorn.lifoo_v11.R;
-import com.GoogooCorn.lifoo_v11.src.PostDeleteDialog;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.EditMyPost;
-import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDeleteDialog;
 
 import java.util.Objects;
 
 public class ViewAllPostDialog extends Dialog {
     private Context context;
+
+    ViewAllPost viewAllPost = new ViewAllPost();
 
     private ImageView btnEdit;
     private ImageView btnDelete;
@@ -46,8 +43,8 @@ public class ViewAllPostDialog extends Dialog {
                 dismiss();
 
                 // 게시물 수정 페이지로 이동
-                Intent intent = new Intent(context, EditMyPost.class);
-                context.startActivity(intent);
+                Intent intent = new Intent(getContext(), EditMyPost.class);
+                getContext().startActivity(intent);
 //                ((Activity)context).finish();
 
             }
@@ -59,7 +56,7 @@ public class ViewAllPostDialog extends Dialog {
                 dismiss();
 
                 // 삭제 다이얼로그
-                PostDeleteDialog postDeleteDialog = new PostDeleteDialog(context);
+                PostDeleteDialog postDeleteDialog = new PostDeleteDialog(getContext());
                 postDeleteDialog.show();
             }
         });

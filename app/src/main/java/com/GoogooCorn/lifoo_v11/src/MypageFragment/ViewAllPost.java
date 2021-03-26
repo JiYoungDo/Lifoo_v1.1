@@ -47,7 +47,6 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
     // 서비스 선언
     MypageService mypageService = new MypageService(this);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +141,7 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
     {
         mypageService.GetMyPost(page_num);
     }
+
 
     @Override
     public void GetProfileFailure(String message, int code) {

@@ -32,6 +32,7 @@
     <string name="reaction_received">내가 받은 리액션</string>
     <string name="my_post">내 게시물 보기</string>
     <string name="edit_post">게시물 수정</string>
+    <string name="delete_post">게시물 삭제</string>
     <string name="permission_1">[설정] > [권한] 에서 권한을 허용할 수 있습니다.</string>
     <string name="permission_2">사진 및 파일을 저장하기 위하여 접근 권한이 필요합니다.</string>
     <string name="new_post_title">새 게시물</string>
@@ -43,5 +44,8 @@
     <string name="enter_hint">댓글 입력...</string>
     <string name="post">게시</string>
     <string name="edit">수정</string>
+    <string name="post_managment">게시물 관리</string>
+    <string name="share_post">공유하기</string>
+    <string name="kakaotalk">카카오톡</string>
 
 </resources>

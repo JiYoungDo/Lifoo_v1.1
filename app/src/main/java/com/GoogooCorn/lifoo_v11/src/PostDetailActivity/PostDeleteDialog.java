@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
+import com.GoogooCorn.lifoo_v11.src.MypageFragment.ViewAllPost;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
@@ -23,7 +24,7 @@ import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
 
-public class PostDeleteDialog extends AppCompatActivity implements PostDetailActivityView {
+public class PostDeleteDialog extends Dialog implements PostDetailActivityView {
     private Context context;
 
     private TextView btnCancel;
@@ -31,10 +32,11 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
     private TextView post_delete_dialog_guide;
     private TextView btnConfirm;
 
+
     PostDetailActivityService postDetailActivityService = new PostDetailActivityService(this);
 
     public PostDeleteDialog(@NonNull Context context) {
-        this.context = context;
+        super(context);
     }
 
     @Override
@@ -52,7 +54,7 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
 
         // post_idx로 게시물 조회
         String get_post_idx;
-        sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
+        sSharedPreferences = getContext().getSharedPreferences(TAG, getContext().MODE_PRIVATE);
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
         Log.d("포스트 인덱스" , get_post_idx);
 
@@ -62,7 +64,7 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                dismiss();
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -73,14 +75,16 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
                 btnDelete.setVisibility(View.INVISIBLE);
                 btnConfirm.setVisibility(View.VISIBLE);
 
-                // 게시물 삭제 -> 안됨
-//                postDetailActivityService.DeleteMyPost(post_idx);
+                // 게시물 삭제
+                postDetailActivityService.DeleteMyPost(post_idx);
             }
         });
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                dismiss();
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                getContext().startActivity(intent);
                 // 리스트에서 삭제된 게시물 사라져야됨
             }
         });
@@ -89,7 +93,7 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
 
     @Override
     public void GetPostDetailFailure(String message, int code) {
-        
+
     }
 
     @Override
@@ -117,17 +121,13 @@ public class PostDeleteDialog extends AppCompatActivity implements PostDetailAct
         if(code == 2000){
             Log.d("게시물 삭제 성공",  String.valueOf(code));
 
-            Toast.makeText(getApplicationContext(), "게시물이 삭제되었습니다 !" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "게시물이 삭제되었습니다 !" , Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-
-            finish();
         }
 
         else{
             Log.d("게시물 리스폰스 오류", String.valueOf(code));
-            Toast.makeText(getApplicationContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
     }
 

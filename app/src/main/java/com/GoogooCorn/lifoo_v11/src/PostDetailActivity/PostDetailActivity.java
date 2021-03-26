@@ -90,6 +90,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     String get_post_idx , clicked_imoge_idx , clicked_comment_idx;
 
     int get_imoge_count;
+    int get_host_idx;
+    String user_idx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
         sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
+        user_idx = sSharedPreferences.getString("user_idx", "");
+
 
         int to = Integer.parseInt(get_post_idx); // to 잘 들어옴 .
 
@@ -129,6 +133,29 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         more_btn = findViewById(R.id.post_detail_more_btn);
         share_btn = findViewById(R.id.post_detail_btnShare);
         comments_btn = findViewById(R.id.post_detail_comments_btn);
+
+        more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 내 게시물일때
+                if(user_idx.equals(get_host_idx+"")){
+                    Mypost_bottom_sheet mypost_bottom_sheet = new Mypost_bottom_sheet();
+                    mypost_bottom_sheet.show(getSupportFragmentManager(), "mypostBottomSheetDialog");
+                }
+                // 다른 사람 게시물일때
+                else {
+                    Otherspost_bottom_sheet otherspost_bottom_sheet = new Otherspost_bottom_sheet();
+                    otherspost_bottom_sheet.show(getSupportFragmentManager(), "otherspostBottomSheetDialog");
+                }
+            }
+        });
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Share_kakao_bottom_sheet share_kakao_bottom_sheet = new Share_kakao_bottom_sheet();
+                share_kakao_bottom_sheet.show(getSupportFragmentManager(), "shareKakaoBottomSheetDialog");
+            }
+        });
 
 
         // 포스트 바로 아래
@@ -410,6 +437,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         get_imoge_count = getPostResponse.getResult().getTotalImoge();
         get_post_time = getPostResponse.getResult().getCreatedAt();
         get_img_url = getPostResponse.getResult().getPostUrl();
+        get_host_idx = getPostResponse.getResult().getHostUserIdx();
+
 
         Glide.with(this).load(get_img_url).into(post_iv);
 
