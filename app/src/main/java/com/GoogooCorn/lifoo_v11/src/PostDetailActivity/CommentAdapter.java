@@ -188,5 +188,15 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
     }
 
+    @Override
+    public void DeleteCommentsFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void DeleteCommentsSuccess(String message, int code) {
+
+    }
+
 
 }

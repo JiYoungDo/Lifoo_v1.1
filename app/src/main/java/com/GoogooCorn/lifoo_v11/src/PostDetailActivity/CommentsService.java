@@ -21,7 +21,7 @@ public class CommentsService {
         this.commentsActivityView = mCommentsActivityView;
     }
 
-    // 댓글 좋아
+    // 댓글 좋아요
     void postLikes(String commentIdx) {
         final CommentsRetrofitInterface commentsRetrofitInterface = getRetrofit().create(CommentsRetrofitInterface.class);
         commentsRetrofitInterface.PostCommentLikesTest(commentIdx).enqueue(new Callback<CommentLikesResponse>() {
@@ -48,4 +48,30 @@ public class CommentsService {
         });
     }
 
+
+    void delComment (String commentIdx) {
+        final CommentsRetrofitInterface commentsRetrofitInterface = getRetrofit().create(CommentsRetrofitInterface.class);
+        commentsRetrofitInterface.DelCommentTest(commentIdx).enqueue(new Callback<CommentLikesResponse>() {
+
+            // 통신 성공 시
+            @Override
+            public void onResponse(Call<CommentLikesResponse> call, Response<CommentLikesResponse> response) {
+                final CommentLikesResponse deleteResponse = response.body();
+
+                if (deleteResponse == null) {
+                    // 통신은 됬는데 결과 값이 null 이면?
+                    commentsActivityView.DeleteCommentsFailure("null", 0);
+                    return;
+                }
+                // 통신도 성공! 받아오는 값도 성공!
+                commentsActivityView.DeleteCommentsSuccess(deleteResponse.getMessage(),deleteResponse.getCode());
+            }
+
+            // API 통신 자체가 실패
+            @Override
+            public void onFailure(Call<CommentLikesResponse> call, Throwable t) {
+                commentsActivityView.DeleteCommentsFailure("통신 자체 실패",0);
+            }
+        });
+    }
 }

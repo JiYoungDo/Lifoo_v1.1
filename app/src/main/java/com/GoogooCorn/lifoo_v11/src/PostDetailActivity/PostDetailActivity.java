@@ -82,7 +82,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     public static Context mContext;
 
     // 클릭된 포스트 인덱스 , 클릭된 이모지 인덱스
-    String get_post_idx , clicked_imoge_idx;
+    String get_post_idx , clicked_imoge_idx , clicked_comment_idx;
 
     int get_imoge_count;
 
@@ -102,6 +102,9 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
 
         int to = Integer.parseInt(get_post_idx); // to 잘 들어옴 .
+
+        comment_list = new ArrayList<CommentItem>();
+
         TryPostDetail(to); // 상세 포스트 조회
         TryGetComments(to); // 댓글 조회
 
@@ -254,11 +257,11 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         post_contents = findViewById(R.id.post_detail_contents);
         post_time = findViewById(R.id.post_detail_time);
 
-
-        comment_list = new ArrayList<CommentItem>();
         comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
-        appAdapter = new AppAdapter();
+        appAdapter = new AppAdapter(comment_list);
         comments_recyclerview.setAdapter(appAdapter);
+
+
 
         SwipeMenuCreator creator = new SwipeMenuCreator() {
             @Override
@@ -298,7 +301,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // 삭제 작업
-
+                                Log.d("포지션 값", String.valueOf(position));
+                                TryDelCommentTest(comment_list.get(position).getComment_idx());
                             }
                         });
                         builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
@@ -339,25 +343,6 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
             }
         });
-
-
-//        comment_list = new ArrayList<CommentItem>();
-//        comments_recyclerview = findViewById(R.id.post_detail_comment_rv);
-//        commentAdapter = new CommentAdapter(comment_list);
-//        comments_recyclerview.setAdapter(commentAdapter);
-//
-//         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-//         comments_recyclerview.setLayoutManager(linearLayoutManager);
-//         comments_recyclerview.setAdapter(commentAdapter);
-//
-//        commentAdapter.setOnItemClickListener(new CommentAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int pos) {
-//                // commentAdapter.notifyDataSetChanged();
-//            }
-//        });
-//
-//        commentAdapter.notifyDataSetChanged();
 
 
 
@@ -510,7 +495,6 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         Log.d("댓글 조회 성공", getCommentResponse.getMessage()+"&&"+String.valueOf(code));
 
 
-
         if(!(code == 3210))
         {
             int list_size = getCommentResponse.getResult().getCommentLists().size();
@@ -524,14 +508,11 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 CommentItem commentItem = new CommentItem(comment_nick_name,comment_body,comment_like_count,comment_idx,is_clicked);
 
                 comment_list.add(commentItem);
-
             }
 
+            appAdapter.notifyDataSetChanged();
+
         }
-
-       appAdapter.notifyDataSetChanged();
-
-
 
     }
 
@@ -555,11 +536,17 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     class AppAdapter extends BaseAdapter
     {
 
-        @Override
-        public int getCount() { return comment_list.size();}
+        private ArrayList<CommentItem> mList;
+
+        public AppAdapter(ArrayList<CommentItem> mList) {
+            this.mList = mList;
+        }
 
         @Override
-        public Object getItem(int position) { return comment_list.get(position);}
+        public int getCount() { return mList.size();}
+
+        @Override
+        public Object getItem(int position) { return mList.get(position);}
 
         @Override
         public long getItemId(int position) { return position; }
@@ -576,12 +563,12 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
             CommentItem item =(CommentItem) getItem(position);
 
 
-            int like_count = comment_list.get(position).getComment_like_count();
-            holder.Comment_nick_name.setText(comment_list.get(position).getComment_nick_name());
-            holder.Comment_contents.setText(comment_list.get(position).getComment_body());
+            int like_count = mList.get(position).getComment_like_count();
+            holder.Comment_nick_name.setText(mList.get(position).getComment_nick_name());
+            holder.Comment_contents.setText(mList.get(position).getComment_body());
             holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count));
 
-            if(comment_list.get(position).getIs_clicked().equals("N"))
+            if(mList.get(position).getIs_clicked().equals("N"))
             {
                 holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
             }else if(comment_list.get(position).getIs_clicked().equals("Y")){
@@ -594,17 +581,17 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 @Override
                 public void onClick(View v) {
                     /** 댓글 좋아요 api */
-                    if(comment_list.get(position).getIs_clicked().equals("N"))
+                    if(mList.get(position).getIs_clicked().equals("N"))
                     {
                         holder.Comment_like_btn.setImageResource(R.drawable.heart_filled);
                         holder.Comment_like_count.setText("좋아요 "+ String.valueOf(like_count+1));
-                        TryPostCommetLikeTest(comment_list.get(position).getComment_idx());
+                        TryPostCommetLikeTest(mList.get(position).getComment_idx());
 
-                    }else if(comment_list.get(position).getIs_clicked().equals("Y")){
+                    }else if(mList.get(position).getIs_clicked().equals("Y")){
 
                         holder.Comment_like_btn.setImageResource(R.drawable.heart_not_filled);
                         holder.Comment_like_count.setText("좋아요 "+String.valueOf(like_count-1));
-                        TryPostCommetLikeTest(comment_list.get(position).getComment_idx());
+                        TryPostCommetLikeTest(mList.get(position).getComment_idx());
                     }else{
                     }
 
@@ -703,12 +690,29 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
     @Override
     public void PostCommentsLikesFailure(String message, int code) {
-        Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
+        Log.d("댓글 좋아요 실패", message+"&&"+String.valueOf(code));
     }
 
     @Override
     public void PostCommentsLikesSuccess(String message, int code) {
-        Log.d("댓글 좋아요", message+"&&"+String.valueOf(code));
+        Log.d("댓글 좋아요 성공", message+"&&"+String.valueOf(code));
+    }
+
+
+    private void TryDelCommentTest(String commentIdx)
+    {
+        commentsService.delComment(commentIdx);
+    }
+
+    @Override
+    public void DeleteCommentsFailure(String message, int code) {
+        Log.d("댓글 삭제 실", message+"&&"+String.valueOf(code));
+    }
+
+    @Override
+    public void DeleteCommentsSuccess(String message, int code) {
+        Log.d("댓글 삭패제 성", message+"&&"+String.valueOf(code));
+        TryGetComments(Integer.parseInt(get_post_idx));
     }
 
 
