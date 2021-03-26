@@ -32,6 +32,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.AlertAdapter;
@@ -610,6 +611,7 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 @Override
                 public void onClick(View v) {
                     /** 댓글 신고 api */
+                    TryReportComments(mList.get(position).getComment_idx());
 
                 }
             });
@@ -739,6 +741,23 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         comment_list.clear();
         appAdapter.notifyDataSetChanged();
         TryGetComments(Integer.parseInt(get_post_idx));
+    }
+
+    private void TryReportComments(String targetIdx)
+    {
+        commentsService.ReportComment(targetIdx);
+    }
+
+
+    @Override
+    public void ReportommentsFailure(String message, int code) {
+        Log.d("댓글 신고 실패", message +"&&" + String.valueOf(code));
+    }
+
+    @Override
+    public void ReportCommentsSuccess(String message, int code) {
+        Log.d("댓글 신고 성", message +"&&" + String.valueOf(code));
+        Toast.makeText(this, "신고에 성공했습니다!",Toast.LENGTH_SHORT).show();
     }
 
     public class Popup_Edit_comments

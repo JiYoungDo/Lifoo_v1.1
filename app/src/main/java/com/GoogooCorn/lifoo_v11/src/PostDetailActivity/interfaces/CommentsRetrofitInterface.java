@@ -4,6 +4,7 @@ package com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentLikesResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.EditCommentsBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.ReportBody;
 
 
 import retrofit2.Call;
@@ -33,4 +34,9 @@ public interface CommentsRetrofitInterface {
             @Path("commentIdx") String commentIdx,
             @Body EditCommentsBody body);
 
+
+    // 좋아요 보내기 게시
+    @POST("/reports")
+    Call<CommentLikesResponse> ReportCommentTest(
+            @Body ReportBody body);
 }

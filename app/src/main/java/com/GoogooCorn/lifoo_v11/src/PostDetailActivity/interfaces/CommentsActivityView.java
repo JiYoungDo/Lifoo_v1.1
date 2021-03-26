@@ -16,4 +16,8 @@ public interface CommentsActivityView {
     void EditommentsFailure(String message, int code);
     void EditCommentsSuccess(String message, int code);
 
+    // 댓글 신고
+    void ReportommentsFailure(String message, int code);
+    void ReportCommentsSuccess(String message, int code);
+
 }
