@@ -10,11 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
-import com.GoogooCorn.lifoo_v11.src.MypageFragment.ViewAllPost;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
@@ -23,42 +21,40 @@ import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.TAG;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
 
-
-public class PostDeleteDialog extends Dialog implements PostDetailActivityView {
+public class PostReportDialog extends Dialog implements PostDetailActivityView {
     private Context context;
 
     private TextView btnCancel;
-    private TextView btnDelete;
-    private TextView post_delete_dialog_guide;
+    private TextView btnReport;
+    private TextView post_report_dialog_guide;
     private TextView btnConfirm;
 
 
     PostDetailActivityService postDetailActivityService = new PostDetailActivityService(this);
 
-    public PostDeleteDialog(@NonNull Context context) {
+    public PostReportDialog(@NonNull Context context) {
         super(context);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.post_delete_dialog);
+        setContentView(R.layout.post_report_dialog);
 
         // 위젯 정의
         btnCancel = findViewById(R.id.btnCancel);
-        btnDelete = findViewById(R.id.btnDelete);
-        post_delete_dialog_guide = findViewById(R.id.post_delete_dialog_guide);
+        btnReport = findViewById(R.id.btnReport);
+        post_report_dialog_guide = findViewById(R.id.post_report_dialog_guide);
         btnConfirm = findViewById(R.id.btnConfirm);
-
 
 
         // post_idx로 게시물 조회
         String get_post_idx;
         sSharedPreferences = getContext().getSharedPreferences(TAG, getContext().MODE_PRIVATE);
-        get_post_idx= sSharedPreferences.getString("clicked_post_idx", "");
-        Log.d("포스트 인덱스" , get_post_idx);
+        get_post_idx = sSharedPreferences.getString("clicked_post_idx", "");
+        Log.d("포스트 인덱스", get_post_idx);
 
-        int post_idx = Integer.parseInt(get_post_idx);
+//        int post_idx = Integer.parseInt(get_post_idx);
 
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -67,16 +63,17 @@ public class PostDeleteDialog extends Dialog implements PostDetailActivityView {
                 dismiss();
             }
         });
-        btnDelete.setOnClickListener(new View.OnClickListener() {
+        btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                post_delete_dialog_guide.setText(R.string.post_delete_dialog_2);
+
+                // 게시물 신고
+                postDetailActivityService.ReportPost(get_post_idx);
+
                 btnCancel.setVisibility(View.INVISIBLE);
-                btnDelete.setVisibility(View.INVISIBLE);
+                btnReport.setVisibility(View.INVISIBLE);
                 btnConfirm.setVisibility(View.VISIBLE);
 
-                // 게시물 삭제
-                postDetailActivityService.DeleteMyPost(post_idx);
             }
         });
         btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +82,6 @@ public class PostDeleteDialog extends Dialog implements PostDetailActivityView {
                 dismiss();
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 getContext().startActivity(intent);
-                // 리스트에서 삭제된 게시물 사라져야됨
             }
         });
 
@@ -113,22 +109,12 @@ public class PostDeleteDialog extends Dialog implements PostDetailActivityView {
 
     @Override
     public void DeletePostFailure(String message, int code) {
-        Log.d("게시물 삭제 실패", message + "&&" + String.valueOf(code));
+
     }
 
     @Override
     public void DeletePostSuccess(PostDeleteResponse postDeleteResponse, int code) {
-        if(code == 2000){
-            Log.d("게시물 삭제 성공",  String.valueOf(code));
 
-            Toast.makeText(getContext(), "게시물이 삭제되었습니다 !" , Toast.LENGTH_SHORT).show();
-
-        }
-
-        else{
-            Log.d("게시물 리스폰스 오류", String.valueOf(code));
-            Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -163,11 +149,26 @@ public class PostDeleteDialog extends Dialog implements PostDetailActivityView {
 
     @Override
     public void ReportPostFailure(String message, int code) {
+        Log.d("게시물 신고 실패", message +"&&" + String.valueOf(code));
 
     }
 
     @Override
     public void ReportPostSuccess(String message, int code) {
+        if(code == 2000){
+            Log.d("게시물 신고 성공", message +"&&" + String.valueOf(code));
+//            Toast.makeText(getContext(), "게시물이 신고되었습니다!" , Toast.LENGTH_SHORT).show();
+            post_report_dialog_guide.setText(R.string.post_declartion_dialog_2);
+        }
+        else if(code == 3102)
+        {
+            Log.d("이미 신고한 게시물", message +"&&" + String.valueOf(code));
+//            Toast.makeText(getContext(), "이미 신고한 게시물입니다." , Toast.LENGTH_SHORT).show();
+            post_report_dialog_guide.setText(R.string.already_report);
+        }
+        else{
+            Log.d("게시물 신고 실패", message +"&&" + String.valueOf(code));
+        }
 
     }
 }

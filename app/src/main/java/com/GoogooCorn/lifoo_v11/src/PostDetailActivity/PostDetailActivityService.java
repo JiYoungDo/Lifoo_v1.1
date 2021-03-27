@@ -3,6 +3,7 @@ package com.GoogooCorn.lifoo_v11.src.PostDetailActivity;
 
 
 
+
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailActivityView;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.interfaces.PostDetailRetrofitInterface;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentBody;
@@ -11,6 +12,7 @@ import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostImogeBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.ReportBody;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -191,6 +193,33 @@ public class PostDetailActivityService {
             @Override
             public void onFailure(Call<PostDeleteResponse> call, Throwable t) {
                 postDetailActivityView.PostCommentsFailure("통신 자체 실패",0);
+            }
+        });
+    }
+
+    // 게시물 신고
+    void ReportPost(String targetIdx) {
+        final PostDetailRetrofitInterface postDetailRetrofitInterface = getRetrofit().create(PostDetailRetrofitInterface.class);
+        postDetailRetrofitInterface.ReportPostTest(new ReportBody("POST", targetIdx)).enqueue(new Callback<PostDeleteResponse>() {
+
+            // 통신 성공 시
+            @Override
+            public void onResponse(Call<PostDeleteResponse> call, Response<PostDeleteResponse> response) {
+                final PostDeleteResponse postDeleteResponse = response.body();
+
+                if (postDeleteResponse == null) {
+                    // 통신은 됬는데 결과 값이 null 이면?
+                    postDetailActivityView.ReportPostFailure("null", 0);
+                    return;
+                }
+                // 통신도 성공! 받아오는 값도 성공!
+                postDetailActivityView.ReportPostSuccess(postDeleteResponse.getMessage(),postDeleteResponse.getCode());
+            }
+
+            // API 통신 자체가 실패
+            @Override
+            public void onFailure(Call<PostDeleteResponse> call, Throwable t) {
+                postDetailActivityView.ReportPostFailure("통신 자체 실패",0);
             }
         });
     }

@@ -27,6 +27,7 @@
     <string name="back">취소</string>
     <string name="delete">삭제</string>
     <string name="post_declartion_dialog_1">한번 신고하시면 취소가 불가능합니다.\n정말 신고하시겠습니까?</string>
+    <string name="post_declartion_dialog_2">신고가 완료되었습니다. 감사합니다.</string>
     <string name="search_hint">찾으시는 음식을 검색하세요</string>
     <string name="search_recent">최근 검색</string>
     <string name="reaction_received">내가 받은 리액션</string>
@@ -47,5 +48,7 @@
     <string name="post_managment">게시물 관리</string>
     <string name="share_post">공유하기</string>
     <string name="kakaotalk">카카오톡</string>
+    <string name="report_post">신고</string>
+    <string name="already_report">이미 신고한 게시물입니다.</string>
 
 </resources>

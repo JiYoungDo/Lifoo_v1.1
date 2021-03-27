@@ -4,11 +4,13 @@ import com.GoogooCorn.lifoo_v11.src.AlertFragment.models.AlertFragmentResponse;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameBody;
 import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.NicknameResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.CommentLikesResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetCommentResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.GetPostResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostDeleteResponse;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostEditBody;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.PostImogeBody;
+import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.models.ReportBody;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -57,5 +59,10 @@ public interface PostDetailRetrofitInterface {
     Call<PostDeleteResponse> PostImogeTest(
             @Body PostImogeBody body
     );
+
+    // 게시물 신고
+    @POST("/reports")
+    Call<PostDeleteResponse> ReportPostTest(
+            @Body ReportBody body);
 
 }

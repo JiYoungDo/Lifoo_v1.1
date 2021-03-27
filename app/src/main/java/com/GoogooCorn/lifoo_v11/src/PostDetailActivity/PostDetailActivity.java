@@ -626,6 +626,16 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
 
     }
 
+    @Override
+    public void ReportPostFailure(String message, int code) {
+
+    }
+
+    @Override
+    public void ReportPostSuccess(String message, int code) {
+
+    }
+
     class AppAdapter extends BaseAdapter
     {
 

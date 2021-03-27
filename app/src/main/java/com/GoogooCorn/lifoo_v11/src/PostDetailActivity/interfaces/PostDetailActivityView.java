@@ -30,4 +30,8 @@ public interface PostDetailActivityView {
     // 댓글 게시
     void PostCommentsFailure(String message, int code);
     void PostCommentsSuccess(String message, int code);
+
+    // 댓글 신고
+    void ReportPostFailure(String message, int code);
+    void ReportPostSuccess(String message, int code);
 }
