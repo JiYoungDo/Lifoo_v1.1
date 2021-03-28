@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.AlertFragment.interfaces.AlertFragmentActivityView;
@@ -32,6 +33,10 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
     AlertAdapter alertAdapter;
     RecyclerView recyclerView;
     ArrayList alert_list;
+
+
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
 
     AlertService alertService = new AlertService(this);
 
@@ -72,6 +77,20 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
 //        alert_list.add(alertItem);
 //        alert_list.add(alertItem_1);
 //        alert_list.add(alertItem_2);
+
+        // refresh_ll
+        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_alert);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                /* swipe 시 진행할 동작 */
+                alert_list.clear();
+                alertService.GetAlarms();
+
+                /* 업데이트가 끝났음을 알림 */
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         //통신으로 받아오기
         alertService.GetAlarms();

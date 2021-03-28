@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.GoogooCorn.lifoo_v11.R;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
@@ -37,6 +38,8 @@ public class RankingFragment extends Fragment implements RankingActivityView {
     List<Integer> count;
     int i = 0;
     int page_num;
+
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     // 서비스 선언
     RankingService rankingService = new RankingService(this);
@@ -65,6 +68,21 @@ public class RankingFragment extends Fragment implements RankingActivityView {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         ranking_list = new ArrayList<RankingItem>();
+
+        // refresh_ll
+        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_ranking);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                /* swipe 시 진행할 동작 */
+                ranking_list.clear();
+                TryGetRankings(0);
+
+                /* 업데이트가 끝났음을 알림 */
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
 
 //        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);
 //        Drawable drawable2 = getResources().getDrawable(R.drawable.food_image2);

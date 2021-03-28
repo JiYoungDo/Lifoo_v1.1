@@ -26,16 +26,20 @@
         android:textColor="@color/colorBlack"
         android:text="@string/alert_title" />
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshll_alert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/alert_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </ScrollView>
+            </androidx.recyclerview.widget.RecyclerView>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
