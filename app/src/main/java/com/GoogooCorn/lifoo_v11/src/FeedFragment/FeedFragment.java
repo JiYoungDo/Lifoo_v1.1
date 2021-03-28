@@ -28,7 +28,9 @@ import com.GoogooCorn.lifoo_v11.src.SearchActivity.SearchActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.X_ACCESS_TOKEN;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
@@ -51,6 +53,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
     FeedService feedService = new FeedService(this);
 
     int page_num ;
+    String current_time;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -179,6 +182,8 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
          *  parameters.put("page",String.valueOf(page_num));
          * */
 
+
+
         if(code == 2000 && feedFragmentResponse.getResult().getPostList().size() == 6)
         {
             Log.d("피드 성공 ",  "&& " + String.valueOf(code));
@@ -197,12 +202,25 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
             Img_url_6 = feedFragmentResponse.getResult().getPostList().get(5).getPostUrl();
 
 
-            hour_1 = feedFragmentResponse.getResult().getPostList().get(0).getCreatedAt().substring(2,10);
-            hour_2 = feedFragmentResponse.getResult().getPostList().get(1).getCreatedAt().substring(2,10);
-            hour_3 = feedFragmentResponse.getResult().getPostList().get(2).getCreatedAt().substring(2,10);
-            hour_4 = feedFragmentResponse.getResult().getPostList().get(3).getCreatedAt().substring(2,10);
-            hour_5 = feedFragmentResponse.getResult().getPostList().get(4).getCreatedAt().substring(2,10);
-            hour_6 = feedFragmentResponse.getResult().getPostList().get(5).getCreatedAt().substring(2,10);
+            long mNow = System.currentTimeMillis();
+            Date mReDate = new Date(mNow);
+            SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formatDate = mFormat.format(mReDate);
+            current_time = formatDate;
+
+//            hour_1 = feedFragmentResponse.getResult().getPostList().get(0).getCreatedAt().substring(2,10);
+//            hour_2 = feedFragmentResponse.getResult().getPostList().get(1).getCreatedAt().substring(2,10);
+//            hour_3 = feedFragmentResponse.getResult().getPostList().get(2).getCreatedAt().substring(2,10);
+//            hour_4 = feedFragmentResponse.getResult().getPostList().get(3).getCreatedAt().substring(2,10);
+//            hour_5 = feedFragmentResponse.getResult().getPostList().get(4).getCreatedAt().substring(2,10);
+//            hour_6 = feedFragmentResponse.getResult().getPostList().get(5).getCreatedAt().substring(2,10);
+
+            hour_1 = Calc_time(feedFragmentResponse.getResult().getPostList().get(0).getCreatedAt(),current_time);
+            hour_2 = Calc_time(feedFragmentResponse.getResult().getPostList().get(1).getCreatedAt(),current_time);
+            hour_3 = Calc_time(feedFragmentResponse.getResult().getPostList().get(2).getCreatedAt(),current_time);
+            hour_4 = Calc_time(feedFragmentResponse.getResult().getPostList().get(3).getCreatedAt(),current_time);
+            hour_5 = Calc_time(feedFragmentResponse.getResult().getPostList().get(4).getCreatedAt(),current_time);
+            hour_6 = Calc_time(feedFragmentResponse.getResult().getPostList().get(5).getCreatedAt(),current_time);
 
 
 
@@ -255,7 +273,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
     }
 
     @NotNull
-    private String Calc_time(@NotNull String input_time)
+    private String Calc_time(String input_time, String formatDate)
     {
 
         int result;
@@ -278,9 +296,9 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         i_sec = Integer.parseInt(Input.substring(12,14));
 
 
-        // yyyy-MM-dd HH:mm:ss
-        String now = String.valueOf(System.currentTimeMillis());
-        String now_1 = now.replaceAll("-","");
+
+
+        String now_1 = formatDate.replaceAll("-","");
         String now_2 = now_1.replaceAll(" ","");
         String NOW = now_2.replaceAll(":","");
         n_year = Integer.parseInt(NOW.substring(0,4));
