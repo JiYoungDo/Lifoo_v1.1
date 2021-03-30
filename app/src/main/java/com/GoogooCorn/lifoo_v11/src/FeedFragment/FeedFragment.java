@@ -87,18 +87,18 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         feed_recyclerView.setLayoutManager(linearLayoutManager);
 
         // refresh_ll
-        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_feed);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                /* swipe 시 진행할 동작 */
-                feed_list.clear();
-                TryGetPosts(0);
-
-                /* 업데이트가 끝났음을 알림 */
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
-        });
+//        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_feed);
+//        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                /* swipe 시 진행할 동작 */
+//                feed_list.clear();
+//                TryGetPosts(0);
+//
+//                /* 업데이트가 끝났음을 알림 */
+//                mSwipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
 
 
 

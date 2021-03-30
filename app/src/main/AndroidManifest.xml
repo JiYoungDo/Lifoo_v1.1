@@ -43,7 +43,16 @@
         </activity>
         <activity android:name=".src.MainActivity.MainActivity" />
         <activity android:name=".src.SearchActivity.SearchActivity" />
-        <activity android:name=".src.PostDetailActivity.PostDetailActivity" />
+        <activity android:name=".src.PostDetailActivity.PostDetailActivity">  </activity>
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+
+<!--                <data android:scheme="@string/kakao_scheme"-->
+<!--                    android:host="@string/kakaolink_host"/>-->
+
+<!--            </intent-filter>-->
+
         <activity android:name=".src.RegisterAgainActivity.RegisterAgainActivity" />
         <activity android:name=".src.CreateNewPostActivity.CreateNewPostActivity" />
         <activity android:name=".src.MypageFragment.ViewAllPost" />
