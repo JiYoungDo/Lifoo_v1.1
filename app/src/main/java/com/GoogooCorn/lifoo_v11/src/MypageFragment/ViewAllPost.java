@@ -193,7 +193,7 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
             for(int i = 0; i < postList.size() ; i++) {
                 Drawable badge = null;
 
-                if(postList.get(i).getTotalImoge() >= 20
+                if(postList.get(i).getTotalImoge() >= 50
                         && postList.get(i).getTotalImoge() < 100){
                     badge = getResources().getDrawable(R.drawable.badge_red_30);
                 }

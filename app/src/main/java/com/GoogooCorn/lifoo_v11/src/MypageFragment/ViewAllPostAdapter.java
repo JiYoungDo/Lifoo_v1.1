@@ -124,8 +124,7 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
                 holder.btnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // 해당 게시물 편짐
-                        // 해당 게시물 삭제
+                        // 해당 게시물 편집
 //                        Toast.makeText(context, "편집 클릭", Toast.LENGTH_SHORT).show();
                         holder.btnDelete.setVisibility(View.GONE);
                         holder.btnEdit.setVisibility(View.GONE);

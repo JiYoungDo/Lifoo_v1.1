@@ -23,7 +23,11 @@ import com.GoogooCorn.lifoo_v11.src.AlertFragment.models.AlertFragmentResponse;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AlertFragment extends Fragment implements AlertFragmentActivityView {
 
@@ -33,6 +37,8 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
     AlertAdapter alertAdapter;
     RecyclerView recyclerView;
     ArrayList alert_list;
+
+    String currentTime;
 
 
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -125,11 +131,20 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
         if(code == 2000){
             Log.d("알림 받아오기 성공 ",  "&& " + String.valueOf(code));
 
+            long mNow = System.currentTimeMillis();
+            Date mReDate = new Date(mNow);
+            SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formatDate = mFormat.format(mReDate);
+            currentTime = formatDate;
+
+            String postTime;
 
             for(int i = 0; i < alertFragmentResponse.getResult().getAlarmList().size() ; i++) {
+                postTime = Calc_time(alertFragmentResponse.getResult().getAlarmList().get(i).getCreatedAt(), currentTime);
+
                 AlertItem alertItem = new AlertItem(alertFragmentResponse.getResult().getAlarmList().get(i).getImogeIdx(),
                         alertFragmentResponse.getResult().getAlarmList().get(i).getAlarmText(),
-                        alertFragmentResponse.getResult().getAlarmList().get(i).getCreatedAt().substring(2,10),
+                        postTime,
                         alertFragmentResponse.getResult().getAlarmList().get(i).getPostUrl(),
                         alertFragmentResponse.getResult().getAlarmList().get(i).getPostIdx());
                 alert_list.add(alertItem);
@@ -146,6 +161,61 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
             Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @NotNull
+    private String Calc_time(String input_time, String formatDate)
+    {
+
+        int result;
+        String str_result;
+
+        int i_year, i_month, i_date, i_hour, i_min, i_sec;
+        int n_year, n_month, n_date, n_hour, n_min, n_sec;
+
+
+        // 2021-03-10T10:06:10.000+00:00
+        // 2021 03 10 10 06 10.000+00:00
+        String Input_0 = input_time.replaceAll("-","");
+        String Input_1 = Input_0.replaceAll("T","");
+        String Input = Input_1.replaceAll(":","");
+        i_year = Integer.parseInt(Input.substring(0,4));
+        i_month = Integer.parseInt(Input.substring(4,6));
+        i_date = Integer.parseInt(Input.substring(6,8));
+        i_hour = Integer.parseInt(Input.substring(8,10));
+        i_min = Integer.parseInt(Input.substring(10,12));
+        i_sec = Integer.parseInt(Input.substring(12,14));
+
+
+
+
+        String now_1 = formatDate.replaceAll("-","");
+        String now_2 = now_1.replaceAll(" ","");
+        String NOW = now_2.replaceAll(":","");
+        n_year = Integer.parseInt(NOW.substring(0,4));
+        n_month = Integer.parseInt(NOW.substring(4,6));
+        n_date = Integer.parseInt(NOW.substring(6,8));
+        n_hour = Integer.parseInt(NOW.substring(8,10));
+        n_min = Integer.parseInt(NOW.substring(10,12));
+        n_sec = Integer.parseInt(NOW.substring(12,13));
+
+
+        if(i_year != n_year) {
+            str_result = String.valueOf(n_year - i_year) + "년 전";
+        }else if(i_month != n_month){
+            str_result = String.valueOf(n_month - i_month) +"개월 전";
+        }else if(i_date != n_date){
+            str_result = String.valueOf(n_date - i_date)+"일 전";
+        }else if(i_hour != n_hour) {
+            str_result = String.valueOf(n_hour - i_hour) + "시간 전";
+        }else if(i_min != n_min){
+            str_result = String.valueOf(n_min - i_min) +"분 전";
+        }else{
+            str_result = String.valueOf(n_sec-i_sec) +"초 전";
+        }
+
+
+        return str_result;
     }
 }
 

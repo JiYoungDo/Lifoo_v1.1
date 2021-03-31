@@ -23,7 +23,11 @@ import com.GoogooCorn.lifoo_v11.src.MypageFragment.models.MyPostResponse;
 import com.GoogooCorn.lifoo_v11.src.RankingFragment.interfaces.RankingActivityView;
 import com.GoogooCorn.lifoo_v11.src.RankingFragment.models.RankingResponse;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RankingFragment extends Fragment implements RankingActivityView {
@@ -38,6 +42,7 @@ public class RankingFragment extends Fragment implements RankingActivityView {
     List<Integer> count;
     int i = 0;
     int page_num;
+    String currentTime;
 
     SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -133,10 +138,20 @@ public class RankingFragment extends Fragment implements RankingActivityView {
             List<RankingResponse.Post> postList = result.getPostList();
             RankingItem rankingItem;
 
+            long mNow = System.currentTimeMillis();
+            Date mReDate = new Date(mNow);
+            SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formatDate = mFormat.format(mReDate);
+            currentTime = formatDate;
+
+            String postTime;
+
             for(int i = 0; i < postList.size(); i++) {
                 Drawable badge = null;
 
-                if(postList.get(i).getTotalImoge() >= 20
+                postTime = Calc_time(postList.get(i).getCreatedAt(), currentTime);
+
+                if(postList.get(i).getTotalImoge() >= 50
                         && postList.get(i).getTotalImoge() < 100){
                     badge = getResources().getDrawable(R.drawable.badge_red_50);
                 }
@@ -152,7 +167,7 @@ public class RankingFragment extends Fragment implements RankingActivityView {
                     badge = getResources().getDrawable(R.drawable.badge_blue_50);
                 }
                 rankingItem = new RankingItem(postList.get(i).getPostUrl(), badge, postList.get(i).getPostTitle(),
-                        postList.get(i).getCreatedAt().substring(2, 10), postList.get(i).getTotalImoge(),
+                        postTime, postList.get(i).getTotalImoge(),
                         postList.get(i).getPostIdx());
                 ranking_list.add(rankingItem);
 //                page_num += 1;
@@ -178,5 +193,60 @@ public class RankingFragment extends Fragment implements RankingActivityView {
             Toast.makeText(getContext(),"시스템 오류! sorry x_x",Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @NotNull
+    private String Calc_time(String input_time, String formatDate)
+    {
+
+        int result;
+        String str_result;
+
+        int i_year, i_month, i_date, i_hour, i_min, i_sec;
+        int n_year, n_month, n_date, n_hour, n_min, n_sec;
+
+
+        // 2021-03-10T10:06:10.000+00:00
+        // 2021 03 10 10 06 10.000+00:00
+        String Input_0 = input_time.replaceAll("-","");
+        String Input_1 = Input_0.replaceAll("T","");
+        String Input = Input_1.replaceAll(":","");
+        i_year = Integer.parseInt(Input.substring(0,4));
+        i_month = Integer.parseInt(Input.substring(4,6));
+        i_date = Integer.parseInt(Input.substring(6,8));
+        i_hour = Integer.parseInt(Input.substring(8,10));
+        i_min = Integer.parseInt(Input.substring(10,12));
+        i_sec = Integer.parseInt(Input.substring(12,14));
+
+
+
+
+        String now_1 = formatDate.replaceAll("-","");
+        String now_2 = now_1.replaceAll(" ","");
+        String NOW = now_2.replaceAll(":","");
+        n_year = Integer.parseInt(NOW.substring(0,4));
+        n_month = Integer.parseInt(NOW.substring(4,6));
+        n_date = Integer.parseInt(NOW.substring(6,8));
+        n_hour = Integer.parseInt(NOW.substring(8,10));
+        n_min = Integer.parseInt(NOW.substring(10,12));
+        n_sec = Integer.parseInt(NOW.substring(12,13));
+
+
+        if(i_year != n_year) {
+            str_result = String.valueOf(n_year - i_year) + "년 전";
+        }else if(i_month != n_month){
+            str_result = String.valueOf(n_month - i_month) +"개월 전";
+        }else if(i_date != n_date){
+            str_result = String.valueOf(n_date - i_date)+"일 전";
+        }else if(i_hour != n_hour) {
+            str_result = String.valueOf(n_hour - i_hour) + "시간 전";
+        }else if(i_min != n_min){
+            str_result = String.valueOf(n_min - i_min) +"분 전";
+        }else{
+            str_result = String.valueOf(n_sec-i_sec) +"초 전";
+        }
+
+
+        return str_result;
     }
 }
