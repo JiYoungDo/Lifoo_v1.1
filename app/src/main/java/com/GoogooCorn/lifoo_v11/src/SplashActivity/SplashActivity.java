@@ -1,7 +1,11 @@
 package com.GoogooCorn.lifoo_v11.src.SplashActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -10,6 +14,9 @@ import com.GoogooCorn.lifoo_v11.src.BaseActivity;
 import com.GoogooCorn.lifoo_v11.src.MainActivity.MainActivity;
 import com.GoogooCorn.lifoo_v11.src.SocialLoginActivity.SocialLoginActivity;
 import com.GoogooCorn.lifoo_v11.src.SplashActivity.interfaces.SplashActivityView;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.X_ACCESS_TOKEN;
 import static com.GoogooCorn.lifoo_v11.ApplicationClass.sSharedPreferences;
@@ -31,6 +38,24 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
         sSharedPreferences = getSharedPreferences(TAG, MODE_PRIVATE);
         String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, "");
         Log.d("자동 로그인 jwt 토큰 ", jwtToken);
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("MY KEY HASH:",
+                        Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+
+        String keyHash = com.kakao.util.helper.Utility.getKeyHash(this /* context */);
+        Log.d("카카오 키 해시", keyHash);
 
         // 자동 로그인 통신
         TryAutoLogin();

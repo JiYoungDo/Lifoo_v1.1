@@ -53,6 +53,8 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/post_detail_nested_scroll"
+        android:descendantFocusability="blocksDescendants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -298,23 +300,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+
                     <com.baoyz.swipemenulistview.SwipeMenuListView
-                        android:id="@+id/post_detail_comment_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="900dp"
-                        android:scrollbarFadeDuration="0"
-                        android:scrollbarSize="5dp"
-                        android:outlineProvider="none"
-                        android:scrollbars="vertical"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                    android:id="@+id/post_detail_comment_rv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:scrollbarFadeDuration="0"
+                    android:scrollbarSize="5dp"
+                    android:outlineProvider="none"
+                    android:scrollbars="vertical"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
 
                     <FrameLayout
+                        app:layout_constraintTop_toBottomOf="@id/post_detail_comment_rv"
                         android:layout_width="match_parent"
                         android:layout_height="60dp">
 
@@ -352,7 +358,7 @@
                     </FrameLayout>
 
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

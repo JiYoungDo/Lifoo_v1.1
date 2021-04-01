@@ -22,6 +22,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -31,6 +32,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +96,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
     String user_idx;
     String get_imoge_idx;
     String from_alert_activity;
+
+    ScrollView top_sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -397,6 +401,15 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 TryPostComments(get_post_idx,comment_body_et.getText().toString());
                 comment_body_et.setText("");
 
+            }
+        });
+
+        top_sv =findViewById(R.id.post_detail_nested_scroll);
+        comments_recyclerview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                top_sv.requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
 

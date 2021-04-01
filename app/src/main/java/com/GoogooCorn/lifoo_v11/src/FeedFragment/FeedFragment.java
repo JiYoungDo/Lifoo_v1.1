@@ -231,7 +231,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
 
             page_num +=1;
 
-            if(page_num <=10)
+            if(page_num <=20)
                 TryGetPosts(page_num);
             feedAdapter.notifyDataSetChanged();
 
