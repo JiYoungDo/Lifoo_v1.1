@@ -141,6 +141,7 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
             thirdLetter.setText(temp_str.substring(2,3));
             fourthLetter.setText(temp_str.substring(3,4));
             fifthLetter.setText(temp_str.substring(4,5));
+            sixthLetter.setText("");
 
         } else if(temp_str_size == 4) {
 
@@ -148,17 +149,26 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
             secondLetter.setText(temp_str.substring(1,2));
             thirdLetter.setText(temp_str.substring(2,3));
             fourthLetter.setText(temp_str.substring(3,4));
+            fifthLetter.setText("");
+            sixthLetter.setText("");
 
         }else if(temp_str_size == 3) {
 
             firstLetter.setText(temp_str.substring(0,1));
             secondLetter.setText(temp_str.substring(1,2));
             thirdLetter.setText(temp_str.substring(2,3));
+            fourthLetter.setText("");
+            fifthLetter.setText("");
+            sixthLetter.setText("");
 
         }else if(temp_str_size == 2) {
 
             firstLetter.setText(temp_str.substring(0,1));
             secondLetter.setText(temp_str.substring(1,2));
+            thirdLetter.setText("");
+            fourthLetter.setText("");
+            fifthLetter.setText("");
+            sixthLetter.setText("");
         }
 
 
