@@ -52,6 +52,8 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_mypost);
 
+        page_num = 0;
+
 //        Intent intent = getIntent();
 //        list = (ArrayList<MypageItem>) intent.getSerializableExtra("list");
 
@@ -183,47 +185,43 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
     public void GetMyPostSuccess(MyPostResponse myPostResponse, int code) {
         Log.d("내 게시물 받아오기 성공", String.valueOf(code));
 
-        if(code == 2000){
+        if(code == 2000) {
             Log.d("내 게시물 받아오기 성공", String.valueOf(code));
             Log.d("postList 사이즈", String.valueOf(myPostResponse.getResult().getPostList().size()));
             MyPostResponse.Result result = myPostResponse.getResult();
+
             List<MyPostResponse.Post> postList = result.getPostList();
+
             MypageItem mypageItem;
 
-            for(int i = 0; i < postList.size() ; i++) {
+            for (int i = 0; i < postList.size(); i++) {
                 Drawable badge = null;
 
-                if(postList.get(i).getTotalImoge() >= 50
-                        && postList.get(i).getTotalImoge() < 100){
+                if (postList.get(i).getTotalImoge() >= 50
+                        && postList.get(i).getTotalImoge() < 100) {
                     badge = getResources().getDrawable(R.drawable.badge_red_30);
-                }
-                else if(postList.get(i).getTotalImoge() >= 100
-                        && postList.get(i).getTotalImoge() < 500){
+                } else if (postList.get(i).getTotalImoge() >= 100
+                        && postList.get(i).getTotalImoge() < 500) {
                     badge = getResources().getDrawable(R.drawable.badge_yellow_30);
-                }
-                else if(postList.get(i).getTotalImoge() >= 500
-                        && postList.get(i).getTotalImoge() < 1000){
+                } else if (postList.get(i).getTotalImoge() >= 500
+                        && postList.get(i).getTotalImoge() < 1000) {
                     badge = getResources().getDrawable(R.drawable.badge_green_30);
-                }
-                else if(postList.get(i).getTotalImoge() >= 1000){
+                } else if (postList.get(i).getTotalImoge() >= 1000) {
                     badge = getResources().getDrawable(R.drawable.badge_blue_30);
                 }
+
                 mypageItem = new MypageItem(postList.get(i).getPostUrl(), badge, postList.get(i).getPostIdx());
                 view_all_list.add(mypageItem);
-//                page_num +=1;
-//
-//                if(page_num <= 10)
-//                    TryGetMyPosts(page_num);
                 viewAllPostAdapter.notifyDataSetChanged();
 
-                if(i == 9){
+                if(i==9)
+                {
                     page_num += 1;
                     TryGetMyPosts(page_num);
                 }
             }
-            page_num = 0;
-        }
 
+        }
         else if(code == 3208){
             Log.d("게시물 목록 없음", String.valueOf(code));
         }
