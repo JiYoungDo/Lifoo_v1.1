@@ -57,8 +57,18 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
         String keyHash = com.kakao.util.helper.Utility.getKeyHash(this /* context */);
         Log.d("카카오 키 해시", keyHash);
 
+        getHashKey();
         // 자동 로그인 통신
         TryAutoLogin();
+
+
+
+        byte[] sha1 = {
+                (byte)0x77, (byte)0xA8, (byte)0x9B,  (byte)0xE9, (byte)0xA6, (byte)0x8A,
+                (byte)0xFB, (byte)0x3F, (byte)0xC2, (byte)0xE8, (byte)0xEB, (byte)0x0C,
+                (byte)0x71, (byte)0x85, (byte)0x84, (byte)0x63, (byte)0x72, (byte)0x72,
+                (byte)0x28, (byte)0x0A};
+        Log.d("앱서명키 SHA1 : ", Base64.encodeToString(sha1, Base64.NO_WRAP));
     }
 
 
@@ -119,4 +129,28 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
         }
 
     }
+
+
+
+    private void getHashKey(){
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (packageInfo == null)
+            Log.e("KeyHash", "KeyHash:null");
+
+        for (Signature signature : packageInfo.signatures) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            } catch (NoSuchAlgorithmException e) {
+                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
+            }
+        }
+    }
+
 }
