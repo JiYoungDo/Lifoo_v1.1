@@ -16,7 +16,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/feed_item_1"
         android:layout_width="156dp"
         android:layout_height="156dp"
@@ -74,7 +74,7 @@
 
 
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/feed_item_2"
         android:layout_width="156dp"
         android:layout_height="156dp"
@@ -132,7 +132,7 @@
 
 
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/feed_item_3"
         android:layout_width="156dp"
         android:layout_height="156dp"
@@ -189,7 +189,7 @@
         />
 
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/feed_item_4"
         android:layout_width="156dp"
         android:layout_height="156dp"
@@ -247,7 +247,7 @@
 
 
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/feed_item_5"
         android:layout_width="156dp"
         android:layout_height="156dp"
@@ -304,7 +304,7 @@
         />
 
 
-    <com.GoogooCorn.lifoo_v11.src.xmlClass.RoundImageView
+    <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
         android:id="@+id/feed_item_6"
         android:layout_width="156dp"
         android:layout_height="156dp"
