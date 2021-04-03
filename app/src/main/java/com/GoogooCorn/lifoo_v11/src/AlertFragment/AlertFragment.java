@@ -41,7 +41,7 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
     String currentTime;
 
 
-    SwipeRefreshLayout mSwipeRefreshLayout;
+//    SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     AlertService alertService = new AlertService(this);
@@ -85,18 +85,7 @@ public class AlertFragment extends Fragment implements AlertFragmentActivityView
 //        alert_list.add(alertItem_2);
 
         // refresh_ll
-        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_alert);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                /* swipe 시 진행할 동작 */
-                alert_list.clear();
-                alertService.GetAlarms();
 
-                /* 업데이트가 끝났음을 알림 */
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
-        });
 
         //통신으로 받아오기
         alertService.GetAlarms();

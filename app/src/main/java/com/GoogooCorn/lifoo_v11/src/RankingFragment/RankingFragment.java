@@ -44,7 +44,7 @@ public class RankingFragment extends Fragment implements RankingActivityView {
     int page_num;
     String currentTime;
 
-    SwipeRefreshLayout mSwipeRefreshLayout;
+//    SwipeRefreshLayout mSwipeRefreshLayout;
 
     // 서비스 선언
     RankingService rankingService = new RankingService(this);
@@ -75,18 +75,18 @@ public class RankingFragment extends Fragment implements RankingActivityView {
         ranking_list = new ArrayList<RankingItem>();
 
         // refresh_ll
-        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_ranking);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                /* swipe 시 진행할 동작 */
-                ranking_list.clear();
-                TryGetRankings(0);
-
-                /* 업데이트가 끝났음을 알림 */
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
-        });
+//        mSwipeRefreshLayout = viewGroup.findViewById(R.id.refreshll_ranking);
+//        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                /* swipe 시 진행할 동작 */
+//                ranking_list.clear();
+//                TryGetRankings(0);
+//
+//                /* 업데이트가 끝났음을 알림 */
+//                mSwipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
 
 
 //        Drawable drawable1 = getResources().getDrawable(R.drawable.food_image);

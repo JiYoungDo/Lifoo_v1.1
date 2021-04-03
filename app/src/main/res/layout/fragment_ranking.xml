@@ -28,13 +28,6 @@
             android:textColor="@color/colorBlack"
             android:text="@string/hot_posts" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshll_ranking"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -46,7 +39,7 @@
 
             </androidx.recyclerview.widget.RecyclerView>
         </ScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </LinearLayout>
 
 
