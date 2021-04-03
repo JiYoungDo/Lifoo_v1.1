@@ -337,7 +337,8 @@
                             android:paddingLeft="25dp"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:textColorHint="@color/colorDarkGray"
-                            android:textColor="@color/colorBlack"/>
+                            android:textColor="@color/colorBlack">
+                        </EditText>
 
                         <Button
                             android:id="@+id/post_detail_btn_post_comments"

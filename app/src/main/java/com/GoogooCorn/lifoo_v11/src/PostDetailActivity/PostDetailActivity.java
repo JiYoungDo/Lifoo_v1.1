@@ -26,6 +26,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -143,6 +144,8 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
         share_btn = findViewById(R.id.post_detail_btnShare);
         comments_btn = findViewById(R.id.post_detail_comments_btn);
 
+//        comment_body_et = findViewById(R.id.post_detail_et_post_comments);
+
         more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,6 +168,17 @@ public class PostDetailActivity extends AppCompatActivity implements PostDetailA
                 share_kakao_bottom_sheet.show(getSupportFragmentManager(), "shareKakaoBottomSheetDialog");
             }
         });
+//        comments_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                comment_body_et.requestFocus();
+//
+//                //키보드 보이게 하는 부분
+//
+//                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+//            }
+//        });
 
 
         // 포스트 바로 아래
