@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.googoocorncorn.lifoo_v11.src.xmlClass.RoundImageView
+            <com.googoocorn.lifoo.src.xmlClass.RoundImageView
                 android:id="@+id/my_post_image"
                 android:layout_width="340dp"
                 android:layout_height="340dp"

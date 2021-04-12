@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.googoocorncorn.lifoo_v11">
+    package="com.googoocorn.lifoo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,7 @@
         android:required="true" />
 
     <application
-        android:name="com.googoocorncorn.lifoo_v11.src.SocialLoginActivity.KakaoApp"
+        android:name="com.googoocorn.lifoo.src.SocialLoginActivity.KakaoApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_app_launcher"
         android:label="@string/app_name"
@@ -25,7 +25,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.googoocorncorn.lifoo_v11.src.PhotoPickActivity"
+            android:authorities="com.googoocorn.lifoo.src.PhotoPickActivity"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -33,18 +33,18 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.PhotoPickActivity.PhotoPickActivity" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.SocialLoginActivity.SocialLoginActivity" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.SplashActivity.SplashActivity">
+        <activity android:name="com.googoocorn.lifoo.src.PhotoPickActivity.PhotoPickActivity" />
+        <activity android:name="com.googoocorn.lifoo.src.SocialLoginActivity.SocialLoginActivity" />
+        <activity android:name="com.googoocorn.lifoo.src.SplashActivity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.MainActivity.MainActivity" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.SearchActivity.SearchActivity" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.PostDetailActivity.PostDetailActivity">  </activity>
+        <activity android:name="com.googoocorn.lifoo.src.MainActivity.MainActivity" />
+        <activity android:name="com.googoocorn.lifoo.src.SearchActivity.SearchActivity" />
+        <activity android:name="com.googoocorn.lifoo.src.PostDetailActivity.PostDetailActivity">  </activity>
 <!--                <action android:name="android.intent.action.VIEW" />-->
 <!--                <category android:name="android.intent.category.DEFAULT" />-->
 <!--                <category android:name="android.intent.category.BROWSABLE" />-->
@@ -54,11 +54,11 @@
 
 <!--            </intent-filter>-->
 
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.RegisterAgainActivity.RegisterAgainActivity" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.CreateNewPostActivity.CreateNewPostActivity" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.MypageFragment.ViewAllPost" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.MypageFragment.ModifyNickname" />
-        <activity android:name="com.googoocorncorn.lifoo_v11.src.PostDetailActivity.EditMyPost"/>
+        <activity android:name="com.googoocorn.lifoo.src.RegisterAgainActivity.RegisterAgainActivity" />
+        <activity android:name="com.googoocorn.lifoo.src.CreateNewPostActivity.CreateNewPostActivity" />
+        <activity android:name="com.googoocorn.lifoo.src.MypageFragment.ViewAllPost" />
+        <activity android:name="com.googoocorn.lifoo.src.MypageFragment.ModifyNickname" />
+        <activity android:name="com.googoocorn.lifoo.src.PostDetailActivity.EditMyPost"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

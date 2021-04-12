@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.googoocorncorn.lifoo_v11",
+  "applicationId": "com.googoocorn.lifoo",
   "variantName": "processReleaseResources",
   "elements": [
     {
