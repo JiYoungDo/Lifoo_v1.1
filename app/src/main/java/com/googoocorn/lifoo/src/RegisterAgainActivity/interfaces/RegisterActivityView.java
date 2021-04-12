@@ -11,11 +11,6 @@ public interface RegisterActivityView {
 
 
 
-    // 회원 가입
-    void RegisterFailure(String message, int code);
-
-    void RegisterSuccess(RegisterResponse registerResponse,String message, int code);
-
 
 
 }

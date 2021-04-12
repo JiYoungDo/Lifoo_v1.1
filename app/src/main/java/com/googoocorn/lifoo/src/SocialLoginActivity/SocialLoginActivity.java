@@ -74,7 +74,7 @@ public class SocialLoginActivity extends BaseActivity implements SocialLoginActi
         to_register_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SocialLoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(SocialLoginActivity.this, RegisterAgainActivity.class);
                 startActivity(intent);
                 finish();
             }

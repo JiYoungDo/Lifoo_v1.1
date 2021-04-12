@@ -51,32 +51,4 @@ public class RegisterService {
     }
 
 
-    // 회원 가입 통신
-    void PostRegister(String nick_name, String snsId) {
-
-        final RegisterRetrofitInterface registerRetrofitInterface = getRetrofit().create(RegisterRetrofitInterface.class);
-        registerRetrofitInterface.RegisterTest(new RegisterBody(nick_name, snsId, "KAKAO")).enqueue(new Callback<RegisterResponse>() {
-
-            // 통신 성공 시
-            @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-
-                final RegisterResponse registerResponse = response.body();
-
-                if (registerResponse == null) {
-                    // 통신은 됬는데 결과 값이 null 이면?
-                    registerActivityView.RegisterFailure("null", 0);
-                    return;
-                }
-                // 통신도 성공! 받아오는 값도 성공!
-                registerActivityView.RegisterSuccess(registerResponse,registerResponse.getMessage(), registerResponse.getCode());
-            }
-
-            // API 통신 자체가 실패
-            @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                registerActivityView.RegisterFailure("통신 자체 실패",0);
-            }
-        });
-    }
 }

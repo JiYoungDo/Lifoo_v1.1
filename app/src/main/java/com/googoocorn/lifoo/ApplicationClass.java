@@ -21,7 +21,7 @@ public class ApplicationClass extends Application {
     public static MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
 
     // 서버 주소
-    public static String BASE_URL = "http://lifoo.ga";
+    public static String BASE_URL = "http://15.165.187.87";
 
 
     public static SharedPreferences sSharedPreferences = null;

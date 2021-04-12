@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.googoocorn.lifoo.R;
 import com.googoocorn.lifoo.src.BaseActivity;
 import com.googoocorn.lifoo.src.MainActivity.MainActivity;
+import com.googoocorn.lifoo.src.RegisterActivity.RegisterActivity;
 import com.googoocorn.lifoo.src.RegisterAgainActivity.interfaces.RegisterActivityView;
 import com.googoocorn.lifoo.src.RegisterAgainActivity.models.RegisterResponse;
 import com.googoocorn.lifoo.src.SocialLoginActivity.SocialLoginActivity;
@@ -81,7 +82,17 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
                     Toast.makeText(getApplicationContext(), "닉네임을 뽑아 주세요!",Toast.LENGTH_SHORT).show();
                 }else
                 {
-                    TryRegister(user_nick_name, user_sns_Id);
+                    sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sSharedPreferences.edit();
+                    // 내부에 저장 되어 있는 jwt 값을 지움
+                    editor.remove("nick");
+                    editor.putString("nick",user_nick_name);
+                    editor.commit();
+
+                    Log.d("레지스터 어게인에서 유저 닉네임",user_nick_name);
+
+                    Intent intent = new Intent(RegisterAgainActivity.this, RegisterActivity.class);
+                    startActivity(intent);
                 }
 
             }
@@ -95,13 +106,6 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
     {
         showProgressDialog();
         registerService.GetNickname();
-    }
-
-
-    private void TryRegister(String nick_name, String snsId)
-    {
-        showProgressDialog();
-        registerService.PostRegister(nick_name, snsId);
     }
 
 
@@ -175,77 +179,5 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
 
     }
 
-    @Override
-    public void RegisterFailure(String message, int code) {
 
-        hideProgressDialog();
-        Log.d("회원 가입 api :", "오류메세지: " + message + "  오류 코드:" + String.valueOf(code));
-        Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void RegisterSuccess(RegisterResponse registerResponse, String message, int code) {
-
-        hideProgressDialog();
-        Log.d("회원 가입 api :", "통신 성공 메세지: " + message + "  오류 코드:" + String.valueOf(code));
-
-
-
-        switch(code)
-        {
-            case 2000:
-                // 회원 가입 성공
-                sSharedPreferences = getSharedPreferences(TAG,MODE_PRIVATE);
-                SharedPreferences.Editor editor = sSharedPreferences.edit();
-                // 내부에 저장 되어 있는 jwt 값을 지움
-                editor.remove(X_ACCESS_TOKEN);
-                editor.remove("user_idx");
-                editor.commit();
-
-                SharedPreferences.Editor editor2 = sSharedPreferences.edit();
-                // 소셜 로그인을 통해 jwt 값을
-                editor2.putString(X_ACCESS_TOKEN,registerResponse.getResult().getJwt());
-                editor2.putString("user_idx",registerResponse.getResult().getUserIdx());
-                editor2.commit();
-
-                String x_access = sSharedPreferences.getString(X_ACCESS_TOKEN,null);
-                String index = sSharedPreferences.getString("user_idx",null);
-                Log.d("jwt 확인. 회원가입 2000",x_access + "하고" + index);
-
-                Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(RegisterAgainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-
-                break;
-
-            case 3100:
-                // 이미 존재하는 닉네임
-                Toast.makeText(getApplicationContext(), message + "\n닉네임을 다시 랜덤 생성 해주세요 :-)" , Toast.LENGTH_SHORT).show();
-                firstLetter.setText("");
-                secondLetter.setText("");
-                thirdLetter.setText("");
-                fourthLetter.setText("");
-                fifthLetter.setText("");
-                sixthLetter.setText("");
-
-                break;
-
-            case 3101:
-
-            case 3104:
-                // 이미 가입된 sns_ID 회원
-                // 이미 존재하는 회원
-                Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT).show();
-                Intent intent_0 = new Intent(RegisterAgainActivity.this, SocialLoginActivity.class);
-                startActivity(intent_0);
-                finish();
-
-                break;
-
-
-        }
-    }
 }

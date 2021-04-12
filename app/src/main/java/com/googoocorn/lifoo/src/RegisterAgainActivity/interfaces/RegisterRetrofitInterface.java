@@ -16,12 +16,4 @@ public interface RegisterRetrofitInterface {
     Call<GetNicknameResponse> NicknameTest();
 
 
-    // 회원 가입
-    @POST("/users")
-    Call<RegisterResponse> RegisterTest(
-            @Body RegisterBody registerBody
-    );
-
-
-
 }
