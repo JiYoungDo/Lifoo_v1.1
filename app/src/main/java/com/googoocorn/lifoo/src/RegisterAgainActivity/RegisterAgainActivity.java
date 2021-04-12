@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,8 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
     TextView fifthLetter;
     TextView sixthLetter;
 
+    ImageView back_btn;
+
     String user_nick_name ="";
     String user_sns_Id;
 
@@ -55,6 +58,16 @@ public class RegisterAgainActivity extends BaseActivity implements RegisterActiv
         fourthLetter = findViewById(R.id.fourthLetter);
         fifthLetter = findViewById(R.id.fifthLetter);
         sixthLetter = findViewById(R.id.sixthLetter);
+
+        back_btn = findViewById(R.id.register_again_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterAgainActivity.this,SocialLoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //다시뽑기 버튼
         btnAgain.setOnClickListener(new View.OnClickListener() {

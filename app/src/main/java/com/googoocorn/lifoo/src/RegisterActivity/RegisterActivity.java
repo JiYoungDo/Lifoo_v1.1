@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,9 @@ public class RegisterActivity extends AppCompatActivity implements newRegisterAc
     EditText pw_et_confirm;
     TextView register_btn;
 
+
+    ImageView back_btn;
+
     newregisterservice new_register_service = new newregisterservice(this);
 
     @Override
@@ -43,6 +47,16 @@ public class RegisterActivity extends AppCompatActivity implements newRegisterAc
 
         register_btn = findViewById(R.id.register_tv_register_btn);
 
+
+        back_btn = findViewById(R.id.register_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, RegisterAgainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

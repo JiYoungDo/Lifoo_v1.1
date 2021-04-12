@@ -114,6 +114,7 @@ public class SocialLoginActivity extends BaseActivity implements SocialLoginActi
       //   hideProgressDialog();
 
         Log.d("로컬 로그인 실패", message+" & "+String.valueOf(code));
+        Toast.makeText(this, "값을 입력해주세요 : )", Toast.LENGTH_SHORT).show();
 
     }
 
