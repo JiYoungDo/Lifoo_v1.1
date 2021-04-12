@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface SocialLoginRetrofitInterface {
 
     //SNS 로그인
-    @POST("/login/kakao")
+    @POST("/login/local")
     Call<SocialLoginResponse> socialLoginTest(
             @Body SocialLoginBody socialLoginBody
     );

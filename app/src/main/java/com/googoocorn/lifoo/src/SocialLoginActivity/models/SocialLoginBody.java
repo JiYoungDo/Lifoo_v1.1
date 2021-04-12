@@ -4,10 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class SocialLoginBody {
 
-    @SerializedName("accessToken")
-    private String accessToken;
+    @SerializedName("id")
+    private String id;
 
-    public SocialLoginBody(String accessToken) {
-        this.accessToken = accessToken;
+    @SerializedName("password")
+    private String password;
+
+    public SocialLoginBody(String id, String password) {
+        this.id = id;
+        this.password = password;
     }
 }

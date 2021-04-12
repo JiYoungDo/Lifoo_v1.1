@@ -20,10 +20,10 @@ public class SocialLoginService {
     }
 
     // sns 로그인 통신
-    void postSocialLogIn(String accessToken) {
+    void postSocialLogIn(String id, String pw) {
 
         final SocialLoginRetrofitInterface socialLoginRetrofitInterface = getRetrofit().create(SocialLoginRetrofitInterface.class);
-        socialLoginRetrofitInterface.socialLoginTest(new SocialLoginBody(accessToken)).enqueue(new Callback<SocialLoginResponse>() {
+        socialLoginRetrofitInterface.socialLoginTest(new SocialLoginBody(id,pw)).enqueue(new Callback<SocialLoginResponse>() {
 
 
             // 통신 성공 시
