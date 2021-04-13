@@ -1,10 +1,13 @@
 package com.googoocorn.lifoo.src.SearchActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -286,6 +289,17 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 break;
         }
 
+        // enter 누르면 키보드 내리기
+        search_et.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow( search_et.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         //  검색 버튼 :   & 통신
         search_btn.setOnClickListener(new View.OnClickListener() {

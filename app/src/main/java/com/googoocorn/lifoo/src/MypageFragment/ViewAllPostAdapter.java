@@ -105,7 +105,16 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
                 editor.putString("clicked_post_idx",mypageItems.get(position).getPostIdx().toString());
                 editor.commit();
 
-                holder.btnDelete.setVisibility(View.VISIBLE);
+                if(holder.btnDelete.getVisibility() == View.GONE && holder.btnEdit.getVisibility() == View.GONE){
+                    holder.btnDelete.setVisibility(View.VISIBLE);
+                    holder.btnEdit.setVisibility(View.VISIBLE);
+                }
+                else{
+                    holder.btnDelete.setVisibility(View.GONE);
+                    holder.btnEdit.setVisibility(View.GONE);
+                }
+
+//                holder.btnDelete.setVisibility(View.VISIBLE);
                 holder.btnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -118,7 +127,7 @@ public class ViewAllPostAdapter extends RecyclerView.Adapter<ViewAllPostAdapter.
                         postDeleteDialog.show();
                     }
                 });
-                holder.btnEdit.setVisibility(View.VISIBLE);
+//                holder.btnEdit.setVisibility(View.VISIBLE);
                 holder.btnEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

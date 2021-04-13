@@ -26,20 +26,30 @@
         android:textColor="@color/colorBlack"
         android:text="@string/alert_title" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshll_alert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/refreshll_alert"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
 
-        <ScrollView
+<!--        <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/alert_rv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
+<!--        </ScrollView>-->
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/alert_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            </androidx.recyclerview.widget.RecyclerView>
-        </ScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
 </LinearLayout>

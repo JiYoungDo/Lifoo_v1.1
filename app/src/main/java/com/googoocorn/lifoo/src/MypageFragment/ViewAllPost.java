@@ -66,6 +66,8 @@ public class ViewAllPost extends AppCompatActivity implements MypageFragmentActi
             }
         });
 
+        btnInformBadge.bringToFront();
+        imgInformBadge.bringToFront();
         btnInformBadge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

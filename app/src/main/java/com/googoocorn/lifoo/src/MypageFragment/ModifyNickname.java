@@ -73,7 +73,7 @@ public class ModifyNickname extends AppCompatActivity implements MypageFragmentA
             }
         });
 
-        btnFinishTop = findViewById(R.id.btnFinish);
+        btnFinishTop = findViewById(R.id.btnSuccess);
         btnFinishTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -70,24 +70,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_all_mypost">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mypagefragment_viewall_recyclerview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mypagefragment_viewall_recyclerview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:layout_gravity="center_horizontal">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
 
     </ScrollView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toBottomOf="@id/mypagefragment_sv"/>
-
-
-
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/mypagefragment_sv"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

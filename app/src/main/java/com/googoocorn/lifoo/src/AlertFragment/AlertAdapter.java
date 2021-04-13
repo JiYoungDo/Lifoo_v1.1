@@ -16,6 +16,7 @@ import com.googoocorn.lifoo.R;
 import com.googoocorn.lifoo.src.MainActivity.MainActivity;
 import com.googoocorn.lifoo.src.PostDetailActivity.PostDetailActivity;
 import com.bumptech.glide.Glide;
+import com.googoocorn.lifoo.src.xmlClass.RoundImageView;
 
 import java.util.ArrayList;
 
@@ -52,7 +53,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
 
     public class AlertViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView Alert_img;
+        RoundImageView Alert_img;
         TextView Alert_txt;
         TextView Alert_time;
 
@@ -61,7 +62,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
             super(itemView);
 
             this.Alert_img = itemView.findViewById(R.id.alert_item_iv);
-//            Alert_img.setRectRadius(15f);
+            Alert_img.setRectRadius(15f);
             this.Alert_txt = itemView.findViewById(R.id.alert_item_tv_reaction_nick_name);
             this.Alert_time = itemView.findViewById(R.id.alert_item_tv_time);
 
@@ -88,10 +89,10 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.AlertViewHol
 
     // 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴
     @Override
-    public AlertAdapter.AlertViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public AlertViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.alert_item,viewGroup,false);
-        AlertAdapter. AlertViewHolder viewHolder = new AlertAdapter.AlertViewHolder(view);
+        AlertViewHolder viewHolder = new AlertViewHolder(view);
         this.context = viewGroup.getContext();
         return viewHolder;
     }
