@@ -336,7 +336,7 @@ public class PhotoPickActivity extends AppCompatActivity implements PhotoPostAct
         }
         if (tempFile != null) {
 
-            Uri photoUri = FileProvider.getUriForFile(this, "com.GoogooCorn.lifoo_v11.src.PhotoPickActivity", tempFile);
+            Uri photoUri = FileProvider.getUriForFile(this, "com.googoocorn.lifoo.src.PhotoPickActivity", tempFile);
 
             intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
             startActivityForResult(intent, PICK_FROM_CAMERA);
