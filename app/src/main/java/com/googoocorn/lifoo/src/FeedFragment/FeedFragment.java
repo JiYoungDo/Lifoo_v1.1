@@ -286,7 +286,7 @@ public class FeedFragment  extends Fragment implements FeedFragmentActivityView 
         }else if(i_min != n_min){
             str_result = String.valueOf(n_min - i_min) +"분 전";
         }else{
-            str_result = String.valueOf(n_sec-i_sec) +"초 전";
+            str_result = "방금 전";
         }
 
 
